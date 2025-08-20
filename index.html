@@ -5,42 +5,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Piyush Capital Ventures - Live Market</title>
 <style>
-  body {font-family: 'Arial', sans-serif; margin:0; padding:0; background:#f4f4f9; color:#333;}
-  header {background: linear-gradient(90deg, #0f2027, #203a43, #2c5364); color:white; padding:30px 0; text-align:center;}
-  header h1 {margin:0; font-size:2.8rem;}
-  header p {margin:5px 0; font-size:1.1rem;}
-  nav {background:#222; padding:12px; text-align:center;}
-  nav a {color:white; text-decoration:none; margin:0 15px; font-weight:bold; font-size:1rem;}
+  body {font-family:'Arial',sans-serif;margin:0;padding:0;background:#f4f4f9;color:#333;}
+  header {background: linear-gradient(90deg,#0f2027,#203a43,#2c5364);color:white;padding:30px 0;text-align:center;}
+  header h1 {margin:0;font-size:2.8rem;}
+  header p {margin:5px 0;font-size:1.1rem;}
+  nav {background:#222;padding:12px;text-align:center;}
+  nav a {color:white;text-decoration:none;margin:0 15px;font-weight:bold;font-size:1rem;}
   nav a:hover {color:#ffd700;}
-  .container {width:90%; max-width:1200px; margin:20px auto;}
-  h2 {text-align:center; color:#0f2027; margin-bottom:20px;}
-  
-  /* Cards */
-  .card {background:white; padding:15px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); text-align:center; flex:1 1 200px;}
-  .flex-container {display:flex; flex-wrap:wrap; justify-content:space-around;}
-  
-  /* Search */
-  .search-box {display:flex; justify-content:center; margin-bottom:20px; flex-wrap:wrap;}
-  .search-box input {padding:10px; width:60%; border-radius:5px; border:1px solid #2c3e50; font-size:16px; margin-bottom:10px;}
-  .search-box button {padding:10px 15px; background:#2c3e50; color:white; border:none; border-radius:5px; cursor:pointer; font-size:16px; margin-left:10px;}
-  
-  /* Top Shares & Bio */
-  .bio, .top-shares {background:white; padding:20px; border-radius:8px; margin-top:20px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
-  .bio p {font-size:16px; line-height:1.6;}
-  
-  /* Contact Form */
-  form {background:white; padding:20px; border-radius:8px; margin-top:20px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
-  form input, form textarea {width:100%; padding:10px; margin-top:5px; margin-bottom:10px; border:1px solid #ccc; border-radius:5px;}
-  form button {background:#28a745; color:white; padding:12px; border:none; border-radius:5px; cursor:pointer; font-size:16px;}
+  .container {width:90%;max-width:1200px;margin:20px auto;}
+  h2 {text-align:center;color:#0f2027;margin-bottom:20px;}
+  .card {background:white;padding:15px;margin:10px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);text-align:center;flex:1 1 200px;}
+  .flex-container {display:flex;flex-wrap:wrap;justify-content:space-around;}
+  .search-box {display:flex;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
+  .search-box input {padding:10px;width:60%;border-radius:5px;border:1px solid #2c3e50;font-size:16px;margin-bottom:10px;}
+  .search-box button {padding:10px 15px;background:#2c3e50;color:white;border:none;border-radius:5px;cursor:pointer;font-size:16px;margin-left:10px;}
+  .bio, .top-shares {background:white;padding:20px;border-radius:8px;margin-top:20px;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+  .bio p, .top-shares p, .top-shares ul li {font-size:16px;line-height:1.6;}
+  form {background:white;padding:20px;border-radius:8px;margin-top:20px;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+  form input, form textarea {width:100%;padding:10px;margin-top:5px;margin-bottom:10px;border:1px solid #ccc;border-radius:5px;}
+  form button {background:#28a745;color:white;padding:12px;border:none;border-radius:5px;cursor:pointer;font-size:16px;}
   form button:hover {background:#218838;}
-  
-  footer {background:#111; color:white; text-align:center; padding:15px 0; margin-top:30px;}
-  
-  /* Responsive */
-  @media(max-width:768px){ .search-box input{width:100%; margin-bottom:10px;} }
+  footer {background:#111;color:white;text-align:center;padding:15px 0;margin-top:30px;}
+  .lang-toggle {position:fixed;top:10px;right:10px;}
+  .lang-toggle button {padding:6px 12px;margin-left:5px;cursor:pointer;border:none;border-radius:5px;}
+  @media(max-width:768px){.search-box input{width:100%;margin-bottom:10px;}}
 </style>
 </head>
 <body>
+
+<div class="lang-toggle">
+  <button onclick="changeLanguage('en')">English</button>
+  <button onclick="changeLanguage('hi')">Hindi</button>
+</div>
 
 <header>
   <h1>📈 Piyush Capital Ventures</h1>
@@ -53,75 +49,106 @@
   <a href="#services">Services</a>
   <a href="#top-shares">Top Shares</a>
   <a href="#market">Live Market</a>
+  <a href="#trending">Trending</a>
+  <a href="#funds">Mutual Funds</a>
+  <a href="#commodities">Commodities</a>
+  <a href="#ipo">IPO</a>
+  <a href="#news">News</a>
   <a href="#contact">Contact</a>
 </nav>
 
 <div class="container">
 
-  <!-- About -->
-  <section id="about">
-    <h2>About Piyush Capital Ventures</h2>
-    <div class="bio">
-      <p>
-        Welcome to <b>Piyush Capital Ventures</b>, your world-class partner in smart investing.  
-        I am Piyush Dubey, a passionate investor with expertise in stock selection and market trends.  
-        My aim is to provide top stock recommendations backed by research, trends, and market data.  
-        <br><b>Disclaimer:</b> I am not SEBI registered but provide detailed insights and guidance.
-      </p>
-    </div>
-  </section>
+<!-- About -->
+<section id="about">
+  <h2>About Piyush Capital Ventures</h2>
+  <div class="bio" id="bio">
+    <p>
+      Welcome to <b>Piyush Capital Ventures</b>, your world-class partner in smart investing.  
+      I am Piyush Dubey, a passionate investor providing top stock recommendations.  
+      <br><b>Disclaimer:</b> I am not SEBI registered but provide detailed insights and guidance.
+    </p>
+  </div>
+</section>
 
-  <!-- Services -->
-  <section id="services">
-    <h2>Our Services</h2>
-    <div class="flex-container">
-      <div class="card">📊 Stock Market Investment Guidance</div>
-      <div class="card">💹 Mutual Fund Advisory</div>
-      <div class="card">💰 Wealth & Portfolio Management</div>
-      <div class="card">📘 Financial Literacy & Training</div>
-      <div class="card">📈 Market Research & Growth Strategies</div>
-    </div>
-  </section>
+<!-- Services -->
+<section id="services">
+  <h2>Our Services</h2>
+  <div class="flex-container" id="services-list">
+    <div class="card">📊 Stock Market Investment Guidance</div>
+    <div class="card">💹 Mutual Fund Advisory</div>
+    <div class="card">💰 Wealth & Portfolio Management</div>
+    <div class="card">📘 Financial Literacy & Training</div>
+    <div class="card">📈 Market Research & Growth Strategies</div>
+  </div>
+</section>
 
-  <!-- Top Shares -->
-  <section id="top-shares">
-    <h2>Top Share Recommendations</h2>
-    <div class="top-shares">
-      <ul>
-        <li>Tata Steel</li>
-        <li>Reliance Industries</li>
-        <li>Infosys</li>
-        <li>HDFC Bank</li>
-        <li>Adani Enterprises</li>
-      </ul>
-      <p>These are selected based on fundamentals, growth potential, and market trends.</p>
-    </div>
-  </section>
+<!-- Top Shares -->
+<section id="top-shares">
+  <h2>Top Share Recommendations</h2>
+  <div class="top-shares">
+    <ul id="top-shares-list">
+      <li>Tata Steel</li>
+      <li>Reliance Industries</li>
+      <li>Infosys</li>
+      <li>HDFC Bank</li>
+      <li>Adani Enterprises</li>
+    </ul>
+    <p>Selected based on fundamentals, growth potential, and market trends.</p>
+  </div>
+</section>
 
-  <!-- Live Market -->
-  <section id="market">
-    <h2>Live Market</h2>
+<!-- Live Market -->
+<section id="market">
+  <h2>Live Market</h2>
+  <div class="search-box">
+    <input type="text" id="stock-symbol" placeholder="Enter stock name e.g. Tata Steel">
+    <button onclick="searchStock()">Search</button>
+  </div>
+  <div class="flex-container" id="stock-data"></div>
+  <div class="flex-container" id="indices-data"></div>
+</section>
 
-    <div class="search-box">
-      <input type="text" id="stock-symbol" placeholder="Enter stock name e.g. Tata Steel">
-      <button onclick="searchStock()">Search</button>
-    </div>
+<!-- Trending Stocks -->
+<section id="trending">
+  <h2>Trending Stocks</h2>
+  <div class="flex-container" id="trending-data"></div>
+</section>
 
-    <div class="flex-container" id="stock-data"></div>
-    <div class="flex-container" id="indices-data"></div>
-    <div class="flex-container" id="trending-data"></div>
-  </section>
+<!-- Mutual Funds -->
+<section id="funds">
+  <h2>Trending Mutual Funds</h2>
+  <div class="flex-container" id="funds-data"></div>
+</section>
 
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <form action="https://formspree.io/f/yourFormID" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="4" placeholder="Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+<!-- Commodities -->
+<section id="commodities">
+  <h2>Commodities</h2>
+  <div class="flex-container" id="commodities-data"></div>
+</section>
+
+<!-- IPO -->
+<section id="ipo">
+  <h2>IPO Updates</h2>
+  <div class="flex-container" id="ipo-data"></div>
+</section>
+
+<!-- Market News -->
+<section id="news">
+  <h2>Market News</h2>
+  <div class="flex-container" id="news-data"></div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form action="https://formspree.io/f/xvgqjbby" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="4" placeholder="Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
 
 </div>
 
@@ -135,10 +162,7 @@ const apiKey = "YOUR_TOKEN"; // Replace with your IndianAPI.in key
 function searchStock(){
   const name = document.getElementById("stock-symbol").value.trim();
   if(!name){ alert("Enter stock name"); return; }
-
-  fetch(`https://stock.indianapi.in/stock?name=${encodeURIComponent(name)}`, {
-    headers:{ "X-Api-Key": apiKey }
-  })
+  fetch(`https://stock.indianapi.in/stock?name=${encodeURIComponent(name)}`, { headers:{ "X-Api-Key": apiKey } })
   .then(res=>res.json())
   .then(data=>{
     const container = document.getElementById("stock-data");
@@ -154,8 +178,7 @@ function searchStock(){
         <p>Previous Close: ₹${stock.prev_close}</p>
       </div>`;
     } else { container.innerHTML="<p>No stock data found</p>"; }
-  })
-  .catch(err=>console.error(err));
+  }).catch(err=>console.error(err));
 }
 
 // Trending Stocks
@@ -165,28 +188,116 @@ fetch("https://stock.indianapi.in/trending",{ headers:{ "X-Api-Key": apiKey }})
   const container = document.getElementById("trending-data");
   if(data.data){
     container.innerHTML = data.data.map(stock=>`
-      <div class="card">
-        <h4>${stock.name}</h4>
-        <p>Price: ₹${stock.price}</p>
-      </div>
+      <div class="card"><h4>${stock.name}</h4><p>Price: ₹${stock.price}</p></div>
     `).join("");
   }
 });
 
-// Major Indices
+// Mutual Funds
+fetch("https://stock.indianapi.in/mutual_funds",{ headers:{ "X-Api-Key": apiKey }})
+.then(res=>res.json())
+.then(data=>{
+  const container = document.getElementById("funds-data");
+  if(data.data){
+    container.innerHTML = data.data.slice(0,5).map(fund=>`
+      <div class="card"><h4>${fund.name}</h4><p>Price: ₹${fund.price}</p></div>
+    `).join("");
+  }
+});
+
+// Commodities
+fetch("https://stock.indianapi.in/commodities",{ headers:{ "X-Api-Key": apiKey }})
+.then(res=>res.json())
+.then(data=>{
+  const container = document.getElementById("commodities-data");
+  if(data.data){
+    container.innerHTML = data.data.slice(0,5).map(comm=>`
+      <div class="card"><h4>${comm.name}</h4><p>Price: ₹${comm.price}</p></div>
+    `).join("");
+  }
+});
+
+// IPO
+fetch("https://stock.indianapi.in/ipo",{ headers:{ "X-Api-Key": apiKey }})
+.then(res=>res.json())
+.then(data=>{
+  const container = document.getElementById("ipo-data");
+  if(data.data){
+    container.innerHTML = data.data.slice(0,5).map(ipo=>`
+      <div class="card"><h4>${ipo.name}</h4><p>Issue Price: ₹${ipo.issue_price}</p><p>Open Date: ${ipo.open_date}</p></div>
+    `).join("");
+  }
+});
+
+// Market News
+fetch("https://stock.indianapi.in/news",{ headers:{ "X-Api-Key": apiKey }})
+.then(res=>res.json())
+.then(data=>{
+  const container = document.getElementById("news-data");
+  if(data.data){
+    container.innerHTML = data.data.slice(0,5).map(news=>`
+      <div class="card"><h4>${news.title}</h4><p>${news.description}</p></div>
+    `).join("");
+  }
+});
+
+// NSE Most Active
 fetch("https://stock.indianapi.in/NSE_most_active",{ headers:{ "X-Api-Key": apiKey }})
 .then(res=>res.json())
 .then(data=>{
   const container = document.getElementById("indices-data");
   if(data.data){
-    container.innerHTML = data.data.slice(0,3).map(index=>`
-      <div class="card">
-        <h3>${index.symbol}</h3>
-        <p>Price: ₹${index.price}</p>
-      </div>
+    container.innerHTML = data.data.slice(0,5).map(index=>`
+      <div class="card"><h3>${index.symbol}</h3><p>Price: ₹${index.price}</p></div>
     `).join("");
   }
 });
+
+// Language Toggle
+function changeLanguage(lang){
+  const bio = document.getElementById("bio");
+  const servicesList = document.getElementById("services-list");
+  const topSharesList = document.getElementById("top-shares-list");
+  if(lang==='hi'){
+    bio.innerHTML = `<p><b>Piyush Capital Ventures</b> में आपका स्वागत है।  
+      मैं Piyush Dubey, एक passionate निवेशक हूँ।  
+      <br><b>Disclaimer:</b> मैं SEBI registered नहीं हूँ लेकिन पूरी जानकारी देता हूँ।</p>`;
+    servicesList.innerHTML = `
+      <div class="card">📊 स्टॉक मार्केट निवेश मार्गदर्शन</div>
+      <div class="card">💹 म्यूचुअल फंड सलाह</div>
+      <div class="card">💰 संपत्ति और पोर्टफोलियो प्रबंधन</div>
+      <div class="card">📘 वित्तीय साक्षरता और प्रशिक्षण</div>
+      <div class="card">📈 बाजार अनुसंधान और वृद्धि रणनीतियाँ</div>
+    `;
+    topSharesList.innerHTML = `
+      <li>Tata Steel</li>
+      <li>Reliance Industries</li>
+      <li>Infosys</li>
+      <li>HDFC Bank</li>
+      <li>Adani Enterprises</li>
+    `;
+  } else {
+    bio.innerHTML = `<p>
+      Welcome to <b>Piyush Capital Ventures</b>, your world-class partner in smart investing.  
+      I am Piyush Dubey, a passionate investor providing top stock recommendations.  
+      <br><b>Disclaimer:</b> I am not SEBI registered but provide detailed insights and guidance.
+    </p>`;
+    servicesList.innerHTML = `
+      <div class="card">📊 Stock Market Investment Guidance</div>
+      <div class="card">💹 Mutual Fund Advisory</div>
+      <div class="card">💰 Wealth & Portfolio Management</div>
+      <div class="card">📘 Financial Literacy & Training</div>
+      <div class="card">📈 Market Research & Growth Strategies</div>
+    `;
+    topSharesList.innerHTML = `
+      <li>Tata Steel</li>
+      <li>Reliance Industries</li>
+      <li>Infosys</li>
+      <li>HDFC Bank</li>
+      <li>Adani Enterprises</li>
+    `;
+  }
+}
 </script>
 
 </body>
