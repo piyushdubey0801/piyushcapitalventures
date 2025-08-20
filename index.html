@@ -4,13 +4,119 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Piyush Capital Ventures</title>
-  <!-- External CSS file link -->
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background: #f4f4f9;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      padding: 30px 0;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    nav {
+      background: #222;
+      padding: 12px;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #ffd700;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    section h2 {
+      text-align: center;
+      color: #0f2027;
+      margin-bottom: 20px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      background: #fff;
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      font-size: 18px;
+    }
+    .contact-info, .contact-form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+    .btn {
+      display: inline-block;
+      background: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background: #0056b3;
+    }
+    /* Contact Form */
+    form label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    form button {
+      margin-top: 15px;
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    form button:hover {
+      background: #218838;
+    }
+    footer {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>📈 Piyush Capital Ventures</h1>
-    <p>Smart Investing, Bright Future</p>
+    <p>🐂 Bullish Moves | 🐻 Bear Market Strategies | ⬆️ Smart Investments</p>
   </header>
 
   <nav>
@@ -22,8 +128,9 @@
   <section id="about">
     <h2>About Us</h2>
     <p>
-      Welcome to <b>Piyush Capital Ventures</b>, your trusted partner in smart investing and wealth creation.  
-      We believe in long-term growth and value-based investment strategies to help you achieve financial independence.  
+      Welcome to <b>Piyush Capital Ventures</b>, your trusted partner in the world of investments.  
+      We specialize in <b>long-term wealth creation</b>, <b>value investing</b>, and <b>portfolio growth</b>.  
+      Our vision is to empower individuals with financial literacy and make investing accessible for everyone.  
     </p>
   </section>
 
@@ -33,7 +140,8 @@
       <li>📊 Stock Market Investment Guidance</li>
       <li>💹 Mutual Fund Advisory</li>
       <li>💰 Wealth & Portfolio Management</li>
-      <li>📘 Financial Literacy & Training</li>
+      <li>📘 Financial Literacy & Training Programs</li>
+      <li>📈 Market Research & Growth Strategies</li>
     </ul>
   </section>
 
@@ -43,7 +151,23 @@
       <p><b>📞 Mobile:</b> <a href="tel:+918718930974">+91 8718930974</a></p>
       <p><b>✉️ Email:</b> <a href="mailto:Piyushdubey8109@gmail.com">Piyushdubey8109@gmail.com</a></p>
       <p><b>📍 Address:</b> Raipur, Chhattisgarh, India</p>
-      <a href="mailto:Piyushdubey8109@gmail.com" class="btn">Send Email</a>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+      <h3>Send us a Message</h3>
+      <form action="https://formspree.io/f/yourFormID" method="POST">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Email</button>
+      </form>
     </div>
   </section>
 
