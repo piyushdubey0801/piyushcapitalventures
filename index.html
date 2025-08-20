@@ -17,9 +17,6 @@
   .card {background:white;padding:15px;margin:10px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);text-align:center;flex:1 1 200px;transition:0.3s;}
   .card:hover{transform:scale(1.03);box-shadow:0 4px 10px rgba(0,0,0,0.2);}
   .flex-container {display:flex;flex-wrap:wrap;justify-content:space-around;}
-  .search-box {display:flex;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
-  .search-box input {padding:10px;width:60%;border-radius:5px;border:1px solid #2c3e50;font-size:16px;margin-bottom:10px;}
-  .search-box button {padding:10px 15px;background:#2c3e50;color:white;border:none;border-radius:5px;cursor:pointer;font-size:16px;margin-left:10px;}
   .bio,.top-shares,.scanner {background:white;padding:20px;border-radius:8px;margin-top:20px;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
   .bio p {font-size:16px;line-height:1.6;}
   form {background:white;padding:20px;border-radius:8px;margin-top:20px;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
@@ -31,10 +28,33 @@
   .scanner a{display:inline-block;margin-top:10px;padding:10px 15px;background:#ff5722;color:white;border-radius:5px;text-decoration:none;font-weight:bold;}
   .scanner a:hover{background:#e64a19;}
   .scanner p{margin:10px 0;}
-  @media(max-width:768px){.search-box input{width:100%;margin-bottom:10px;}}
 </style>
 </head>
 <body>
+
+<script>
+  // Password Protection
+  function checkPassword(){
+    let pwd = prompt("Enter Password to Access Piyush Capital Ventures:");
+    if(pwd !== "Piyush@08"){
+      alert("Incorrect Password! Access Denied.");
+      document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;color:red;'>Access Denied</h2>";
+    }
+  }
+  checkPassword();
+
+  // Disable right click
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
+  // Disable view source & dev tools
+  document.onkeydown = function(e) {
+    // Disable F12, Ctrl+Shift+I, Ctrl+U, Ctrl+Shift+J
+    if(e.keyCode==123 || (e.ctrlKey && e.shiftKey && (e.keyCode==73 || e.keyCode==74)) || (e.ctrlKey && e.keyCode==85)) {
+      alert("This action is disabled!");
+      return false;
+    }
+  }
+</script>
 
 <button class="lang-btn" onclick="toggleLang()">🌐 Hindi/English</button>
 
@@ -89,13 +109,9 @@
     </div>
   </section>
 
-  <!-- Live Market -->
+  <!-- Live Market (Search removed) -->
   <section id="market">
     <h2>Live Market</h2>
-    <div class="search-box">
-      <input type="text" id="stock-symbol" placeholder="Enter stock name e.g. Tata Steel">
-      <button onclick="searchStock()">Search</button>
-    </div>
     <div class="flex-container" id="stock-data"></div>
     <div class="flex-container" id="indices-data"></div>
     <div class="flex-container" id="trending-data"></div>
@@ -130,7 +146,6 @@
 
 <script>
 let lang = "en"; // default English
-
 function toggleLang(){
   if(lang==="en"){
     lang="hi";
@@ -140,65 +155,7 @@ function toggleLang(){
     document.getElementById("bio").innerHTML=`<p>Welcome to <b>Piyush Capital Ventures</b>, your world-class partner in smart investing. I am Piyush Dubey, a passionate investor providing top stock recommendations backed by research and trends. <br><b>Disclaimer:</b> I am not SEBI registered but provide detailed insights and guidance.</p>`;
   }
 }
-
-const apiKey = "YOUR_API_KEY"; // Replace with your IndianAPI key
-
-// Search Stock
-function searchStock(){
-  const name = document.getElementById("stock-symbol").value.trim();
-  if(!name){ alert("Enter stock name"); return; }
-  fetch(`https://stock.indianapi.in/stock?name=${encodeURIComponent(name)}`, { headers:{ "X-Api-Key": apiKey } })
-  .then(res=>res.json())
-  .then(data=>{
-    const container = document.getElementById("stock-data");
-    container.innerHTML="";
-    if(data.data && data.data.length>0){
-      const stock = data.data[0];
-      container.innerHTML=`<div class="card">
-        <h3>${stock.name} (${stock.symbol})</h3>
-        <p>Price: ₹${stock.price}</p>
-        <p>Open: ₹${stock.open_price}</p>
-        <p>High: ₹${stock.day_high}</p>
-        <p>Low: ₹${stock.day_low}</p>
-        <p>Previous Close: ₹${stock.prev_close}</p>
-      </div>`;
-    } else { container.innerHTML="<p>No stock data found</p>"; }
-  }).catch(err=>console.error(err));
-}
-
-// Auto-refresh example
-function refreshStockData(){ searchStock(); }
-setInterval(refreshStockData, 10000);
-
-// Trending Stocks
-fetch("https://stock.indianapi.in/trending",{ headers:{ "X-Api-Key": apiKey }})
-.then(res=>res.json())
-.then(data=>{
-  const container = document.getElementById("trending-data");
-  if(data.data){
-    container.innerHTML = data.data.map(stock=>`
-      <div class="card">
-        <h4>${stock.name}</h4>
-        <p>Price: ₹${stock.price}</p>
-      </div>
-    `).join("");
-  }
-});
-
-// Major Indices
-fetch("https://stock.indianapi.in/NSE_most_active",{ headers:{ "X-Api-Key": apiKey }})
-.then(res=>res.json())
-.then(data=>{
-  const container = document.getElementById("indices-data");
-  if(data.data){
-    container.innerHTML = data.data.slice(0,3).map(index=>`
-      <div class="card">
-        <h3>${index.symbol}</h3>
-        <p>Price: ₹${index.price}</p>
-      </div>
-    `).join("");
-  }
-});
 </script>
+
 </body>
 </html>
