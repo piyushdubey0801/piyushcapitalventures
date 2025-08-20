@@ -1,178 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Piyush Capital Ventures</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Piyush Capital Ventures — Live Market</title>
+
+  <!-- Chart.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background: #f4f4f9;
-      color: #333;
+    :root{
+      --primary:#0b63d1; --accent:#00c853; --danger:#e53935; --bg:#f4f7fb; --card:#ffffff;
+      --muted:#666;
     }
-    header {
-      background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      padding: 30px 0;
-      text-align: center;
+    *{box-sizing:border-box}
+    body{font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);margin:0;color:#0b2545}
+    header{background:linear-gradient(90deg,#0b63d1,#00a4ff);color:#fff;padding:20px 16px;text-align:center}
+    header h1{margin:0;font-size:1.4rem}
+    .sub{opacity:.9;margin-top:6px;font-size:.95rem}
+    .wrap{max-width:1100px;margin:18px auto;padding:0 16px}
+    .top{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    /* Search box */
+    .search {
+      display:flex;align-items:center;gap:8px;background:var(--card);padding:10px;border-radius:10px;
+      box-shadow:0 6px 18px rgba(11,38,69,0.06);min-width:280px;flex:1;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    nav {
-      background: #222;
-      padding: 12px;
-      text-align: center;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #ffd700;
-    }
-    section {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    section h2 {
-      text-align: center;
-      color: #0f2027;
-      margin-bottom: 20px;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    ul li {
-      background: #fff;
-      margin: 10px 0;
-      padding: 12px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      font-size: 18px;
-    }
-    .contact-info, .contact-form {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      margin-top: 20px;
-    }
-    .btn {
-      display: inline-block;
-      background: #007bff;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      margin-top: 10px;
-    }
-    .btn:hover {
-      background: #0056b3;
-    }
-    /* Contact Form */
-    form label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    form button {
-      margin-top: 15px;
-      background: #28a745;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    form button:hover {
-      background: #218838;
-    }
-    footer {
-      background: #111;
-      color: #fff;
-      text-align: center;
-      padding: 15px 0;
-      margin-top: 30px;
-    }
+    .search input{border:none;outline:none;font-size:1rem;flex:1;padding:6px}
+    .search button{background:var(--primary);color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
+    .controls{display:flex;gap:8px;align-items:center}
+    .small{font-size:.92rem;color:var(--muted)}
+    /* ticker */
+    .ticker{margin-top:14px;background:#0b2545;color:#fff;padding:8px;border-radius:10px;overflow:hidden;white-space:nowrap}
+    .ticker .inner{display:inline-block;animation:scroll 28s linear infinite}
+    @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;margin-right:10px;border-radius:999px;background:rgba(255,255,255,0.06);font-weight:600}
+    .chip .sym{font-weight:700}
+
+    /* main grid */
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:18px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr;}}
+    /* left column: list / cards */
+    .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+    .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 20px rgba(11,38,69,0.06)}
+    .stock-title{display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .stock-name{font-weight:700}
+    .stock-price{font-size:1.15rem;margin-top:6px}
+    .stock-change.up{color:var(--accent);font-weight:700}
+    .stock-change.down{color:var(--danger);font-weight:700}
+
+    /* right column: detail */
+    .detail{position:sticky;top:16px}
+    .detail .card{padding:18px}
+    .meta{display:flex;justify-content:space-between;gap:10px;margin-bottom:6px}
+    .watch{background:var(--primary);color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
+    .watch.remove{background:#ddd;color:#333}
+    /* footer/contact */
+    footer{margin-top:22px;padding:18px;text-align:center;color:var(--muted);font-size:.95rem}
+    .contact{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+    .btn-link{background:transparent;border:1px solid #e6eefc;padding:8px 12px;border-radius:8px;color:#fff;text-decoration:none}
+    /* loader / errors */
+    .muted{color:var(--muted)}
+    .error{color:var(--danger);font-weight:700}
   </style>
 </head>
 <body>
+
   <header>
     <h1>📈 Piyush Capital Ventures</h1>
-    <p>🐂 Bullish Moves | 🐻 Bear Market Strategies | ⬆️ Smart Investments</p>
+    <div class="sub">Live Market Ticker • Search symbols • Real-time quote & chart</div>
   </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <div class="wrap">
+    <div class="top">
+      <div style="display:flex;gap:12px;align-items:center;flex:1;min-width:300px">
+        <div class="search" role="search">
+          <input id="searchInput" placeholder="Search company or symbol (e.g. RELIANCE, TCS, INFY)..." aria-label="Search symbol">
+          <button id="searchBtn">Search</button>
+        </div>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>
-      Welcome to <b>Piyush Capital Ventures</b>, your trusted partner in the world of investments.  
-      We specialize in <b>long-term wealth creation</b>, <b>value investing</b>, and <b>portfolio growth</b>.  
-      Our vision is to empower individuals with financial literacy and make investing accessible for everyone.  
-    </p>
-  </section>
+        <div class="small muted">Auto-updates every 15s • Set API in script</div>
+      </div>
 
-  <section id="services">
-    <h2>Our Services</h2>
-    <ul>
-      <li>📊 Stock Market Investment Guidance</li>
-      <li>💹 Mutual Fund Advisory</li>
-      <li>💰 Wealth & Portfolio Management</li>
-      <li>📘 Financial Literacy & Training Programs</li>
-      <li>📈 Market Research & Growth Strategies</li>
-    </ul>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <div class="contact-info">
-      <p><b>📞 Mobile:</b> <a href="tel:+918718930974">+91 8718930974</a></p>
-      <p><b>✉️ Email:</b> <a href="mailto:Piyushdubey8109@gmail.com">Piyushdubey8109@gmail.com</a></p>
-      <p><b>📍 Address:</b> Raipur, Chhattisgarh, India</p>
+      <div class="controls">
+        <select id="providerSelect" title="API Provider" class="small">
+          <option value="alphavantage">Alpha Vantage (free)</option>
+          <option value="finnhub">Finnhub (free)</option>
+        </select>
+        <input id="apiKey" placeholder="Paste API key here" style="padding:8px;border-radius:8px;border:1px solid #d6e6ff" />
+        <button id="saveKey" style="padding:8px 10px;border-radius:8px;background:#0b63d1;color:#fff;border:none">Save</button>
+      </div>
     </div>
 
-    <!-- Contact Form -->
-    <div class="contact-form">
-      <h3>Send us a Message</h3>
-      <form action="https://formspree.io/f/yourFormID" method="POST">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="email">Your Email</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-
-        <button type="submit">Send Email</button>
-      </form>
+    <!-- Live ticker -->
+    <div class="ticker" aria-hidden="true">
+      <div class="inner" id="tickerInner">Loading market ticker…</div>
     </div>
-  </section>
 
-  <footer>
-    <p>&copy; 2025 Piyush Capital Ventures | All Rights Reserved</p>
-  </footer>
+    <!-- main area -->
+    <div class="grid">
+      <div>
+        <!-- cards / watchlist -->
+        <div style="display:flex;gap:10px;align-items:center;margin-top:14px">
+          <strong>Watchlist</strong>
+          <button id="addSymbol" style="margin-left:auto;padding:6px 10px;border-radius:8px;border:none;background:#00b894;color:#fff;cursor:pointer">Add Current</button>
+        </div>
+
+        <div id="cards" class="cards" style="margin-top:12px"></div>
+      </div>
+
+      <aside class="detail">
+        <div class="card">
+          <div class="meta">
+            <div>
+              <div id="detailName" style="font-weight:800">Select a stock</div>
+              <div id="detailSymbol" class="muted" style="font-size:.95rem;margin-top:4px"></div>
+            </div>
+            <div style="text-align:right">
+              <div id="detailPrice" style="font-size:20px;font-weight:800">—</div>
+              <div id="detailChange" class="muted" style="margin-top:6px"></div>
+            </div>
+          </div>
+
+          <canvas id="chart" height="200"></canvas>
+
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <button id="watchBtn" class="watch">Add to Watchlist</button>
+            <a id="buyLink" class="watch" style="text-decoration:none;background:#ff9800">Buy (demo)</a>
+          </div>
+
+          <hr style="margin:12px 0;border:none;border-top:1px dashed #eee">
+          <div id="detailMore" class="muted" style="font-size:.92rem">Info will appear here — intraday chart, last trade, volume.</div>
+        </div>
+
+        <div style="margin-top:12px" class="card">
+          <div style="font-weight:700">Contact</div>
+          <div class="muted" style="margin-top:6px">Call / WhatsApp: <a href="tel:+91818930974">+91 818930974</a></div>
+          <div class="muted" style="margin-top:4px">Email: <a href="mailto:Piyushdubey8109@gmail.com">Piyushdubey8109@gmail.com</a></div>
+          <div class="muted" style="margin-top:8px">Tip: put API key above for live quotes.</div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <div class="muted">Built for Piyush Capital Ventures • Demo & production instructions inside code</div>
+      <div class="contact" style="margin-top:8px">
+        <a class="btn-link" href="https://github.com/piyushdubey0801" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn-link" href="mailto:Piyushdubey8109@gmail.com">Email</a>
+      </div>
+    </footer>
+  </div>
+
+<script>
+/*
+  LIVE MARKET IN THIS SINGLE FILE
+  --------------------------------
+  Instructions:
+  1) Get a free API key:
+     - Alpha Vantage: https://www.alphavantage.co/  (free, but low rate-limit)
+     - Finnhub: https://finnhub.io/  (free with registration)
+  2) Paste your API key in the input top-right and click Save.
+  3) Choose provider (Alpha Vantage or Finnhub).
+  4) Search for symbol (e.g. RELIANCE.NSE or RELIANCE depending on provider).
+  5) For production: use a serverless proxy to hide API key and to avoid CORS/rate limits.
+*/
+
+/* ---------- Config & state ---------- */
+let API_PROVIDER = localStorage.getItem('pcv_provider') || 'alphavantage';
+let API_KEY = localStorage.getItem('pcv_key') || '';
+document.getElementById('providerSelect').value = API_PROVIDER;
+document.getElementById('apiKey').value = API_KEY;
+
+const defaultSymbols = ['RELIANCE.NSE','TCS.NSE','INFY.NSE','HDFCBANK.NSE','ITC.NSE','HINDUNILVR.NSE'];
+let watchlist = JSON.parse(localStorage.getItem('pcv_watchlist') || '[]');
+if (!watchlist.length) watchlist = ['RELIANCE.NSE','TCS.NSE'];
+
+const cardsEl = document.getElementById('cards');
+const tickerInner = document.getElementById('tickerInner');
+
+let currentDetail = null;
+let chart = null;
+
+/* ---------- Helpers ---------- */
+function saveKeyProvider() {
+  API_PROVIDER = document.getElementById('providerSelect').value;
+  API_KEY = document.getElementById('apiKey').value.trim();
+  localStorage.setItem('pcv_provider', API_PROVIDER);
+  localStorage.setItem('pcv_key', API_KEY);
+  alert('Saved provider and key locally. For production, use serverless proxy to keep key private.');
+}
+
+document.getElementById('saveKey').addEventListener('click', saveKeyProvider);
+document.getElementById('providerSelect').addEventListener('change', () => {
+  API_PROVIDER = document.getElementById('providerSelect').value;
+  localStorage.setItem('pcv_provider', API_PROVIDER);
+});
+
+/* simple formatting */
+function fmt(num){ return (typeof num === 'number') ? num.toLocaleString('en-IN') : num; }
+function pct(oldVal, newVal){
+  if (oldVal==0) return '0%';
+  const diff = ((newVal-oldVal)/oldVal)*100;
+  return (diff>=0?'+':'')+diff.toFixed(2)+'%';
+}
+
+/* ---------- UI render functions ---------- */
+function renderCards(list){
+  cardsEl.innerHTML = '';
+  list.forEach(sym => {
+    const div = document.createElement('div'); div.className='card';
+    div.innerHTML = `<div class="stock-title"><div class="stock-name">${sym}</div><div class="muted">real-time</div></div>
+      <div class="stock-price muted">Loading...</div>
+      <div class="stock-change muted"></div>`;
+    div.addEventListener('click', ()=>selectSymbol(sym));
+    cardsEl.appendChild(div);
+  });
+}
+
+/* update a specific card with data */
+function updateCardForSymbol(sym, data){
+  // find card element
+  const cardNodes = Array.from(cardsEl.children);
+  const node = cardNodes.find(n=>n.querySelector('.stock-name').textContent === sym);
+  if(!node) return;
+  const priceEl = node.querySelector('.stock-price');
+  const changeEl = node.querySelector('.stock-change');
+  if(!data || !data.price){ priceEl.textContent='—'; changeEl.textContent=''; return; }
+  priceEl.textContent = '₹' + fmt(data.price);
+  changeEl.textContent = `${data.change>=0? '▲':'▼'} ${data.change} (${data.changePct})`;
+  changeEl.className = 'stock-change ' + (data.change>=0? 'up':'down');
+}
+
+/* render ticker string */
+function renderTicker(listData){
+  // duplicate to make scroll continuous
+  const parts = listData.map(d=>`${d.symbol} ₹${d.price} ${d.change>=0? '▲':'▼'}${d.change}`).join('    •    ');
+  tickerInner.innerText = parts + '     ' + parts;
+}
+
+/* set detail pane */
+function setDetail(sym,data,series){
+  currentDetail=sym;
+  document.getElementById('detailName').textContent = (data.longName || sym);
+  document.getElementById('detailSymbol').textContent = sym;
+  document.getElementById('detailPrice').textContent = data.price ? '₹' + fmt(data.price) : '—';
+  const chEl = document.getElementById('detailChange');
+  if(data.change!=null) chEl.innerHTML = `<span class="${data.change>=0?'up':'down'}">${data.change>=0? '▲':'▼'} ${data.change} (${data.changePct})</span>`;
+  document.getElementById('detailMore').textContent = data.desc || '';
+
+  // chart
+  const ctx = document.getElementById('chart').getContext('2d');
+  const labels = series.map(s=>s.t);
+  const values = series.map(s=>s.v);
+  if(chart) chart.destroy();
+  chart = new Chart(ctx, {
+    type:'line',
+    data:{labels, datasets:[{label:'Price (₹)', data:values, fill:false, borderColor:'#0b63d1', tension:0.2}]},
+    options:{scales:{x:{display:true}, y:{display:true}}, plugins:{legend:{display:false}}}
+  });
+
+  // update watch button state
+  const watchBtn = document.getElementById('watchBtn');
+  if(watchlist.includes(sym)) { watchBtn.textContent='Remove from Watchlist'; watchBtn.classList.add('remove'); }
+  else { watchBtn.textContent='Add to Watchlist'; watchBtn.classList.remove('remove'); }
+}
+
+/* ---------- Data fetching: wrappers for providers ---------- */
+
+/* Fetch symbol search (company -> symbol)
+   For Alpha Vantage use SYMBOL_SEARCH
+   For Finnhub use /search
+*/
+async function symbolSearch(query){
+  if(!API_KEY) return fakeSearch(query);
+  if(API_PROVIDER === 'alphavantage'){
+    const url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${encodeURIComponent(query)}&apikey=${API_KEY}`;
+    const res = await fetch(url);
+    const j = await res.json();
+    // j.bestMatches is array
+    if(!j.bestMatches) return [];
+    return j.bestMatches.map(m => {
+      return {symbol: m['1. symbol'], name: m['2. name']};
+    });
+  } else { // finnhub
+    const url = `https://finnhub.io/api/v1/search?q=${encodeURIComponent(query)}&token=${API_KEY}`;
+    const res = await fetch(url);
+    const j = await res.json();
+    return (j.result||[]).map(r=>({symbol: r.symbol, name: r.description}));
+  }
+}
+
+/* Fetch quote / intraday series: Return {price, change, changePct, longName, desc, series:[{t,v},..]} */
+async function fetchQuoteAndSeries(symbol){
+  if(!API_KEY) return fakeQuote(symbol);
+  try {
+    if(API_PROVIDER === 'alphavantage'){
+      // Intraday: TIME_SERIES_INTRADAY (1min)
+      // Note: Alpha Vantage symbols require proper exchange suffix (e.g., RELIANCE.NSE) for Indian symbols
+      const seriesUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${encodeURIComponent(symbol)}&interval=5min&outputsize=compact&apikey=${API_KEY}`;
+      const qUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${encodeURIComponent(symbol)}&apikey=${API_KEY}`;
+      const [sv, qv] = await Promise.all([fetch(seriesUrl).then(r=>r.json()), fetch(qUrl).then(r=>r.json())]);
+      // parse series
+      let series=[];
+      const key = Object.keys(sv).find(k=>k.includes('Time Series'));
+      if(key){
+        const obj = sv[key];
+        const items = Object.entries(obj).slice(0,60).reverse();
+        series = items.map(([t,vals]) => ({t: t.split(' ')[1] || t, v: Number(vals['4. close'])}));
+      }
+      const g = qv['Global Quote'] || {};
+      const price = g['05. price'] ? Number(g['05. price']) : (series.length?series[series.length-1].v:null);
+      const prev = g['08. previous close'] ? Number(g['08. previous close']) : null;
+      const change = price && prev ? Number((price - prev).toFixed(2)) : null;
+      const changePct = price && prev ? ((change/prev)*100).toFixed(2)+'%' : null;
+      // name lookup (best effort)
+      const name = symbol;
+      return {price, change, changePct, longName:name, desc: `Data source: Alpha Vantage. Note: subject to rate limits.`, series};
+    } else {
+      // Finnhub: quote + candles
+      const quoteUrl = `https://finnhub.io/api/v1/quote?symbol=${encodeURIComponent(symbol)}&token=${API_KEY}`;
+      const now = Math.floor(Date.now()/1000);
+      const from = now - (60*60*6); // last 6 hours
+      const candleUrl = `https://finnhub.io/api/v1/stock/candle?symbol=${encodeURIComponent(symbol)}&resolution=5&from=${from}&to=${now}&token=${API_KEY}`;
+      const [q,jc] = await Promise.all([fetch(quoteUrl).then(r=>r.json()), fetch(candleUrl).then(r=>r.json())]);
+      const price = q.c || null;
+      const prev = q.pc || null;
+      const change = price && prev ? Number((price - prev).toFixed(2)) : null;
+      const changePct = price && prev ? ((change/prev)*100).toFixed(2)+'%' : null;
+      let series = [];
+      if(jc.s === 'ok' && Array.isArray(jc.t)){
+        series = jc.t.map((t,i)=>({t: new Date(jc.t[i]*1000).toLocaleTimeString(), v: jc.c[i]}));
+      }
+      return {price, change, changePct, longName:symbol, desc:'Data source: Finnhub', series};
+    }
+  } catch(err){
+    console.error('fetch error',err);
+    return null;
+  }
+}
+
+/* Fallback demo data when no API key */
+function fakeSearch(q){
+  const low = ['RELIANCE.NSE','TCS.NSE','INFY.NSE','HDFCBANK.NSE','ITC.NSE'];
+  return low.filter(s=>s.toLowerCase().includes(q.toLowerCase())).map(s=>({symbol:s,name:s}));
+}
+function fakeQuote(symbol){
+  const base = Math.floor(Math.random()*2000)+200;
+  const change = Math.floor(Math.random()*40)-20;
+  const series = Array.from({length:30}).map((_,i)=>({t:`${8+i}:00`, v: base + Math.round(Math.sin(i/3)*10) + Math.round(Math.random()*6)}));
+  return {price: base, change, changePct:`${(change/base*100).toFixed(2)}%`, longName:symbol, desc:'Demo data (no API key)', series};
+}
+
+/* ---------- App logic ---------- */
+
+async function refreshWatchlist(){
+  // render watchlist cards
+  renderCards(watchlist);
+  // fetch quotes for each and update cards
+  const listData = [];
+  for(const sym of watchlist){
+    const data = await fetchQuoteAndSeries(sym);
+    const d = data || fakeQuote(sym);
+    updateCardForSymbol(sym,{price:d.price, change:d.change, changePct:d.changePct});
+    listData.push({symbol:sym, price:d.price, change:d.change});
+  }
+  renderTicker(listData);
+}
+
+/* periodic update */
+let refreshInterval = null;
+function startAutoRefresh(){
+  if(refreshInterval) clearInterval(refreshInterval);
+  refreshInterval = setInterval(refreshWatchlist, 15000);
+}
+startAutoRefresh();
+
+/* select symbol -> load detail */
+async function selectSymbol(symbol){
+  const d = await fetchQuoteAndSeries(symbol);
+  const data = d || fakeQuote(symbol);
+  setDetail(symbol, data, data.series || []);
+}
+
+/* add current from search to watchlist */
+document.getElementById('addSymbol').addEventListener('click',()=>{
+  const s = currentDetail || document.getElementById('searchInput').value.trim().toUpperCase();
+  if(!s) return alert('Select or search a symbol first');
+  if(!watchlist.includes(s)){ watchlist.unshift(s); localStorage.setItem('pcv_watchlist', JSON.stringify(watchlist)); refreshWatchlist(); }
+  else{ alert('Already in watchlist'); }
+});
+
+/* watch button toggles */
+document.getElementById('watchBtn').addEventListener('click', () => {
+  if(!currentDetail) return alert('Select a stock first');
+  const sym = currentDetail;
+  if(watchlist.includes(sym)){
+    watchlist = watchlist.filter(s=>s!==sym);
+  } else {
+    watchlist.unshift(sym);
+  }
+  localStorage.setItem('pcv_watchlist', JSON.stringify(watchlist));
+  refreshWatchlist();
+});
+
+/* search action */
+document.getElementById('searchBtn').addEventListener('click', async ()=>{
+  const q = document.getElementById('searchInput').value.trim();
+  if(!q) return;
+  const results = await symbolSearch(q);
+  if(!results || !results.length) return alert('No results (try full symbol or enable API key).');
+  // pick first result and load
+  const sym = results[0].symbol;
+  selectSymbol(sym);
+});
+
+/* allow Enter key */
+document.getElementById('searchInput').addEventListener('keydown', (e)=>{
+  if(e.key==='Enter'){ e.preventDefault(); document.getElementById('searchBtn').click(); }
+});
+
+/* initial load */
+(async function init(){
+  // render initial watchlist
+  renderCards(watchlist);
+  // initial refresh
+  await refreshWatchlist();
+  // if first symbol exists, show details
+  if(watchlist[0]) selectSymbol(watchlist[0]);
+})();
+
+/* expose a manual refresh function in console */
+window.pcv_refresh = refreshWatchlist;
+</script>
 </body>
 </html>
