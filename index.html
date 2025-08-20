@@ -7,107 +7,241 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f9;
       margin: 0;
       padding: 0;
+      line-height: 1.6;
+      background: #f4f4f9;
+      color: #333;
     }
     header {
-      background: #0a3d62;
+      background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
       color: #fff;
-      padding: 20px;
+      padding: 30px 0;
       text-align: center;
     }
     header h1 {
       margin: 0;
+      font-size: 2.5rem;
     }
-    .contact {
-      margin-top: 10px;
-      font-size: 14px;
-    }
-    .market {
-      padding: 20px;
+    nav {
+      background: #222;
+      padding: 12px;
       text-align: center;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #ffd700;
+    }
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+    }
+    section {
+      flex: 2;
+      padding: 40px 20px;
+    }
+    aside {
+      flex: 1;
       background: #fff;
       margin: 20px;
+      padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    .search {
-      margin: 20px;
+    section h2, aside h2 {
       text-align: center;
+      color: #0f2027;
+      margin-bottom: 20px;
     }
-    .search input {
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      background: #fff;
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      font-size: 18px;
+    }
+    .contact-info, .contact-form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+    .btn {
+      display: inline-block;
+      background: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background: #0056b3;
+    }
+    form label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    form input, form textarea {
+      width: 100%;
       padding: 10px;
-      width: 250px;
+      margin-top: 5px;
       border: 1px solid #ccc;
       border-radius: 5px;
     }
-    .search button {
-      padding: 10px 20px;
+    form button {
+      margin-top: 15px;
+      background: #28a745;
+      color: white;
       border: none;
-      background: #0a3d62;
+      padding: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    form button:hover {
+      background: #218838;
+    }
+    footer {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 30px;
+    }
+    .stock-box {
+      text-align: center;
+    }
+    .stock-box input {
+      padding: 10px;
+      width: 80%;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .stock-box button {
+      padding: 10px 15px;
+      border: none;
+      background: #0f2027;
       color: #fff;
       border-radius: 5px;
       cursor: pointer;
     }
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #0a3d62;
-      color: #fff;
-      margin-top: 20px;
+    .stock-box button:hover {
+      background: #2c5364;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>📈 Piyush Capital Ventures</h1>
-    <div class="contact">
-      Call: +91 8718930974 | Email: Piyushdubey8109@gmail.com
-    </div>
+    <p>🐂 Bullish Moves | 🐻 Bear Market Strategies | ⬆️ Smart Investments</p>
   </header>
 
-  <section class="market">
-    <h2>Live NSE/BSE Indices</h2>
-    <p id="marketData">Loading live data...</p>
-  </section>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-  <section class="search">
-    <h2>Search Stock</h2>
-    <input type="text" id="stockInput" placeholder="Enter stock symbol (e.g. TCS, RELIANCE)">
-    <button onclick="searchStock()">Search</button>
-    <p id="stockResult"></p>
-  </section>
+  <main>
+    <section id="about">
+      <h2>About Us</h2>
+      <p>
+        Welcome to <b>Piyush Capital Ventures</b>, your trusted partner in the world of investments.  
+        We specialize in <b>long-term wealth creation</b>, <b>value investing</b>, and <b>portfolio growth</b>.  
+        Our vision is to empower individuals with financial literacy and make investing accessible for everyone.  
+      </p>
+
+      <h2>Our Services</h2>
+      <ul>
+        <li>📊 Stock Market Investment Guidance</li>
+        <li>💹 Mutual Fund Advisory</li>
+        <li>💰 Wealth & Portfolio Management</li>
+        <li>📘 Financial Literacy & Training Programs</li>
+        <li>📈 Market Research & Growth Strategies</li>
+      </ul>
+
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+          <p><b>📞 Mobile:</b> <a href="tel:+918718930974">+91 8718930974</a></p>
+          <p><b>✉️ Email:</b> <a href="mailto:Piyushdubey8109@gmail.com">Piyushdubey8109@gmail.com</a></p>
+          <p><b>📍 Address:</b> Raipur, Chhattisgarh, India</p>
+        </div>
+
+        <div class="contact-form">
+          <h3>Send us a Message</h3>
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="_replyto" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Send Email</button>
+          </form>
+        </div>
+      </section>
+    </section>
+
+    <!-- ASIDE LIVE DATA -->
+    <aside>
+      <h2>📊 Live Market</h2>
+      <div id="marketData">Loading market data...</div>
+      <hr>
+      <div class="stock-box">
+        <h3>🔍 Search Stock</h3>
+        <input type="text" id="stockInput" placeholder="Enter stock symbol (e.g. TCS)">
+        <button onclick="searchStock()">Search</button>
+        <p id="stockResult"></p>
+      </div>
+    </aside>
+  </main>
 
   <footer>
-    <p>© 2025 Piyush Capital Ventures | Live data powered by IndianAPI.in</p>
+    <p>&copy; 2025 Piyush Capital Ventures | All Rights Reserved</p>
   </footer>
 
   <script>
-    // ✅ Live NSE Index fetch
+    // Fetch NSE Indices
     async function fetchMarketData() {
       try {
         let response = await fetch("https://indianapi.in/api/indices", {
-          headers: { "x-api-key": "demo" } // replace "demo" with your real API key
+          headers: { "x-api-key": "demo" } // replace with real key
         });
         let data = await response.json();
         let output = "";
         data.forEach(idx => {
-          output += `<b>${idx.indexName}</b>: ₹${idx.last} <br>`;
+          output += `<b>${idx.indexName}</b>: ₹${idx.last}<br>`;
         });
         document.getElementById("marketData").innerHTML = output;
-      } catch (error) {
-        document.getElementById("marketData").innerText = "Live data unavailable";
+      } catch {
+        document.getElementById("marketData").innerText = "Live data unavailable.";
       }
     }
 
-    // ✅ Stock search
+    // Stock Search
     async function searchStock() {
       let stock = document.getElementById("stockInput").value.trim();
-      if (!stock) {
-        alert("Please enter a stock symbol");
-        return;
-      }
+      if (!stock) return;
       try {
         let response = await fetch(`https://indianapi.in/api/stock/${stock}`, {
           headers: { "x-api-key": "demo" }
@@ -115,12 +249,11 @@
         let data = await response.json();
         document.getElementById("stockResult").innerHTML =
           `<b>${data.symbol}</b>: ₹${data.lastPrice} (Change: ${data.change})`;
-      } catch (error) {
-        document.getElementById("stockResult").innerText = "Stock not found or live data unavailable.";
+      } catch {
+        document.getElementById("stockResult").innerText = "No data found.";
       }
     }
 
-    // Auto-refresh live market every 30 sec
     fetchMarketData();
     setInterval(fetchMarketData, 30000);
   </script>
