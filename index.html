@@ -20,7 +20,7 @@
   .search-box {display:flex;justify-content:center;margin-bottom:20px;flex-wrap:wrap;}
   .search-box input {padding:10px;width:60%;border-radius:5px;border:1px solid #2c3e50;font-size:16px;margin-bottom:10px;}
   .search-box button {padding:10px 15px;background:#2c3e50;color:white;border:none;border-radius:5px;cursor:pointer;font-size:16px;margin-left:10px;}
-  .bio,.top-shares {background:white;padding:20px;border-radius:8px;margin-top:20px;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+  .bio,.top-shares,.scanner {background:white;padding:20px;border-radius:8px;margin-top:20px;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
   .bio p {font-size:16px;line-height:1.6;}
   form {background:white;padding:20px;border-radius:8px;margin-top:20px;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
   form input,form textarea {width:100%;padding:10px;margin-top:5px;margin-bottom:10px;border:1px solid #ccc;border-radius:5px;}
@@ -28,6 +28,8 @@
   form button:hover{background:#218838;}
   footer {background:#111;color:white;text-align:center;padding:15px 0;margin-top:30px;}
   .lang-btn {position:fixed;top:15px;right:15px;padding:8px 12px;background:#007bff;color:white;border:none;border-radius:5px;cursor:pointer;}
+  .scanner a{display:inline-block;margin-top:10px;padding:10px 15px;background:#ff5722;color:white;border-radius:5px;text-decoration:none;font-weight:bold;}
+  .scanner a:hover{background:#e64a19;}
   @media(max-width:768px){.search-box input{width:100%;margin-bottom:10px;}}
 </style>
 </head>
@@ -46,6 +48,7 @@
   <a href="#services">Services</a>
   <a href="#top-shares">Top Shares</a>
   <a href="#market">Live Market</a>
+  <a href="#scanner">Scanner</a>
   <a href="#contact">Contact</a>
 </nav>
 
@@ -97,6 +100,15 @@
     <div class="flex-container" id="trending-data"></div>
   </section>
 
+  <!-- Scanner / Offer -->
+  <section id="scanner">
+    <h2>📚 Learn Share Market for Only ₹99/-</h2>
+    <div class="scanner">
+      <p>Join our special course to learn Stock Market from Basic to Advanced in Hindi/English.</p>
+      <a href="YOUR_UPSTOX_LINK" target="_blank">Open Free DMAT Account</a>
+    </div>
+  </section>
+
   <!-- Contact -->
   <section id="contact">
     <h2>Contact Me</h2>
@@ -126,7 +138,7 @@ function toggleLang(){
   }
 }
 
-const apiKey = "YOUR_TOKEN"; // Replace with your IndianAPI key
+const apiKey = "YOUR_API_KEY"; // Replace with your IndianAPI key
 
 // Search Stock
 function searchStock(){
