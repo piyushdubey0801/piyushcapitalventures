@@ -1,261 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Piyush Capital Ventures</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background: #f4f4f9;
-      color: #333;
-    }
-    header {
-      background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      padding: 30px 0;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    nav {
-      background: #222;
-      padding: 12px;
-      text-align: center;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #ffd700;
-    }
-    main {
-      display: flex;
-      flex-wrap: wrap;
-      max-width: 1200px;
-      margin: auto;
-    }
-    section {
-      flex: 2;
-      padding: 40px 20px;
-    }
-    aside {
-      flex: 1;
-      background: #fff;
-      margin: 20px;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    section h2, aside h2 {
-      text-align: center;
-      color: #0f2027;
-      margin-bottom: 20px;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    ul li {
-      background: #fff;
-      margin: 10px 0;
-      padding: 12px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      font-size: 18px;
-    }
-    .contact-info, .contact-form {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      margin-top: 20px;
-    }
-    .btn {
-      display: inline-block;
-      background: #007bff;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      margin-top: 10px;
-    }
-    .btn:hover {
-      background: #0056b3;
-    }
-    form label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    form button {
-      margin-top: 15px;
-      background: #28a745;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    form button:hover {
-      background: #218838;
-    }
-    footer {
-      background: #111;
-      color: #fff;
-      text-align: center;
-      padding: 15px 0;
-      margin-top: 30px;
-    }
-    .stock-box {
-      text-align: center;
-    }
-    .stock-box input {
-      padding: 10px;
-      width: 80%;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    .stock-box button {
-      padding: 10px 15px;
-      border: none;
-      background: #0f2027;
-      color: #fff;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .stock-box button:hover {
-      background: #2c5364;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Piyush Capital Ventures</title>
+<style>
+body {font-family: Arial,sans-serif;margin:0;padding:0;background:#f4f4f9;color:#333;}
+header {background: linear-gradient(90deg,#0f2027,#203a43,#2c5364);color:#fff;padding:30px 20px;text-align:center;position:relative;}
+header h1 {margin:0;font-size:2.5rem;display:inline-block;}
+.header-icons {position:absolute;right:20px;top:20px;font-size:2rem;}
+.header-icons span {margin-left:15px;cursor:pointer;}
+.up-arrow {color:limegreen;animation:bounce 1s infinite alternate;}
+.down-arrow {color:red;animation:bounceDown 1s infinite alternate;}
+@keyframes bounce{0%{transform:translateY(0);}100%{transform:translateY(-10px);}}
+@keyframes bounceDown{0%{transform:translateY(0);}100%{transform:translateY(10px);}}
+nav {background:#222;padding:12px;text-align:center;}
+nav a {color:#fff;text-decoration:none;margin:0 15px;font-weight:bold;}
+nav a:hover {color:#ffd700;}
+section {padding:40px 20px;max-width:1000px;margin:auto;}
+section h2 {text-align:center;color:#0f2027;margin-bottom:20px;}
+ul {list-style:none;padding:0;}
+ul li {background:#fff;margin:10px 0;padding:12px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);font-size:18px;}
+.contact-info,.contact-form {background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);margin-top:20px;}
+.btn {display:inline-block;background:#007bff;color:#fff;padding:10px 20px;border-radius:5px;text-decoration:none;margin-top:10px;}
+.btn:hover {background:#0056b3;}
+form label{display:block;margin-top:10px;font-weight:bold;}
+form input, form textarea{width:100%;padding:10px;margin-top:5px;border:1px solid #ccc;border-radius:5px;}
+form button{margin-top:15px;background:#28a745;color:white;border:none;padding:12px;border-radius:5px;cursor:pointer;font-size:16px;}
+form button:hover{background:#218838;}
+footer{background:#111;color:#fff;text-align:center;padding:15px 0;margin-top:30px;}
+#market{margin-top:30px;text-align:center;}
+#market input{padding:8px;width:200px;border-radius:5px;border:1px solid #ccc;}
+#market button{padding:8px 15px;border:none;background:#007bff;color:#fff;border-radius:5px;cursor:pointer;}
+#market button:hover{background:#0056b3;}
+table{width:100%;border-collapse:collapse;margin-top:20px;}
+table,th,td{border:1px solid #ccc;}
+th,td{padding:10px;text-align:center;}
+tr:hover{background:#f1f1f1;}
+.positive{color:limegreen;font-weight:bold;animation:flashGreen 0.5s;}
+.negative{color:red;font-weight:bold;animation:flashRed 0.5s;}
+@keyframes flashGreen{0%{background-color:transparent;}50%{background-color:#e6ffe6;}100%{background-color:transparent;}}
+@keyframes flashRed{0%{background-color:transparent;}50%{background-color:#ffe6e6;}100%{background-color:transparent;}}
+.language-select{text-align:center;margin-top:10px;}
+.market-summary{display:flex;justify-content:center;margin-top:20px;gap:15px;font-weight:bold;}
+.market-summary div{background:#fff;padding:10px 15px;border-radius:5px;box-shadow:0 2px 4px rgba(0,0,0,0.1);}
+</style>
 </head>
 <body>
-  <header>
-    <h1>📈 Piyush Capital Ventures</h1>
-    <p>🐂 Bullish Moves | 🐻 Bear Market Strategies | ⬆️ Smart Investments</p>
-  </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<header>
+<h1>📈 Piyush Capital Ventures</h1>
+<div class="header-icons">
+<span class="up-arrow">⬆️</span>
+<span class="down-arrow">⬇️</span>
+<span>🐂</span>
+<span>🐻</span>
+</div>
+<p>Smart Investing, Bright Future</p>
+<div class="language-select">
+<label for="language">🌐 Language:</label>
+<select id="language" onchange="changeLanguage()">
+<option value="en">English</option>
+<option value="hi">हिंदी</option>
+</select>
+</div>
+</header>
 
-  <main>
-    <section id="about">
-      <h2>About Us</h2>
-      <p>
-        Welcome to <b>Piyush Capital Ventures</b>, your trusted partner in the world of investments.  
-        We specialize in <b>long-term wealth creation</b>, <b>value investing</b>, and <b>portfolio growth</b>.  
-        Our vision is to empower individuals with financial literacy and make investing accessible for everyone.  
-      </p>
+<nav>
+<a href="#about" id="navAbout">About</a>
+<a href="#services" id="navServices">Services</a>
+<a href="#contact" id="navContact">Contact</a>
+<a href="#market" id="navMarket">Live Market</a>
+</nav>
 
-      <h2>Our Services</h2>
-      <ul>
-        <li>📊 Stock Market Investment Guidance</li>
-        <li>💹 Mutual Fund Advisory</li>
-        <li>💰 Wealth & Portfolio Management</li>
-        <li>📘 Financial Literacy & Training Programs</li>
-        <li>📈 Market Research & Growth Strategies</li>
-      </ul>
+<section id="about">
+<h2 id="aboutTitle">About Us</h2>
+<p id="aboutText">Welcome to Piyush Capital Ventures, your trusted partner in investments. We specialize in long-term wealth creation, value investing, and portfolio growth.</p>
+</section>
 
-      <section id="contact">
-        <h2>Contact Us</h2>
-        <div class="contact-info">
-          <p><b>📞 Mobile:</b> <a href="tel:+918718930974">+91 8718930974</a></p>
-          <p><b>✉️ Email:</b> <a href="mailto:Piyushdubey8109@gmail.com">Piyushdubey8109@gmail.com</a></p>
-          <p><b>📍 Address:</b> Raipur, Chhattisgarh, India</p>
-        </div>
+<section id="services">
+<h2 id="servicesTitle">Our Services</h2>
+<ul id="servicesList">
+<li>📊 Stock Market Investment Guidance</li>
+<li>💹 Mutual Fund Advisory</li>
+<li>💰 Wealth & Portfolio Management</li>
+<li>📘 Financial Literacy & Training Programs</li>
+<li>📈 Market Research & Growth Strategies</li>
+</ul>
+</section>
 
-        <div class="contact-form">
-          <h3>Send us a Message</h3>
-          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" required>
+<section id="market">
+<h2 id="liveMarketTitle">Live Market</h2>
 
-            <label for="email">Your Email</label>
-            <input type="email" id="email" name="_replyto" required>
+<div class="market-summary" id="marketSummary">
+<div>Nifty: <span id="nifty">--</span></div>
+<div>Sensex: <span id="sensex">--</span></div>
+<div>BSE: <span id="bse">--</span></div>
+</div>
 
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+<p id="liveDataInfo">Fetching live data...</p>
+<input type="text" id="stockSearch" placeholder="Search Stock">
+<button onclick="searchStock()">🔍 Search</button>
+<table id="marketTable">
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Price</th>
+<th>Change</th>
+<th>% Change</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+</section>
 
-            <button type="submit">Send Email</button>
-          </form>
-        </div>
-      </section>
-    </section>
+<section id="contact">
+<h2 id="contactTitle">Contact Us</h2>
+<div class="contact-info">
+<p><b id="contactMobileLabel">📞 Mobile:</b> <a href="tel:+918189300974">+91 818930974</a></p>
+<p><b id="contactEmailLabel">✉️ Email:</b> <a href="mailto:Piyushdubey8109@gmail.com">Piyushdubey8109@gmail.com</a></p>
+<p><b id="contactAddressLabel">📍 Address:</b> Raipur, Chhattisgarh, India</p>
+</div>
 
-    <!-- ASIDE LIVE DATA -->
-    <aside>
-      <h2>📊 Live Market</h2>
-      <div id="marketData">Loading market data...</div>
-      <hr>
-      <div class="stock-box">
-        <h3>🔍 Search Stock</h3>
-        <input type="text" id="stockInput" placeholder="Enter stock symbol (e.g. TCS)">
-        <button onclick="searchStock()">Search</button>
-        <p id="stockResult"></p>
-      </div>
-    </aside>
-  </main>
+<div class="contact-form">
+<h3 id="contactFormTitle">Send us a Message</h3>
+<form action="https://formspree.io/f/yourFormID" method="POST">
+<label id="contactFormNameLabel" for="name">Your Name</label>
+<input type="text" id="name" name="name" required>
 
-  <footer>
-    <p>&copy; 2025 Piyush Capital Ventures | All Rights Reserved</p>
-  </footer>
+<label id="contactFormEmailLabel" for="email">Your Email</label>
+<input type="email" id="email" name="email" required>
 
-  <script>
-    // Fetch NSE Indices
-    async function fetchMarketData() {
-      try {
-        let response = await fetch("https://indianapi.in/api/indices", {
-          headers: { "x-api-key": "demo" } // replace with real key
-        });
-        let data = await response.json();
-        let output = "";
-        data.forEach(idx => {
-          output += `<b>${idx.indexName}</b>: ₹${idx.last}<br>`;
-        });
-        document.getElementById("marketData").innerHTML = output;
-      } catch {
-        document.getElementById("marketData").innerText = "Live data unavailable.";
-      }
-    }
+<label id="contactFormMessageLabel" for="message">Message</label>
+<textarea id="message" name="message" rows="5" required></textarea>
 
-    // Stock Search
-    async function searchStock() {
-      let stock = document.getElementById("stockInput").value.trim();
-      if (!stock) return;
-      try {
-        let response = await fetch(`https://indianapi.in/api/stock/${stock}`, {
-          headers: { "x-api-key": "demo" }
-        });
-        let data = await response.json();
-        document.getElementById("stockResult").innerHTML =
-          `<b>${data.symbol}</b>: ₹${data.lastPrice} (Change: ${data.change})`;
-      } catch {
-        document.getElementById("stockResult").innerText = "No data found.";
-      }
-    }
+<button id="contactFormButton" type="submit">Send Email</button>
+</form>
+</div>
+</section>
 
-    fetchMarketData();
-    setInterval(fetchMarketData, 30000);
-  </script>
+<footer>
+<p>&copy; 2025 Piyush Capital Ventures | All Rights Reserved</p>
+</footer>
+
+<script>
+// Language translations
+const translations = {
+en: {aboutTitle:"About Us", aboutText:"Welcome to Piyush Capital Ventures, your trusted partner in investments. We specialize in long-term wealth creation, value investing, and portfolio growth.", servicesTitle:"Our Services", servicesList:["Stock Market Investment Guidance","Mutual Fund Advisory","Wealth & Portfolio Management","Financial Literacy & Training Programs","Market Research & Growth Strategies"], contactTitle:"Contact Us", contactMobile:"Mobile", contactEmail:"Email", contactAddress:"Address", contactFormTitle:"Send us a Message", contactFormName:"Your Name", contactFormEmail:"Your Email", contactFormMessage:"Message", contactFormButton:"Send Email", liveMarket:"Live Market", searchStock:"Search Stock"},
+hi: {aboutTitle:"हमारे बारे में", aboutText:"Piyush Capital Ventures में आपका स्वागत है, आपका निवेश का विश्वसनीय साथी। हम दीर्घकालिक धन सृजन, मूल्य निवेश और पोर्टफोलियो वृद्धि में विशेषज्ञ हैं।", servicesTitle:"हमारी सेवाएँ", servicesList:["शेयर मार्केट निवेश मार्गदर्शन","म्यूचुअल फंड सलाह","धन और पोर्टफोलियो प्रबंधन","वित्तीय साक्षरता और प्रशिक्षण कार्यक्रम","मार्केट रिसर्च और विकास रणनीतियाँ"], contactTitle:"संपर्क करें", contactMobile:"मोबाइल", contactEmail:"ईमेल", contactAddress:"पता", contactFormTitle:"हमसे संदेश भेजें", contactFormName:"आपका नाम", contactFormEmail:"आपका ईमेल", contactFormMessage:"संदेश", contactFormButton:"भेजें", liveMarket:"लाइव मार्केट", searchStock:"स्टॉक खोजें"}
+};
+function changeLanguage(){const lang=document.getElementById("language").value;document.getElementById("aboutTitle").innerText=translations[lang].aboutTitle;document.getElementById("aboutText").innerText=translations[lang].aboutText;document.getElementById("servicesTitle").innerText=translations[lang].servicesTitle;const serviceList=document.getElementById("servicesList");serviceList.innerHTML="";translations[lang].servicesList.forEach(item=>{const li=document.createElement("li");li.innerText=item;serviceList.appendChild(li);});document.getElementById("contactTitle").innerText=translations[lang].contactTitle;document.getElementById("contactMobileLabel").innerText=translations[lang].contactMobile+":";document.getElementById("contactEmailLabel").innerText=translations[lang].contactEmail+":";document.getElementById("contactAddressLabel").innerText=translations[lang].contactAddress+":";document.getElementById("contactFormTitle").innerText=translations[lang].contactFormTitle;document.getElementById("contactFormNameLabel").innerText=translations[lang].contactFormName;document.getElementById("contactFormEmailLabel").innerText=translations[lang].contactFormEmail;document.getElementById("contactFormMessageLabel").innerText=translations[lang].contactFormMessage;document.getElementById("contactFormButton").innerText=translations[lang].contactFormButton;document.getElementById("liveMarketTitle").innerText=translations[lang].liveMarket;document.getElementById("stockSearch").placeholder=translations[lang].searchStock;}
+
+// --- Live Market Fetch (API Placeholder) ---
+const marketTableBody=document.querySelector("#marketTable tbody");
+async function fetchMarket(){
+try{
+const res=await fetch("https://api.example.com/indian-market"); // Replace with real API
+const data=await res.json();
+marketTableBody.innerHTML="";
+data.forEach(stock=>{
+const tr=document.createElement("tr");
+let cls="";
+if(stock.change>0){cls="positive";}
+else if(stock.change<0){cls="negative";}
+tr.innerHTML=`<td>${stock.symbol}</td><td class="${cls}">${stock.price}</td><td class="${cls}">${stock.change}</td><td class="${cls}">${stock.percentChange}</td>`;
+marketTableBody.appendChild(tr);
+});
+document.getElementById("liveDataInfo").innerText="";
+}catch(e){
+document.getElementById("liveDataInfo").innerText="Live data unavailable";
+}
+}
+// Market summary dummy
+document.getElementById("nifty").innerText="18950.45 ▲";
+document.getElementById("sensex").innerText="63850.30 ▲";
+document.getElementById("bse").innerText="25250.10 ▼";
+
+fetchMarket();
+setInterval(fetchMarket,15000);
+
+function searchStock(){
+const query=document.getElementById("stockSearch").value.toUpperCase();
+const rows=marketTableBody.querySelectorAll("tr");
+rows.forEach(row=>{
+const symbol=row.children[0].innerText;
+row.style.display=symbol.includes(query)?"":"none";
+});
+}
+</script>
 </body>
 </html>
