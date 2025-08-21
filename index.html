@@ -15,19 +15,15 @@
   nav {background:#111;padding:14px;text-align:center;position:sticky;top:0;z-index:1000;}
   nav a {color:white;text-decoration:none;margin:0 18px;font-weight:600;font-size:1rem;transition:0.3s;}
   nav a:hover {color:#ffd700;}
-  .ticker {background:#000;color:#0f0;padding:10px;overflow:hidden;white-space:nowrap;}
-  .ticker span {display:inline-block;padding-right:50px;animation:scroll 15s linear infinite;}
-  @keyframes scroll {0%{transform:translateX(100%);}100%{transform:translateX(-100%);} }
   .container {width:90%;max-width:1200px;margin:40px auto;}
   h2 {text-align:center;color:#203a43;margin-bottom:20px;font-size:2rem;}
-  .card {background:white;padding:20px;margin:15px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);text-align:center;flex:1 1 250px;transition:0.3s;}
+  .card {background:white;padding:20px;margin:15px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);text-align:center;flex:1 1 250px;transition:0.3s;cursor:pointer;}
   .card:hover{transform:translateY(-6px);box-shadow:0 8px 18px rgba(0,0,0,0.2);}
   .flex-container {display:flex;flex-wrap:wrap;justify-content:space-around;}
-  .bio,.top-shares,.scanner,.news {background:white;padding:25px;border-radius:12px;margin-top:30px;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+  .bio,.top-shares,.scanner,.news,.box {background:white;padding:25px;border-radius:12px;margin-top:30px;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
   .bio p {font-size:17px;}
   .top-shares ul {list-style:none;padding:0;}
   .top-shares li {padding:8px 0;border-bottom:1px solid #ddd;}
-  form {background:white;padding:25px;border-radius:12px;margin-top:30px;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
   form input,form textarea {width:100%;padding:12px;margin-top:8px;margin-bottom:12px;border:1px solid #ccc;border-radius:6px;font-size:15px;}
   form button {background:#28a745;color:white;padding:12px 20px;border:none;border-radius:6px;cursor:pointer;font-size:16px;transition:0.3s;}
   form button:hover{background:#218838;}
@@ -69,55 +65,43 @@
     </div>
   </section>
 
-    <section>
-    <button class="btn" onclick="showQuestionBox()">Ask a Question (₹1 only)</button>
-    <button class="btn" onclick="showService()">Our Service</button>
+  <section>
+    <button class="card" onclick="showQuestionBox()">💬 Ask a Question (₹1 only)</button>
+    <button class="card" onclick="showService()">📌 Our Service</button>
   </section>
 
   <!-- Question Box -->
-  <section id="questionBox">
+  <section id="questionBox" class="box" style="display:none;">
     <h3>Ask Your Share Market Question</h3>
     <p>Get expert insights on your question for just ₹1.</p>
+    <p><b>Pay ₹1 via UPI:</b> <span style="color:#e64a19;">8718930974@ybl</span></p>
     <form action="https://formspree.io/f/xvgqjbby" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required><br>
-      <input type="email" name="email" placeholder="Your Email" required><br>
-      <textarea name="question" rows="4" placeholder="Type your stock market question here..." required></textarea><br>
-      <button class="btn" type="submit">Submit (₹1)</button>
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="question" rows="4" placeholder="Type your stock market question here..." required></textarea>
+      <button type="submit">Submit</button>
     </form>
   </section>
 
   <!-- Services Section -->
-  <section id="serviceDetails">
+  <section id="serviceDetails" class="box" style="display:none;">
     <h3>Our Services</h3>
     <p>We provide insights, analysis, and updates on the Indian share market to help investors make informed decisions.</p>
-    
     <div id="newsContainer">
       <h4>📢 Latest Share Market News</h4>
       <ul id="newsList"></ul>
     </div>
   </section>
 
-  <script>
-    // Show Question Box
-    function showQuestionBox() {
-      document.getElementById("questionBox").style.display = "block";
-      document.getElementById("serviceDetails").style.display = "none";
-    }
-
-
   <!-- Services -->
   <section id="services">
     <h2>Our Services</h2>
     <div class="flex-container">
-      <div class="card" onclick="loadNews()">📊 Stock Market Guidance</div>
+      <div class="card" onclick="showService()">📊 Stock Market Guidance</div>
       <div class="card">💹 Mutual Fund Advisory</div>
       <div class="card">💰 Wealth & Portfolio Management</div>
       <div class="card">📘 Financial Literacy & Training</div>
       <div class="card">📈 Market Research & Growth Strategies</div>
-    </div>
-    <div class="news" id="newsContainer" style="display:none;">
-      <h3>📢 Latest Share Market News</h3>
-      <ul id="newsList"></ul>
     </div>
   </section>
 
@@ -125,7 +109,7 @@
   <section id="top-shares">
     <h2>Top Share Recommendations</h2>
     <div class="top-shares">
-      <ul id="top-share-list">
+      <ul>
         <li>Tata Steel</li>
         <li>Reliance Industries</li>
         <li>Infosys</li>
@@ -175,7 +159,18 @@ function toggleLang(){
   }
 }
 
-// Load Stock Market News
+function showQuestionBox(){
+  document.getElementById("questionBox").style.display="block";
+  document.getElementById("serviceDetails").style.display="none";
+}
+
+function showService(){
+  document.getElementById("serviceDetails").style.display="block";
+  document.getElementById("questionBox").style.display="none";
+  loadNews();
+}
+
+// Load Stock Market News (use your API key)
 async function loadNews() {
   try {
     const response = await fetch("https://gnews.io/api/v4/search?q=stock%20market&lang=en&token=YOUR_NEWS_API_KEY");
@@ -188,8 +183,6 @@ async function loadNews() {
       li.innerHTML = `<a href="${article.url}" target="_blank">${article.title}</a>`;
       newsList.appendChild(li);
     });
-
-    document.getElementById("newsContainer").style.display = "block";
   } catch (error) {
     console.error("News load failed", error);
   }
