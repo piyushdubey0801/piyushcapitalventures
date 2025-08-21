@@ -24,14 +24,24 @@
   form button {background:#28a745;color:white;border:none;cursor:pointer;transition:0.3s;}
   form button:hover{background:#218838;}
   footer {background:#111;color:white;text-align:center;padding:18px 0;margin-top:40px;font-size:14px;}
-  .lang-btn {position:fixed;top:15px;right:15px;padding:10px 14px;background:#007bff;color:white;border:none;border-radius:6px;cursor:pointer;font-size:14px;}
-  .scanner a{display:inline-block;margin-top:15px;padding:12px 20px;background:#ff5722;color:white;border-radius:6px;text-decoration:none;font-weight:bold;}
-  .scanner a:hover{background:#e64a19;}
+  .language-selector {position:fixed;top:15px;right:15px;z-index:2000;}
+  .language-selector select {
+    background:linear-gradient(45deg,#1e3c72,#2a5298);
+    color:white;padding:10px 14px;border:none;border-radius:6px;cursor:pointer;
+    font-size:14px;font-weight:bold;
+  }
+  .language-selector option {background:white;color:black;}
 </style>
 </head>
 <body>
 
-<button class="lang-btn" onclick="toggleLang()">🌐 Hindi/English</button>
+<!-- Language Dropdown -->
+<div class="language-selector">
+  <select id="langSelect" onchange="changeLanguage()">
+    <option value="en">English</option>
+    <option value="hi">हिन्दी (Hindi)</option>
+  </select>
+</div>
 
 <header>
   <h1>📈 Piyush Capital Ventures</h1>
@@ -39,29 +49,6 @@
   <p>Contact: +91 8718930974 | Email: Piyushdubey8109@gmail.com</p>
   <a href="#offers" class="cta-btn">Join Now</a>
 </header>
-<div class="language-selector">
-  <select>
-    <option value="en">English</option>
-    <option value="hi">हिन्दी (Hindi)</option>
-    <option value="es">Español (Spanish)</option>
-    <option value="fr">Français (French)</option>
-    <option value="de">Deutsch (German)</option>
-    <option value="zh">中文 (Chinese)</option>
-    <option value="ja">日本語 (Japanese)</option>
-    <option value="ru">Русский (Russian)</option>
-    <option value="ar">العربية (Arabic)</option>
-    <option value="pt">Português (Portuguese)</option>
-    <option value="bn">বাংলা (Bengali)</option>
-    <option value="ta">தமிழ் (Tamil)</option>
-    <option value="te">తెలుగు (Telugu)</option>
-    <option value="ko">한국어 (Korean)</option>
-    <option value="it">Italiano (Italian)</option>
-    <option value="tr">Türkçe (Turkish)</option>
-    <option value="ur">اردو (Urdu)</option>
-    <option value="vi">Tiếng Việt (Vietnamese)</option>
-    <!-- Aur bhi add kar sakte ho -->
-  </select>
-</div>
 
 <nav>
   <a href="#about">About</a>
@@ -83,8 +70,6 @@
   <section id="offers">
     <h2>Exclusive Offers</h2>
     <div class="flex-container">
-
-      <!-- Ask Question -->
       <div class="box">
         <h3>💬 Ask a Question (₹1 only)</h3>
         <p>Get expert insights on your stock market questions for just ₹1.</p>
@@ -96,8 +81,6 @@
           <button type="submit">Submit</button>
         </form>
       </div>
-
-      <!-- Learn Stock Market -->
       <div class="box">
         <h3>📚 Learn Stock Market (₹99/-)</h3>
         <p>Join our special course to learn Stock Market from Basic to Advanced in Hindi/English.</p>
@@ -108,7 +91,6 @@
           <button type="submit">Enroll Now</button>
         </form>
       </div>
-
     </div>
   </section>
 
@@ -145,14 +127,18 @@
 </footer>
 
 <script>
-let lang = "en";
-function toggleLang(){
-  if(lang==="en"){
-    lang="hi";
-    document.getElementById("bio").innerHTML=`<p>स्वागत है <b>Piyush Capital Ventures</b> में। मैं <b>Piyush Dubey</b>, एक उत्साही निवेशक, जो शोध और ट्रेंड्स के आधार पर बेहतरीन स्टॉक अनुशंसाएँ देता हूँ। <br><b>डिसक्लेमर:</b> मैं SEBI रजिस्टर्ड नहीं हूँ लेकिन गहन जानकारी और मार्गदर्शन प्रदान करता हूँ।</p>`;
-  } else{
-    lang="en";
-    document.getElementById("bio").innerHTML=`<p>Welcome to <b>Piyush Capital Ventures</b>, your world-class partner in smart investing. I am <b>Piyush Dubey</b>, a passionate investor providing top stock recommendations backed by research and trends. <br><b>Disclaimer:</b> I am not SEBI registered but provide detailed insights and guidance to empower your financial journey.</p>`;
+function changeLanguage(){
+  let lang = document.getElementById("langSelect").value;
+  if(lang === "hi"){
+    document.getElementById("bio").innerHTML = `
+      <p>स्वागत है <b>Piyush Capital Ventures</b> में। मैं <b>Piyush Dubey</b>, एक उत्साही निवेशक, 
+      जो शोध और ट्रेंड्स के आधार पर बेहतरीन स्टॉक अनुशंसाएँ देता हूँ। 
+      <br><b>डिसक्लेमर:</b> मैं SEBI रजिस्टर्ड नहीं हूँ लेकिन गहन जानकारी और मार्गदर्शन प्रदान करता हूँ।</p>`;
+  } else {
+    document.getElementById("bio").innerHTML = `
+      <p>Welcome to <b>Piyush Capital Ventures</b>, your world-class partner in smart investing. 
+      I am <b>Piyush Dubey</b>, a passionate investor providing top stock recommendations backed by research and trends. 
+      <br><b>Disclaimer:</b> I am not SEBI registered but provide detailed insights and guidance to empower your financial journey.</p>`;
   }
 }
 </script>
