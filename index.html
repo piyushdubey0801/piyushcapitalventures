@@ -69,6 +69,42 @@
     </div>
   </section>
 
+    <section>
+    <button class="btn" onclick="showQuestionBox()">Ask a Question (₹1 only)</button>
+    <button class="btn" onclick="showService()">Our Service</button>
+  </section>
+
+  <!-- Question Box -->
+  <section id="questionBox">
+    <h3>Ask Your Share Market Question</h3>
+    <p>Get expert insights on your question for just ₹1.</p>
+    <form action="https://formspree.io/f/xvgqjbby" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required><br>
+      <input type="email" name="email" placeholder="Your Email" required><br>
+      <textarea name="question" rows="4" placeholder="Type your stock market question here..." required></textarea><br>
+      <button class="btn" type="submit">Submit (₹1)</button>
+    </form>
+  </section>
+
+  <!-- Services Section -->
+  <section id="serviceDetails">
+    <h3>Our Services</h3>
+    <p>We provide insights, analysis, and updates on the Indian share market to help investors make informed decisions.</p>
+    
+    <div id="newsContainer">
+      <h4>📢 Latest Share Market News</h4>
+      <ul id="newsList"></ul>
+    </div>
+  </section>
+
+  <script>
+    // Show Question Box
+    function showQuestionBox() {
+      document.getElementById("questionBox").style.display = "block";
+      document.getElementById("serviceDetails").style.display = "none";
+    }
+
+
   <!-- Services -->
   <section id="services">
     <h2>Our Services</h2>
