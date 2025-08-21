@@ -24,7 +24,7 @@
   .bio p {font-size:17px;}
   .top-shares ul {list-style:none;padding:0;}
   .top-shares li {padding:8px 0;border-bottom:1px solid #ddd;}
-  form input,form textarea {width:100%;padding:12px;margin-top:8px;margin-bottom:12px;border:1px solid #ccc;border-radius:6px;font-size:15px;}
+  form input,form textarea,form select,form button,form label {width:100%;padding:12px;margin-top:8px;margin-bottom:12px;border:1px solid #ccc;border-radius:6px;font-size:15px;}
   form button {background:#28a745;color:white;padding:12px 20px;border:none;border-radius:6px;cursor:pointer;font-size:16px;transition:0.3s;}
   form button:hover{background:#218838;}
   footer {background:#111;color:white;text-align:center;padding:18px 0;margin-top:40px;font-size:14px;}
@@ -53,7 +53,6 @@
   <a href="#services">Services</a>
   <a href="#top-shares">Top Shares</a>
   <a href="#scanner">Scanner</a>
-  <a href="#contact">Contact</a>
 </nav>
 
 <div class="container">
@@ -67,7 +66,6 @@
 
   <section>
     <button class="card" onclick="showQuestionBox()">💬 Ask a Question (₹1 only)</button>
-    <button class="card" onclick="showService()">📌 Our Service</button>
   </section>
 
   <!-- Question Box -->
@@ -75,33 +73,29 @@
     <h3>Ask Your Share Market Question</h3>
     <p>Get expert insights on your question for just ₹1.</p>
     <p><b>Pay ₹1 via UPI:</b> <span style="color:#e64a19;">8718930974@ybl</span></p>
-    <form action="https://formspree.io/f/xvgqjbby" method="POST">
+    <form action="https://formspree.io/f/xvgqjbby" method="POST" enctype="multipart/form-data">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="question" rows="4" placeholder="Type your stock market question here..." required></textarea>
+      <label>Upload Payment Screenshot (₹1):</label>
+      <input type="file" name="screenshot" accept="image/*" required>
       <button type="submit">Submit</button>
     </form>
-  </section>
-
-  <!-- Services Section -->
-  <section id="serviceDetails" class="box" style="display:none;">
-    <h3>Our Services</h3>
-    <p>We provide insights, analysis, and updates on the Indian share market to help investors make informed decisions.</p>
-    <div id="newsContainer">
-      <h4>📢 Latest Share Market News</h4>
-      <ul id="newsList"></ul>
-    </div>
   </section>
 
   <!-- Services -->
   <section id="services">
     <h2>Our Services</h2>
     <div class="flex-container">
-      <div class="card" onclick="showService()">📊 Stock Market Guidance</div>
+      <div class="card">📊 Stock Market Guidance</div>
       <div class="card">💹 Mutual Fund Advisory</div>
       <div class="card">💰 Wealth & Portfolio Management</div>
       <div class="card">📘 Financial Literacy & Training</div>
       <div class="card">📈 Market Research & Growth Strategies</div>
+    </div>
+    <div id="newsContainer" class="box">
+      <h4>📢 Latest Share Market News</h4>
+      <ul id="newsList"></ul>
     </div>
   </section>
 
@@ -130,17 +124,6 @@
       <p>Watch our Free YouTube Channel: <a href="https://youtube.com/@piyush_capital_ventures" target="_blank">Piyush Capital Ventures</a></p>
     </div>
   </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <form action="https://formspree.io/f/xvgqjbby" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="4" placeholder="Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
 </div>
 
 <footer>
@@ -161,16 +144,8 @@ function toggleLang(){
 
 function showQuestionBox(){
   document.getElementById("questionBox").style.display="block";
-  document.getElementById("serviceDetails").style.display="none";
 }
 
-function showService(){
-  document.getElementById("serviceDetails").style.display="block";
-  document.getElementById("questionBox").style.display="none";
-  loadNews();
-}
-
-// Load Stock Market News (use your API key)
 async function loadNews() {
   try {
     const response = await fetch("https://gnews.io/api/v4/search?q=stock%20market&lang=en&token=YOUR_NEWS_API_KEY");
@@ -187,6 +162,7 @@ async function loadNews() {
     console.error("News load failed", error);
   }
 }
+loadNews();
 </script>
 
 </body>
