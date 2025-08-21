@@ -1,36 +1,43 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piyush Capital Ventures - Stock Market Experts</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Piyush Capital Ventures - Premium Stock Market Advisory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <style>
         :root {
-            --primary-color: #2962ff;
-            --secondary-color: #0039cb;
-            --accent-color: #ff6d00;
-            --background-color: #f5f7fb;
-            --card-color: #ffffff;
-            --text-color: #263238;
-            --text-light: #78909c;
-            --green-up: #00c853;
-            --red-down: #ff1744;
-            --border-color: #e0e0e0;
+            --primary-dark: #0f172a;
+            --primary: #1e293b;
+            --primary-light: #334155;
+            --accent: #f59e0b;
+            --accent-hover: #d97706;
+            --green-up: #10b981;
+            --red-down: #ef4444;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --gradient-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --gradient-green: linear-gradient(135deg, #10b981 0%, #059669 100%);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
         
         body {
-            background-color: var(--background-color);
-            color: var(--text-color);
+            background: var(--gradient-bg);
+            color: var(--text-secondary);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
@@ -41,92 +48,69 @@
         
         /* Header Styles */
         header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+            background: var(--primary-dark);
+            color: var(--text-primary);
+            padding: 20px 0;
+            position: fixed;
             width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-            background-size: cover;
-            background-position: center;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
         }
         
-        header h1 {
-            margin: 0;
-            font-size: 3rem;
-            font-weight: 700;
-            position: relative;
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        header p {
-            margin: 10px 0;
-            font-size: 1.2rem;
-            position: relative;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
         
-        .cta-btn {
-            margin-top: 20px;
-            padding: 12px 24px;
-            background: var(--accent-color);
-            color: white;
-            font-weight: bold;
-            border-radius: 30px;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.3s;
-            position: relative;
-            z-index: 2;
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
-        .cta-btn:hover {
-            background: #e65100;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--accent);
         }
         
         /* Navigation */
         nav {
-            background: white;
-            padding: 16px 0;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 30px;
         }
         
         nav a {
-            color: var(--text-color);
+            color: var(--text-secondary);
             text-decoration: none;
-            margin: 0 18px;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 1rem;
-            transition: 0.3s;
+            transition: all 0.3s;
             position: relative;
+            padding: 8px 0;
         }
         
         nav a:hover {
-            color: var(--primary-color);
+            color: var(--accent);
         }
         
         nav a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
-            height: 3px;
-            background: var(--primary-color);
+            height: 2px;
+            background: var(--accent);
             transition: width 0.3s;
         }
         
@@ -134,24 +118,146 @@
             width: 100%;
         }
         
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .connect-wallet {
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .connect-wallet:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 80px;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23f59e0b' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-title span {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 2px solid var(--primary-light);
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
         /* Language Selector */
         .language-selector {
             position: fixed;
-            top: 15px;
-            right: 15px;
+            top: 90px;
+            right: 20px;
             z-index: 2000;
         }
         
         .language-selector select {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: white;
+            background: var(--card-bg);
+            color: var(--text-primary);
             padding: 10px 14px;
-            border: none;
-            border-radius: 6px;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
             cursor: pointer;
             font-size: 14px;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
         /* Main Content */
@@ -163,11 +269,12 @@
         
         h2 {
             text-align: center;
-            color: var(--secondary-color);
-            margin-bottom: 30px;
-            font-size: 2.2rem;
+            color: var(--text-primary);
+            margin-bottom: 50px;
+            font-size: 2.5rem;
             position: relative;
             padding-bottom: 15px;
+            font-weight: 700;
         }
         
         h2::after {
@@ -178,185 +285,319 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: var(--accent-color);
+            background: var(--gradient-accent);
             border-radius: 2px;
         }
         
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
         .box {
-            background: var(--card-color);
-            padding: 25px;
-            border-radius: 12px;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
             margin: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            border: 1px solid var(--card-border);
         }
         
         .box:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         }
         
         .flex-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
-            justify-content: space-around;
+            gap: 30px;
+            justify-content: center;
         }
         
         /* About Section */
         #about {
-            margin-bottom: 50px;
+            margin-bottom: 80px;
+            padding-top: 40px;
         }
         
         /* Offers Section */
+        #offers {
+            margin: 80px 0;
+        }
+        
         .offer-card {
             flex: 1;
-            min-width: 300px;
-            border-top: 5px solid var(--accent-color);
+            min-width: 350px;
             position: relative;
             overflow: hidden;
+            padding: 40px 30px;
+        }
+        
+        .offer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient-accent);
         }
         
         .offer-card h3 {
-            color: var(--secondary-color);
-            margin-bottom: 15px;
+            color: var(--text-primary);
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
         }
         
         .offer-card h3 i {
-            margin-right: 10px;
-            color: var(--accent-color);
+            color: var(--accent);
+            font-size: 1.8rem;
         }
         
         .price-tag {
-            background: var(--accent-color);
+            background: var(--gradient-accent);
             color: white;
-            padding: 5px 12px;
+            padding: 8px 16px;
             border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
+            font-size: 1rem;
+            font-weight: 700;
             display: inline-block;
-            margin: 10px 0;
+            margin: 15px 0;
         }
         
         .upi-id {
-            background: #f5f5f5;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-weight: bold;
-            color: var(--text-color);
-            margin: 10px 0;
+            background: rgba(245, 158, 11, 0.1);
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 15px 0;
             display: inline-block;
+            border: 1px solid rgba(245, 158, 11, 0.2);
         }
         
         form input, form textarea, form label, form button {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             margin-top: 8px;
-            margin-bottom: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 15px;
+            margin-bottom: 16px;
+            background: var(--primary-dark);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            font-size: 16px;
+            color: var(--text-primary);
+        }
+        
+        form input:focus, form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
         }
         
         form button {
-            background: var(--primary-color);
+            background: var(--gradient-accent);
             color: white;
             border: none;
             cursor: pointer;
-            transition: 0.3s;
-            font-weight: bold;
-            padding: 14px;
+            transition: all 0.3s;
+            font-weight: 600;
+            padding: 16px;
+            margin-top: 10px;
         }
         
         form button:hover {
-            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
         }
         
         /* Services Section */
         #services {
-            margin: 50px 0;
+            margin: 80px 0;
         }
         
         .service-box {
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 25px;
             flex: 1;
-            min-width: 200px;
-            border-top: 4px solid var(--primary-color);
+            min-width: 220px;
+            transition: all 0.3s;
+        }
+        
+        .service-box:hover {
+            background: rgba(245, 158, 11, 0.05);
         }
         
         .service-box i {
-            font-size: 40px;
-            color: var(--primary-color);
+            font-size: 48px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .service-box h3 {
+            color: var(--text-primary);
             margin-bottom: 15px;
+            font-size: 1.3rem;
         }
         
         /* Top Shares Section */
+        #top-shares {
+            margin: 80px 0;
+        }
+        
         .stock-list {
             list-style: none;
             padding: 0;
         }
         
         .stock-list li {
-            padding: 12px 15px;
-            margin: 10px 0;
-            background: #f9f9f9;
-            border-radius: 8px;
+            padding: 18px 20px;
+            margin: 12px 0;
+            background: var(--primary-dark);
+            border-radius: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            border: 1px solid var(--card-border);
         }
         
         .stock-list li:hover {
-            background: #f0f0f0;
+            background: rgba(245, 158, 11, 0.05);
+            border-color: var(--accent);
         }
         
-        .stock-price {
+        .stock-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .stock-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--gradient-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
             font-weight: bold;
         }
         
+        .stock-details {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stock-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .stock-symbol {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        .stock-price {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+        
+        .stock-change {
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
         .stock-change.up {
-            color: var(--green-up);
+            background: var(--green-up);
+            color: white;
         }
         
         .stock-change.down {
-            color: var(--red-down);
+            background: var(--red-down);
+            color: white;
+        }
+        
+        /* Real-time Market Data Ticker */
+        .market-ticker {
+            background: var(--primary-dark);
+            padding: 15px 0;
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+            overflow: hidden;
+            position: relative;
+            margin: 60px 0;
+        }
+        
+        .ticker-content {
+            display: flex;
+            animation: tickerAnimation 30s linear infinite;
+            white-space: nowrap;
+        }
+        
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            margin: 0 30px;
+        }
+        
+        @keyframes tickerAnimation {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
         
         /* Footer */
         .site-footer {
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            background: var(--primary-dark);
             color: white;
-            padding: 40px 0 20px;
-            margin-top: 60px;
+            padding: 60px 0 20px;
+            margin-top: 100px;
         }
         
         .footer-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: space-between;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            gap: 40px;
         }
         
         .footer-about, .footer-contact, .footer-links {
             flex: 1;
             min-width: 250px;
-            margin: 20px;
         }
         
         .footer-about h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
         }
         
         .footer-contact h4, .footer-links h4 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
             position: relative;
             padding-bottom: 10px;
         }
@@ -368,22 +609,21 @@
             left: 0;
             width: 40px;
             height: 3px;
-            background: var(--accent-color);
+            background: var(--accent);
         }
         
         .footer-contact p, .footer-links ul {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
         .footer-contact a {
-            color: #bbdefb;
+            color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.3s;
         }
         
         .footer-contact a:hover {
-            color: white;
-            text-decoration: underline;
+            color: var(--accent);
         }
         
         .footer-links ul {
@@ -392,45 +632,44 @@
         }
         
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .footer-links a {
-            color: #bbdefb;
+            color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.3s;
             display: flex;
             align-items: center;
+            gap: 10px;
         }
         
         .footer-links a i {
-            margin-right: 10px;
+            color: var(--accent);
+            font-size: 1.2rem;
         }
         
         .footer-links a:hover {
-            color: white;
+            color: var(--accent);
         }
         
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
-            margin-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
         
         /* Responsive Design */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.2rem;
+        @media (max-width: 968px) {
+            .hero-title {
+                font-size: 2.8rem;
             }
             
-            header p {
-                font-size: 1rem;
-            }
-            
-            nav a {
-                margin: 0 10px;
-                font-size: 0.9rem;
+            nav {
+                display: none;
             }
             
             .flex-container {
@@ -443,6 +682,30 @@
             
             .footer-container {
                 flex-direction: column;
+                gap: 30px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .header-buttons {
+                display: none;
             }
         }
         
@@ -467,7 +730,30 @@
     </style>
 </head>
 <body>
-    <!-- Language Dropdown -->
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">📈</div>
+                <div class="logo-text">Piyush Capital</div>
+            </div>
+            
+            <nav>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#top-shares">Top Shares</a>
+                <a href="#offers">Offers</a>
+            </nav>
+            
+            <div class="header-buttons">
+                <button class="connect-wallet">
+                    <i class="fas fa-wallet"></i> Connect Wallet
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Language Selector -->
     <div class="language-selector">
         <select id="langSelect" onchange="changeLanguage()">
             <option value="en">English</option>
@@ -475,87 +761,134 @@
         </select>
     </div>
 
-    <header>
-        <h1>📈 Piyush Capital Ventures</h1>
-        <p>🐂 Bullish Moves | 🐻 Bear Market Strategies | ⬆️ Smart Investments</p>
-        <p>Contact: +91 8718930974 | Email: Piyushdubey8109@gmail.com</p>
-        <a href="#offers" class="cta-btn">Join Now</a>
-    </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1 class="hero-title">Premium <span>Stock Market</span> Advisory & Investment Guidance</h1>
+            <p class="hero-subtitle">Get expert stock recommendations, market insights, and personalized investment strategies to maximize your returns in bull and bear markets</p>
+            
+            <div class="hero-buttons">
+                <a href="#offers" class="btn-primary">
+                    <i class="fas fa-chart-line"></i> Explore Services
+                </a>
+                <a href="#contact" class="btn-secondary">
+                    <i class="fas fa-phone-alt"></i> Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
 
-    <nav>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#top-shares">Top Shares</a>
-        <a href="#offers">Offers</a>
-    </nav>
+    <!-- Market Ticker -->
+    <div class="market-ticker">
+        <div class="ticker-content">
+            <div class="ticker-item">
+                <span class="stock-change up">+1.5%</span>
+                <span class="stock-name">NIFTY 50: 22,415.80</span>
+            </div>
+            <div class="ticker-item">
+                <span class="stock-change up">+2.1%</span>
+                <span class="stock-name">SENSEX: 73,892.45</span>
+            </div>
+            <div class="ticker-item">
+                <span class="stock-change down">-0.8%</span>
+                <span class="stock-name">BANK NIFTY: 47,328.60</span>
+            </div>
+            <div class="ticker-item">
+                <span class="stock-change up">+3.2%</span>
+                <span class="stock-name">RELIANCE: ₹2,845.20</span>
+            </div>
+            <div class="ticker-item">
+                <span class="stock-change up">+1.7%</span>
+                <span class="stock-name">HDFC BANK: ₹1,645.30</span>
+            </div>
+        </div>
+    </div>
 
     <div class="container">
-        <!-- About -->
+        <!-- About Section -->
         <section id="about" class="animate-fadeIn">
             <h2>About Piyush Capital Ventures</h2>
+            <p class="section-subtitle">Your trusted partner in the stock market journey with expert guidance and research-backed recommendations</p>
+            
             <div class="box" id="bio">
-                <p>Welcome to <b>Piyush Capital Ventures</b>, your world-class partner in smart investing. I am <b>Piyush Dubey</b>, a passionate investor providing top stock recommendations backed by research and trends. <br><b>Disclaimer:</b> I am not SEBI registered but provide detailed insights and guidance to empower your financial journey.</p>
+                <p>Welcome to <b>Piyush Capital Ventures</b>, your premier destination for smart investing strategies. I am <b>Piyush Dubey</b>, a passionate investor with years of experience in analyzing market trends and delivering profitable stock recommendations.</p>
+                <p>Our approach combines technical analysis, fundamental research, and market sentiment to identify high-potential investment opportunities across various sectors.</p>
+                <p><b>Disclaimer:</b> I am not SEBI registered but provide detailed insights and guidance to empower your financial journey. All recommendations are for educational purposes only.</p>
             </div>
         </section>
 
         <!-- Offers Section -->
         <section id="offers" class="animate-slideUp">
             <h2>Exclusive Offers</h2>
+            <p class="section-subtitle">Premium services designed to enhance your stock market knowledge and investment performance</p>
+            
             <div class="flex-container">
                 <div class="box offer-card">
                     <h3><i class="fas fa-question-circle"></i> Ask a Question (₹1 only)</h3>
-                    <p>Get expert insights on your stock market questions for just ₹1.</p>
+                    <p>Get expert insights on your stock market questions for just ₹1. Perfect for quick clarifications and specific stock queries.</p>
                     <div class="price-tag">Only ₹1</div>
                     <p><b>Pay via UPI:</b> <span class="upi-id">8718930974@ybl</span></p>
                     <form action="https://formspree.io/f/xvgqjbby" method="POST" enctype="multipart/form-data">
                         <input type="text" name="name" placeholder="Your Name" required>
                         <input type="email" name="email" placeholder="Your Email" required>
                         <textarea name="question" rows="4" placeholder="Type your stock market question here..." required></textarea>
-                        <button type="submit">Submit</button>
+                        <button type="submit"><i class="fas fa-paper-plane"></i> Submit Question</button>
                     </form>
                 </div>
+                
                 <div class="box offer-card">
                     <h3><i class="fas fa-graduation-cap"></i> Learn Stock Market (₹99/-)</h3>
-                    <p>Join our special course to learn Stock Market from Basic to Advanced in Hindi/English.</p>
+                    <p>Comprehensive course covering everything from basics to advanced strategies. Learn technical analysis, fundamental analysis, and risk management.</p>
                     <div class="price-tag">Only ₹99</div>
                     <p><b>Pay via UPI:</b> <span class="upi-id">8718930974@ybl</span></p>
                     <form action="https://formspree.io/f/xvgqjbby" method="POST" enctype="multipart/form-data">
                         <input type="text" name="name" placeholder="Your Name" required>
                         <input type="email" name="email" placeholder="Your Email" required>
-                        <button type="submit">Enroll Now</button>
+                        <button type="submit"><i class="fas fa-user-graduate"></i> Enroll Now</button>
                     </form>
                 </div>
             </div>
         </section>
 
-        <!-- Services -->
+        <!-- Services Section -->
         <section id="services" class="animate-slideUp">
             <h2>Our Services</h2>
+            <p class="section-subtitle">Comprehensive stock market services designed to meet all your investment needs</p>
+            
             <div class="flex-container">
                 <div class="box service-box">
                     <i class="fas fa-chart-line"></i>
                     <h3>Stock Market Guidance</h3>
+                    <p>Expert advice on equity investments and trading strategies</p>
                 </div>
+                
                 <div class="box service-box">
                     <i class="fas fa-chart-pie"></i>
                     <h3>Mutual Fund Advisory</h3>
+                    <p>Portfolio allocation and fund selection guidance</p>
                 </div>
+                
                 <div class="box service-box">
-                    <i class="fas fa-portfolio"></i>
+                    <i class="fas fa-coins"></i>
                     <h3>Wealth Management</h3>
+                    <p>Long-term wealth creation strategies</p>
                 </div>
+                
                 <div class="box service-box">
                     <i class="fas fa-book-reader"></i>
                     <h3>Financial Training</h3>
+                    <p>Comprehensive courses for all experience levels</p>
                 </div>
+                
                 <div class="box service-box">
                     <i class="fas fa-search-dollar"></i>
                     <h3>Market Research</h3>
+                    <p>In-depth analysis of sectors and companies</p>
                 </div>
             </div>
         </section>
 
-        <!-- Top Shares -->
+   <!-- Top Shares -->
         <section id="top-shares" class="animate-fadeIn">
             <h2>Top Share Recommendations</h2>
             <div class="box">
