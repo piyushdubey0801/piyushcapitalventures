@@ -1,117 +1,156 @@
-/* Reset */
+/* ====== RESET ====== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Background Gradient */
 body {
-  background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
-  color: #f1f5f9;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
   line-height: 1.6;
 }
 
-/* Navbar */
-header {
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(10px);
-  position: sticky;
+/* ====== NAVBAR ====== */
+nav {
+  position: fixed;
   top: 0;
-  z-index: 1000;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 15px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 8%;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  backdrop-filter: blur(6px);
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.5);
 }
 
-header img.logo {
-  height: 50px;
-  width: auto;
+nav .logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #00ffcc;
+  letter-spacing: 2px;
 }
 
-header nav a {
-  color: #f1f5f9;
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
   margin: 0 15px;
+}
+
+nav ul li a {
   text-decoration: none;
+  color: #fff;
   font-weight: 500;
   transition: 0.3s;
 }
 
-header nav a:hover {
-  color: #38bdf8;
-  border-bottom: 2px solid #38bdf8;
-  padding-bottom: 3px;
+nav ul li a:hover {
+  color: #00ffcc;
 }
 
-/* Hero Section */
+/* ====== HERO SECTION ====== */
 .hero {
+  height: 100vh;
+  background: url("stock-market-bg.jpg") no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
-  padding: 100px 20px;
-  background: url('https://img.freepik.com/free-vector/stock-market-graph-with-trend-line-candlestick-chart-financial-trading-background_1017-37463.jpg') no-repeat center/cover;
-  color: white;
-  position: relative;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(15, 23, 42, 0.6);
+  padding: 0 20px;
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 48px;
   margin-bottom: 20px;
-  position: relative;
-  z-index: 1;
+  text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
 }
 
 .hero p {
-  font-size: 1.2rem;
-  z-index: 1;
-  position: relative;
+  font-size: 20px;
+  margin-bottom: 30px;
+  color: #f1f1f1;
 }
 
-/* Sections */
+.hero .btn {
+  background: #00ffcc;
+  color: #000;
+  padding: 12px 28px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+  background: #fff;
+  color: #000;
+  transform: scale(1.1);
+}
+
+/* ====== SECTIONS ====== */
 section {
-  padding: 60px 8%;
+  padding: 100px 60px;
+  min-height: 100vh;
+}
+
+section:nth-child(even) {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 40px;
-  color: #38bdf8;
+  color: #00ffcc;
 }
 
-/* Cards */
-.card {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
-  padding: 20px;
-  margin: 20px;
-  transition: transform 0.3s ease, background 0.3s;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+section p {
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+  font-size: 18px;
+  color: #ddd;
 }
 
-.card:hover {
-  transform: translateY(-10px);
-  background: rgba(56, 189, 248, 0.1);
-}
-
-/* Footer */
+/* ====== FOOTER ====== */
 footer {
+  background: #000;
+  color: #aaa;
   text-align: center;
   padding: 25px;
-  background: rgba(15, 23, 42, 0.9);
+  font-size: 15px;
   margin-top: 40px;
-  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-footer p {
-  color: #94a3b8;
+/* ====== RESPONSIVE ====== */
+@media(max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+
+  nav ul {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
 }
