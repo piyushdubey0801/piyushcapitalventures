@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="style.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Piyush Capital Ventures</title>
@@ -18,15 +17,24 @@
   nav a:hover {color:#ffd700;}
   .container {width:90%;max-width:1200px;margin:40px auto;}
   h2 {text-align:center;color:#203a43;margin-bottom:20px;font-size:2rem;}
-  .box {background:white;padding:25px;border-radius:12px;margin:15px;box-shadow:0 2px 6px rgba(0,0,0,0.1);flex:1;}
-  .flex-container {display:flex;flex-wrap:wrap;gap:20px;justify-content:space-around;}
-  form input,form textarea,form label,form button {width:100%;padding:10px;margin-top:8px;margin-bottom:12px;border:1px solid #ccc;border-radius:6px;font-size:15px;}
-  form button {background:#28a745;color:white;border:none;cursor:pointer;transition:0.3s;}
+  .card {background:white;padding:20px;margin:15px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);text-align:center;flex:1 1 250px;transition:0.3s;cursor:pointer;}
+  .card:hover{transform:translateY(-6px);box-shadow:0 8px 18px rgba(0,0,0,0.2);}
+  .flex-container {display:flex;flex-wrap:wrap;justify-content:space-around;}
+  .bio,.top-shares,.scanner,.news,.box {background:white;padding:25px;border-radius:12px;margin-top:30px;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+  .bio p {font-size:17px;}
+  .top-shares ul {list-style:none;padding:0;}
+  .top-shares li {padding:8px 0;border-bottom:1px solid #ddd;}
+  form input,form textarea,form select,form button,form label {width:100%;padding:12px;margin-top:8px;margin-bottom:12px;border:1px solid #ccc;border-radius:6px;font-size:15px;}
+  form button {background:#28a745;color:white;padding:12px 20px;border:none;border-radius:6px;cursor:pointer;font-size:16px;transition:0.3s;}
   form button:hover{background:#218838;}
   footer {background:#111;color:white;text-align:center;padding:18px 0;margin-top:40px;font-size:14px;}
   .lang-btn {position:fixed;top:15px;right:15px;padding:10px 14px;background:#007bff;color:white;border:none;border-radius:6px;cursor:pointer;font-size:14px;}
   .scanner a{display:inline-block;margin-top:15px;padding:12px 20px;background:#ff5722;color:white;border-radius:6px;text-decoration:none;font-weight:bold;}
   .scanner a:hover{background:#e64a19;}
+  .scanner p{margin:10px 0;}
+  #newsContainer ul {list-style:none;padding:0;}
+  #newsContainer li {padding:8px 0;border-bottom:1px solid #ddd;}
+  #newsContainer li:last-child {border-bottom:none;}
 </style>
 </head>
 <body>
@@ -37,85 +45,64 @@
   <h1>📈 Piyush Capital Ventures</h1>
   <p>🐂 Bullish Moves | 🐻 Bear Market Strategies | ⬆️ Smart Investments</p>
   <p>Contact: +91 8718930974 | Email: Piyushdubey8109@gmail.com</p>
-  <a href="#offers" class="cta-btn">Join Now</a>
-  <a href="mailto:yourmail@example.com" class="btn">Join Now</a>
-
+  <a href="#scanner" class="cta-btn">Enroll Now @ ₹1</a>
 </header>
 
 <nav>
   <a href="#about">About</a>
   <a href="#services">Services</a>
   <a href="#top-shares">Top Shares</a>
-  <a href="#offers">Offers</a>
-  <nav>
-  <div class="logo">Piyush Capital</div>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#shares">Top Shares</a></li>
-    <li><a href="#offers">Offers</a></li>
-  </ul>
+  <a href="#scanner">Scanner</a>
 </nav>
-
 
 <div class="container">
   <!-- About -->
   <section id="about">
     <h2>About Piyush Capital Ventures</h2>
-    <div class="box" id="bio">
+    <div class="bio" id="bio">
       <p>Welcome to <b>Piyush Capital Ventures</b>, your world-class partner in smart investing. I am <b>Piyush Dubey</b>, a passionate investor providing top stock recommendations backed by research and trends. <br><b>Disclaimer:</b> I am not SEBI registered but provide detailed insights and guidance to empower your financial journey.</p>
     </div>
   </section>
 
-  <!-- Offers Section -->
-  <section id="offers">
-    <h2>Exclusive Offers</h2>
-    <div class="flex-container">
+  <section>
+    <button class="card" onclick="showQuestionBox()">💬 Ask a Question (₹1 only)</button>
+  </section>
 
-      <!-- Ask Question -->
-      <div class="box">
-        <h3>💬 Ask a Question (₹1 only)</h3>
-        <p>Get expert insights on your stock market questions for just ₹1.</p>
-        <p><b>Pay ₹1 via UPI:</b> <span style="color:#e64a19;">8718930974@ybl</span></p>
-        <form action="https://formspree.io/f/xvgqjbby" method="POST" enctype="multipart/form-data">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
-          <textarea name="question" rows="4" placeholder="Type your stock market question here..." required></textarea>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-
-      <!-- Learn Stock Market -->
-      <div class="box">
-        <h3>📚 Learn Stock Market (₹99/-)</h3>
-        <p>Join our special course to learn Stock Market from Basic to Advanced in Hindi/English.</p>
-        <p><b>Pay ₹99 via UPI:</b> <span style="color:#e64a19;">8718930974@ybl</span></p>
-        <form action="https://formspree.io/f/xvgqjbby" method="POST" enctype="multipart/form-data">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
-          <button type="submit">Enroll Now</button>
-        </form>
-      </div>
-
-    </div>
+  <!-- Question Box -->
+  <section id="questionBox" class="box" style="display:none;">
+    <h3>Ask Your Share Market Question</h3>
+    <p>Get expert insights on your question for just ₹1.</p>
+    <p><b>Pay ₹1 via UPI:</b> <span style="color:#e64a19;">8718930974@ybl</span></p>
+    <form action="https://formspree.io/f/xvgqjbby" method="POST" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="question" rows="4" placeholder="Type your stock market question here..." required></textarea>
+      <label>Upload Payment Screenshot (₹1):</label>
+      <input type="file" name="screenshot" accept="image/*" required>
+      <button type="submit">Submit</button>
+    </form>
   </section>
 
   <!-- Services -->
   <section id="services">
     <h2>Our Services</h2>
     <div class="flex-container">
-      <div class="box">📊 Stock Market Guidance</div>
-      <div class="box">💹 Mutual Fund Advisory</div>
-      <div class="box">💰 Wealth & Portfolio Management</div>
-      <div class="box">📘 Financial Literacy & Training</div>
-      <div class="box">📈 Market Research & Growth Strategies</div>
+      <div class="card">📊 Stock Market Guidance</div>
+      <div class="card">💹 Mutual Fund Advisory</div>
+      <div class="card">💰 Wealth & Portfolio Management</div>
+      <div class="card">📘 Financial Literacy & Training</div>
+      <div class="card">📈 Market Research & Growth Strategies</div>
+    </div>
+    <div id="newsContainer" class="box">
+      <h4>📢 Latest Share Market News</h4>
+      <ul id="newsList"></ul>
     </div>
   </section>
 
   <!-- Top Shares -->
   <section id="top-shares">
     <h2>Top Share Recommendations</h2>
-    <div class="box">
+    <div class="top-shares">
       <ul>
         <li>Tata Steel</li>
         <li>Reliance Industries</li>
@@ -124,6 +111,17 @@
         <li>Adani Enterprises</li>
       </ul>
       <p>These shares are selected based on fundamentals, growth potential, and market trends.</p>
+    </div>
+  </section>
+
+  <!-- Scanner / Offer -->
+  <section id="scanner">
+    <h2>📚 Learn Share Market for Only ₹99/-</h2>
+    <div class="scanner">
+      <p>Join our special course to learn Stock Market from Basic to Advanced in Hindi/English.</p>
+      <p>Pay via UPI: <b>8718930974@ybl</b> (₹99/-)</p>
+      <a href="https://upstox.onelink.me/0H1s/MZ17" target="_blank">Open Free DMAT Account</a>
+      <p>Watch our Free YouTube Channel: <a href="https://youtube.com/@piyush_capital_ventures" target="_blank">Piyush Capital Ventures</a></p>
     </div>
   </section>
 </div>
@@ -143,6 +141,28 @@ function toggleLang(){
     document.getElementById("bio").innerHTML=`<p>Welcome to <b>Piyush Capital Ventures</b>, your world-class partner in smart investing. I am <b>Piyush Dubey</b>, a passionate investor providing top stock recommendations backed by research and trends. <br><b>Disclaimer:</b> I am not SEBI registered but provide detailed insights and guidance to empower your financial journey.</p>`;
   }
 }
+
+function showQuestionBox(){
+  document.getElementById("questionBox").style.display="block";
+}
+
+async function loadNews() {
+  try {
+    const response = await fetch("https://gnews.io/api/v4/search?q=stock%20market&lang=en&token=YOUR_NEWS_API_KEY");
+    const newsData = await response.json();
+    const newsList = document.getElementById("newsList");
+    newsList.innerHTML = "";
+
+    newsData.articles.slice(0,5).forEach(article => {
+      let li = document.createElement("li");
+      li.innerHTML = `<a href="${article.url}" target="_blank">${article.title}</a>`;
+      newsList.appendChild(li);
+    });
+  } catch (error) {
+    console.error("News load failed", error);
+  }
+}
+loadNews();
 </script>
 
 </body>
