@@ -1,58 +1,87 @@
-/* Footer Styling */
-footer {
+/* footer.css */
+
+/* Footer overall style */
+.site-footer {
   background: #111;
-  color: #f1f1f1;
-  padding: 40px 20px;
-  text-align: center;
+  color: #fff;
+  padding: 40px 20px 20px 20px;
   font-family: 'Poppins', sans-serif;
 }
 
-footer .footer-container {
+.footer-container {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
   max-width: 1200px;
   margin: auto;
 }
 
-footer .footer-section {
-  flex: 1;
-  min-width: 250px;
+.footer-about,
+.footer-contact,
+.footer-links {
+  flex: 1 1 250px;
   margin: 10px;
 }
 
-footer h3 {
+.footer-about h3,
+.footer-contact h4,
+.footer-links h4 {
   font-size: 18px;
-  margin-bottom: 15px;
-  color: #ff9800;
+  margin-bottom: 12px;
+  color: #ffd700;
 }
 
-footer p, footer a {
+.footer-about p,
+.footer-contact p,
+.footer-links ul li {
   font-size: 14px;
-  color: #bbb;
-  text-decoration: none;
+  margin: 6px 0;
+  line-height: 1.6;
 }
 
-footer a:hover {
+.footer-contact a,
+.footer-links a {
   color: #fff;
-}
-
-footer .social-links a {
-  margin: 0 10px;
-  font-size: 20px;
-  display: inline-block;
+  text-decoration: none;
   transition: 0.3s;
 }
 
-footer .social-links a:hover {
-  color: #ff9800;
-  transform: scale(1.1);
+.footer-contact a:hover,
+.footer-links a:hover {
+  color: #ffd700;
 }
 
-footer .copyright {
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 8px;
+}
+
+/* Bottom footer */
+.footer-bottom {
+  text-align: center;
+  padding: 12px 0;
   margin-top: 20px;
-  border-top: 1px solid #444;
-  padding-top: 10px;
+  border-top: 1px solid #333;
   font-size: 13px;
-  color: #aaa;
+  color: #bbb;
+}
+
+/* Responsive for mobile */
+@media screen and (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-about,
+  .footer-contact,
+  .footer-links {
+    margin: 15px 0;
+    text-align: center;
+  }
 }
