@@ -1,98 +1,98 @@
-/* General Page Setup */
+/* Website ko attractive banane ke liye CSS */
+
+/* Background me stock market ka animated effect */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  line-height: 1.6;
-  background: #f4f4f9;
-  color: #333;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: white;
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
-/* Header */
-header {
-  background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
-  color: #fff;
-  padding: 30px 0;
+/* Website par ek overlay effect jisme stock ticker ka background lage */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://images.unsplash.com/photo-1649972904345-bcf2c98b5eb2'); /* stock market background */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2; /* halka background effect */
+  z-index: -1;
+}
+
+/* Logo styling */
+.logo {
+  width: 180px;
+  margin: 20px;
+  display: block;
+}
+
+/* Heading attractive */
+h1, h2, h3 {
   text-align: center;
-}
-header h1 {
-  margin: 0;
-  font-size: 2.5rem;
-}
-header p {
-  margin-top: 10px;
-  font-size: 1.2rem;
-  color: #ddd;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #00e6e6;
+  text-shadow: 2px 2px 8px black;
 }
 
-/* Navigation Bar */
+/* Navigation bar */
 nav {
-  background: #444;
-  padding: 12px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background: rgba(0,0,0,0.6);
+  padding: 15px;
+  border-bottom: 2px solid #00e6e6;
 }
+
 nav a {
-  color: #fff;
+  color: white;
   text-decoration: none;
-  margin: 0 15px;
   font-weight: bold;
-  font-size: 1rem;
-}
-nav a:hover {
-  text-decoration: underline;
-  color: #00ff88;
-}
-
-/* Section */
-section {
-  padding: 40px 20px;
-  max-width: 1000px;
-  margin: auto;
-}
-
-/* Contact Box */
-.contact-info {
-  background: #eee;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
-}
-.contact-info a {
-  color: #007bff;
-  text-decoration: none;
-}
-.contact-info a:hover {
-  text-decoration: underline;
-}
-
-/* Button */
-.btn {
-  display: inline-block;
-  background: #007bff;
-  color: #fff;
-  padding: 12px 24px;
-  border-radius: 6px;
-  text-decoration: none;
-  margin-top: 15px;
   transition: 0.3s;
 }
-.btn:hover {
-  background: #0056b3;
-  transform: scale(1.05);
+
+nav a:hover {
+  color: #00e6e6;
+  transform: scale(1.1);
 }
 
-/* Footer */
-footer {
-  background: #222;
-  color: #fff;
-  text-align: center;
-  padding: 15px 0;
-  margin-top: 20px;
-  font-size: 14px;
+/* Section styling */
+section {
+  padding: 40px;
+  background: rgba(0,0,0,0.5);
+  margin: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.6);
+  transition: 0.4s;
 }
 
-/* Extra Style for Stock Market Feel */
-ul li {
-  margin: 10px 0;
-  font-size: 1.1rem;
+section:hover {
+  transform: scale(1.02);
+}
+
+/* Button styling */
+button {
+  padding: 12px 20px;
+  background: #00e6e6;
+  color: black;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #00cccc;
+  color: white;
+  transform: scale(1.1);
 }
