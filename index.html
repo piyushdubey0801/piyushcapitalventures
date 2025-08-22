@@ -323,53 +323,214 @@
         }
         
         /* About Section */
-        <!-- Founder Section - About के बाद Add करें -->
-        <div class="investor-gallery">
-        <div class="investor-card">
-            <img src="https://i.postimg.cc/JzP00CkL/Whats-App-Image-2025-08-22-at-12-10-23-PM.jpg" alt="Piyush Dubey" class="investor-image" onclick="openLightbox(this.src, this.alt)">
-            <div class="investor-info">
-                <h3 class="investor-name">Piyush Dubey</h3>
-                <p class="investor-bio">An emerging investor known for his strategic approach to equity investments.</p>
+          .photo-upload-section {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            margin: 40px 0;
+            border: 1px solid var(--card-border);
+            text-align: center;
+        }
+        
+        .upload-title {
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .upload-instructions {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .upload-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .upload-item {
+            width: 200px;
+            text-align: center;
+        }
+        
+        .upload-preview {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--card-border);
+            margin-bottom: 10px;
+            background-color: var(--primary-dark);
+        }
+        
+        .upload-label {
+            display: block;
+            margin-top: 10px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        .upload-btn {
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 10px;
+        }
+        
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+        
+        .hidden-input {
+            display: none;
+        }
+        
+        /* Success message */
+        .upload-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--green-up);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Your existing header and hero sections remain the same -->
+
+    <!-- Add this photo upload section right after the hero section -->
+    <section class="photo-upload-section">
+        <h2 class="upload-title">Upload Investor Photos</h2>
+        <p class="upload-instructions">Click on each investor's image below to upload a photo directly from your device. After uploading all photos, click the "Save Photos" button.</p>
+        
+        <div class="upload-container">
+            <!-- Piyush Dubey -->
+            <div class="upload-item">
+                <img id="preview-piyush" src="https://i.postimg.cc/JzP00CkL/Whats-App-Image-2025-08-22-at-12-10-23-PM.jpg" alt="Piyush Dubey" class="upload-preview" onclick="triggerUpload('piyush')">
+                <span class="upload-label">Piyush Dubey</span>
+                <input type="file" id="upload-piyush" class="hidden-input" accept="image/*" onchange="handleUpload(this, 'preview-piyush')">
+            </div>
+            
+            <!-- Warren Buffett -->
+            <div class="upload-item">
+                <img id="preview-warren" src="https://i.postimg.cc/y6bDXHQY/Warren-buffet.jpg" alt="Warren Buffett" class="upload-preview" onclick="triggerUpload('warren')">
+                <span class="upload-label">Warren Buffett</span>
+                <input type="file" id="upload-warren" class="hidden-input" accept="image/*" onchange="handleUpload(this, 'warren')">
+            </div>
+            
+            <!-- Rakesh Jhunjhunwala -->
+            <div class="upload-item">
+                <img id="preview-rakesh" src="https://i.postimg.cc/MG6ZJPPF/Rakesh-Jhunjhunwala.png" alt="Rakesh Jhunjhunwala" class="upload-preview" onclick="triggerUpload('rakesh')">
+                <span class="upload-label">Rakesh Jhunjhunwala</span>
+                <input type="file" id="upload-rakesh" class="hidden-input" accept="image/*" onchange="handleUpload(this, 'rakesh')">
+            </div>
+            
+            <!-- Radhakishan Damani -->
+            <div class="upload-item">
+                <img id="preview-radhakishan" src="https://i.postimg.cc/65ZprG4Y/outlook-20230607093543.jpg" alt="Radhakishan Damani" class="upload-preview" onclick="triggerUpload('radhakishan')">
+                <span class="upload-label">Radhakishan Damani</span>
+                <input type="file" id="upload-radhakishan" class="hidden-input" accept="image/*" onchange="handleUpload(this, 'radhakishan')">
+            </div>
+            
+            <!-- Ramdeo Agarwal -->
+            <div class="upload-item">
+                <img id="preview-ramdeo" src="https://i.postimg.cc/PqjppQ6W/Raamdeo-Agarwal-Success-Story-cover.jpg" alt="Ramdeo Agarwal" class="upload-preview" onclick="triggerUpload('ramdeo')">
+                <span class="upload-label">Ramdeo Agarwal</span>
+                <input type="file" id="upload-ramdeo" class="hidden-input" accept="image/*" onchange="handleUpload(this, 'ramdeo')">
             </div>
         </div>
         
-        <div class="investor-card">
-            <img src="https://i.postimg.cc/y6bDXHQY/Warren-buffet.jpg" alt="Warren Buffett" class="investor-image" onclick="openLightbox(this.src, this.alt)">
-            <div class="investor-info">
-                <h3 class="investor-name">Warren Buffett</h3>
-                <p class="investor-bio">CEO of Berkshire Hathaway, known as the "Oracle of Omaha".</p>
-            </div>
-        </div>
+        <button class="upload-btn" onclick="saveAllPhotos()">
+            <i class="fas fa-save"></i> Save All Photos
+        </button>
         
-        <div class="investor-card">
-            <img src="https://i.postimg.cc/MG6ZJPPF/Rakesh-Jhunjhunwala.png" alt="Rakesh Jhunjhunwala" class="investor-image" onclick="openLightbox(this.src, this.alt)">
-            <div class="investor-info">
-                <h3 class="investor-name">Rakesh Jhunjhunwala</h3>
-                <p class="investor-bio">Known as "India's Warren Buffett" for his successful investments.</p>
-            </div>
+        <div class="upload-success" id="upload-success">
+            <i class="fas fa-check-circle"></i> Photos saved successfully! Refresh to see changes.
         </div>
+    </section>
+
+    <!-- Your existing content remains the same -->
+
+    <script>
+        // Add these functions to your existing script
         
-        <div class="investor-card">
-            <img src="https://i.postimg.cc/65ZprG4Y/outlook-20230607093543.jpg" alt="Radhakishan Damani" class="investor-image" onclick="openLightbox(this.src, this.alt)">
-            <div class="investor-info">
-                <h3 class="investor-name">Radhakishan Damani</h3>
-                <p class="investor-bio">Indian investor and founder of DMart, known for value investing.</p>
-            </div>
-        </div>
+        // Trigger file input when clicking on image
+        function triggerUpload(investor) {
+            document.getElementById(`upload-${investor}`).click();
+        }
         
-        <div class="investor-card">
-            <img src="https://i.postimg.cc/PqjppQ6W/Raamdeo-Agarwal-Success-Story-cover.jpg" alt="Ramdeo Agarwal" class="investor-image" onclick="openLightbox(this.src, this.alt)">
-            <div class="investor-info">
-                <h3 class="investor-name">Ramdeo Agarwal</h3>
-                <p class="investor-bio">Co-founder of Motilal Oswal Financial Services, equity research expert.</p>
-            </div>
-        </div>
-<section class="founder-section">
-    <div class="founder-container">
-        <div class="founder-image">
-            <img src="your-photo.jpg" alt="Piyush Dubey - Founder & CEO" class="founder-img">
-            <div class="founder-badge">Founder & CEO</div>
-        </div>
+        // Handle image upload and preview
+        function handleUpload(input, previewId) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById(previewId).src = e.target.result;
+                    // Store the image data in localStorage temporarily
+                    localStorage.setItem(previewId, e.target.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+        
+        // Save all photos to localStorage
+        function saveAllPhotos() {
+            // Get all preview images
+            const investors = ['piyush', 'warren', 'rakesh', 'radhakishan', 'ramdeo'];
+            
+            investors.forEach(investor => {
+                const previewId = `preview-${investor}`;
+                const imageSrc = document.getElementById(previewId).src;
+                
+                // Save to localStorage if it's a new upload (data URL)
+                if (imageSrc.startsWith('data:image')) {
+                    localStorage.setItem(previewId, imageSrc);
+                }
+            });
+            
+            // Show success message
+            const successMsg = document.getElementById('upload-success');
+            successMsg.style.display = 'block';
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Load saved images on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const investors = ['piyush', 'warren', 'rakesh', 'radhakishan', 'ramdeo'];
+            
+            investors.forEach(investor => {
+                const previewId = `preview-${investor}`;
+                const savedImage = localStorage.getItem(previewId);
+                
+                if (savedImage) {
+                    document.getElementById(previewId).src = savedImage;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
         <div class="founder-content">
             <h2>Meet <span>Piyush Dubey</span></h2>
             <p class="founder-bio">
