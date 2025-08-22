@@ -713,48 +713,44 @@
 </head>
 <body>
     <!-- Header -->
-<header>
-    <div class="container header-container">
-        <div class="logo">
+<header class="header-premium">
+    <div class="header-container">
+        <a href="#" class="logo-premium">
             <div class="logo-icon">📈</div>
             <div class="logo-text">Piyush Capital Ventures</div>
-        </div>
+        </a>
         
-        <nav>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#top-shares">Top Shares</a>
-            <a href="#offers">Offers</a>
+        <nav class="nav-premium">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#top-shares" class="nav-link">Top Shares</a>
+            <a href="#offers" class="nav-link">Offers</a>
+            
+            <div class="language-selector-premium">
+                <select id="langSelect" onchange="changeLanguage()">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                </select>
+            </div>
         </nav>
-        
     </div>
 </header>
 
-<!-- Language Selector को header के बाहर रखें -->
-<div class="language-selector">
-    <select id="langSelect" onchange="changeLanguage()">
-        <option value="en">English</option>
-        <option value="hi">हिन्दी (Hindi)</option>
-    </select>
-</div>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-content">
-            <h1 class="hero-title">Premium <span>Stock Market</span> Advisory & Investment Guidance</h1>
-            <p class="hero-subtitle">Get expert stock recommendations, market insights, and personalized investment strategies to maximize your returns in bull and bear markets</p>
-            
-            <div class="hero-buttons">
-                <a href="#offers" class="btn-primary">
-                    <i class="fas fa-chart-line"></i> Explore Services
-                </a>
-                <a href="tel:+918718930974" class="btn-secondary">
-                    <i class="fas fa-phone-alt"></i> Contact Us
-                </a>
-            </div>
+<section class="hero-premium">
+    <div class="hero-content">
+        <h1 class="hero-title">Premium <span>Stock Market</span> Advisory</h1>
+        <p class="hero-subtitle">Expert guidance for smart investments and wealth creation</p>
+        
+        <div class="hero-buttons">
+            <a href="#offers" class="btn-premium btn-primary-premium">
+                <i class="fas fa-chart-line"></i> Explore Services
+            </a>
+            <a href="tel:+918718930974" class="btn-premium btn-secondary-premium">
+                <i class="fas fa-phone-alt"></i> Contact Us
+            </a>
         </div>
-    </section>
-
+    </div>
+</section>
     <div class="container">
         <!-- About Section -->
         <section id="about">
