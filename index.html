@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -10,7 +9,6 @@
     <title>Piyush Capital Ventures - Premium Stock Market Advisory</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <style>
         :root {
             --primary-dark: #0f172a;
@@ -26,7 +24,6 @@
             --card-border: #334155;
             --gradient-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            --gradient-green: linear-gradient(135deg, #10b981 0%, #059669 100%);
         }
         
         * {
@@ -53,7 +50,7 @@
         header {
             background: var(--primary-dark);
             color: var(--text-primary);
-            padding: 20px 0;
+            padding: 15px 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -146,9 +143,28 @@
             box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
         }
         
+        /* Language Selector */
+        .language-selector {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 2000;
+        }
+        
+        .language-selector select {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
         /* Hero Section */
         .hero {
-            padding: 160px 0 80px;
+            padding: 140px 0 80px;
             background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23f59e0b' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
             position: relative;
             overflow: hidden;
@@ -174,7 +190,7 @@
         }
         
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
             color: var(--text-primary);
             margin-bottom: 20px;
@@ -188,7 +204,7 @@
         }
         
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--text-secondary);
             margin-bottom: 40px;
             font-weight: 400;
@@ -215,6 +231,7 @@
             align-items: center;
             gap: 10px;
             box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            text-decoration: none;
         }
         
         .btn-primary:hover {
@@ -235,32 +252,13 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            text-decoration: none;
         }
         
         .btn-secondary:hover {
             border-color: var(--accent);
             color: var(--accent);
             transform: translateY(-3px);
-        }
-        
-        /* Language Selector */
-        .language-selector {
-            position: fixed;
-            top: 90px;
-            right: 20px;
-            z-index: 2000;
-        }
-        
-        .language-selector select {
-            background: var(--card-bg);
-            color: var(--text-primary);
-            padding: 10px 14px;
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
         /* Main Content */
@@ -273,8 +271,8 @@
         h2 {
             text-align: center;
             color: var(--text-primary);
-            margin-bottom: 50px;
-            font-size: 2.5rem;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
             position: relative;
             padding-bottom: 15px;
             font-weight: 700;
@@ -295,8 +293,8 @@
         .section-subtitle {
             text-align: center;
             color: var(--text-secondary);
-            margin-bottom: 60px;
-            font-size: 1.2rem;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
@@ -304,7 +302,7 @@
         
         .box {
             background: var(--card-bg);
-            padding: 30px;
+            padding: 25px;
             border-radius: 16px;
             margin: 15px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
@@ -320,19 +318,19 @@
         .flex-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 25px;
             justify-content: center;
         }
         
         /* About Section */
         #about {
-            margin-bottom: 80px;
+            margin-bottom: 70px;
             padding-top: 40px;
         }
         
         /* Offers Section */
         #offers {
-            margin: 80px 0;
+            margin: 70px 0;
         }
         
         .offer-card {
@@ -340,7 +338,7 @@
             min-width: 350px;
             position: relative;
             overflow: hidden;
-            padding: 40px 30px;
+            padding: 30px;
         }
         
         .offer-card::before {
@@ -359,12 +357,12 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
         }
         
         .offer-card h3 i {
             color: var(--accent);
-            font-size: 1.8rem;
+            font-size: 1.6rem;
         }
         
         .price-tag {
@@ -424,15 +422,16 @@
         
         /* Services Section */
         #services {
-            margin: 80px 0;
+            margin: 70px 0;
         }
         
         .service-box {
             text-align: center;
-            padding: 40px 25px;
+            padding: 30px 20px;
             flex: 1;
             min-width: 220px;
             transition: all 0.3s;
+            cursor: pointer;
         }
         
         .service-box:hover {
@@ -440,7 +439,7 @@
         }
         
         .service-box i {
-            font-size: 48px;
+            font-size: 42px;
             color: var(--accent);
             margin-bottom: 20px;
             background: var(--gradient-accent);
@@ -451,12 +450,64 @@
         .service-box h3 {
             color: var(--text-primary);
             margin-bottom: 15px;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Service Details Modal */
+        .service-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--card-border);
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--accent);
+        }
+        
+        .modal-title {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+        
+        .modal-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
         }
         
         /* Top Shares Section */
         #top-shares {
-            margin: 80px 0;
+            margin: 70px 0;
         }
         
         .stock-list {
@@ -474,6 +525,7 @@
             align-items: center;
             transition: all 0.3s;
             border: 1px solid var(--card-border);
+            cursor: pointer;
         }
         
         .stock-list li:hover {
@@ -481,88 +533,29 @@
             border-color: var(--accent);
         }
         
-        .stock-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .stock-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: var(--gradient-accent);
-            display: flex;
-            align-items: center;
+        /* Stock Details Modal */
+        .stock-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            z-index: 2000;
             justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-        
-        .stock-details {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .stock-name {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-        
-        .stock-symbol {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-        
-        .stock-price {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--text-primary);
-        }
-        
-        .stock-change {
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-        
-        .stock-change.up {
-            background: var(--green-up);
-            color: white;
-        }
-        
-        .stock-change.down {
-            background: var(--red-down);
-            color: white;
-        }
-        
-        /* Real-time Market Data Ticker */
-        .market-ticker {
-            background: var(--primary-dark);
-            padding: 15px 0;
-            border-top: 1px solid var(--card-border);
-            border-bottom: 1px solid var(--card-border);
-            overflow: hidden;
-            position: relative;
-            margin: 60px 0;
-        }
-        
-        .ticker-content {
-            display: flex;
-            animation: tickerAnimation 30s linear infinite;
-            white-space: nowrap;
-        }
-        
-        .ticker-item {
-            display: flex;
             align-items: center;
-            margin: 0 30px;
         }
         
-        @keyframes tickerAnimation {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+        .stock-modal-content {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--card-border);
+            position: relative;
         }
         
         /* Footer */
@@ -570,7 +563,7 @@
             background: var(--primary-dark);
             color: white;
             padding: 60px 0 20px;
-            margin-top: 100px;
+            margin-top: 80px;
         }
         
         .footer-container {
@@ -589,7 +582,7 @@
         }
         
         .footer-about h3 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 20px;
             background: var(--gradient-accent);
             -webkit-background-clip: text;
@@ -598,7 +591,7 @@
         }
         
         .footer-contact h4, .footer-links h4 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 20px;
             color: var(--text-primary);
             position: relative;
@@ -668,7 +661,7 @@
         /* Responsive Design */
         @media (max-width: 968px) {
             .hero-title {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
             
             nav {
@@ -696,7 +689,7 @@
         
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .hero-subtitle {
@@ -704,45 +697,29 @@
             }
             
             h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .header-buttons {
                 display: none;
             }
-        }
-        
-        /* Animation Classes */
-        .animate-fadeIn {
-            animation: fadeIn 1s ease-in-out;
-        }
-        
-        .animate-slideUp {
-            animation: slideUp 0.8s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            
+            .language-selector {
+                top: 70px;
+                right: 15px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-     <div class="container header-container">
-        <div class="logo">
-            <div class="logo-icon">📈</div>
-            <div class="logo-text">Piyush Capital Ventures</div>
-        </div>
-        
-        <!-- Navigation और Language Selector एक साथ -->
-        <div class="nav-with-language">
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">📈</div>
+                <div class="logo-text">Piyush Capital Ventures</div>
+            </div>
+            
             <nav>
                 <a href="#about">About</a>
                 <a href="#services">Services</a>
@@ -750,13 +727,21 @@
                 <a href="#offers">Offers</a>
             </nav>
             
-            <div class="language-selector">
-                <select id="langSelect" onchange="changeLanguage()">
-                    <option value="en">English</option>
-                    <option value="hi">हिन्दी</option>
-                </select>
+            <div class="header-buttons">
+                <button class="connect-wallet">
+                    <i class="fas fa-wallet"></i> Connect Wallet
+                </button>
             </div>
         </div>
+    </header>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <select id="langSelect" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+        </select>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -764,20 +749,20 @@
             <h1 class="hero-title">Premium <span>Stock Market</span> Advisory & Investment Guidance</h1>
             <p class="hero-subtitle">Get expert stock recommendations, market insights, and personalized investment strategies to maximize your returns in bull and bear markets</p>
             
-           <div class="hero-buttons">
-    <a href="#offers" class="btn-primary">
-        <i class="fas fa-chart-line"></i> Explore Services
-    </a>
-    <a href="tel:+918718930974" class="btn-secondary">
-        <i class="fas fa-phone-alt"></i> Contact Us
-    </a>
-</div>
+            <div class="hero-buttons">
+                <a href="#offers" class="btn-primary">
+                    <i class="fas fa-chart-line"></i> Explore Services
+                </a>
+                <a href="tel:+918718930974" class="btn-secondary">
+                    <i class="fas fa-phone-alt"></i> Contact Us
+                </a>
+            </div>
         </div>
     </section>
 
     <div class="container">
         <!-- About Section -->
-        <section id="about" class="animate-fadeIn">
+        <section id="about">
             <h2>About Piyush Capital Ventures</h2>
             <p class="section-subtitle">Your trusted partner in the stock market journey with expert guidance and research-backed recommendations</p>
             
@@ -789,7 +774,7 @@
         </section>
 
         <!-- Offers Section -->
-        <section id="offers" class="animate-slideUp">
+        <section id="offers">
             <h2>Exclusive Offers</h2>
             <p class="section-subtitle">Premium services designed to enhance your stock market knowledge and investment performance</p>
             
@@ -822,36 +807,36 @@
         </section>
 
         <!-- Services Section -->
-        <section id="services" class="animate-slideUp">
+        <section id="services">
             <h2>Our Services</h2>
             <p class="section-subtitle">Comprehensive stock market services designed to meet all your investment needs</p>
             
             <div class="flex-container">
-                <div class="box service-box">
+                <div class="box service-box" onclick="showServiceDetails('Stock Market Guidance', 'Get expert advice on equity investments, trading strategies, portfolio management, and market timing. Our guidance helps you make informed decisions in volatile market conditions.')">
                     <i class="fas fa-chart-line"></i>
                     <h3>Stock Market Guidance</h3>
                     <p>Expert advice on equity investments and trading strategies</p>
                 </div>
                 
-                <div class="box service-box">
+                <div class="box service-box" onclick="showServiceDetails('Mutual Fund Advisory', 'We provide comprehensive mutual fund advisory services including portfolio allocation, fund selection, risk assessment, and performance monitoring.')">
                     <i class="fas fa-chart-pie"></i>
                     <h3>Mutual Fund Advisory</h3>
                     <p>Portfolio allocation and fund selection guidance</p>
                 </div>
                 
-                <div class="box service-box">
+                <div class="box service-box" onclick="showServiceDetails('Wealth Management', 'Long-term wealth creation strategies tailored to your financial goals, risk appetite, and investment horizon.')">
                     <i class="fas fa-coins"></i>
                     <h3>Wealth Management</h3>
                     <p>Long-term wealth creation strategies</p>
                 </div>
                 
-                <div class="box service-box">
+                <div class="box service-box" onclick="showServiceDetails('Financial Training', 'Comprehensive courses for all experience levels covering technical analysis, fundamental analysis, and risk management techniques.')">
                     <i class="fas fa-book-reader"></i>
                     <h3>Financial Training</h3>
                     <p>Comprehensive courses for all experience levels</p>
                 </div>
                 
-                <div class="box service-box">
+                <div class="box service-box" onclick="showServiceDetails('Market Research', 'In-depth analysis of sectors and companies including financial statement analysis, industry trends, and competitive positioning.')">
                     <i class="fas fa-search-dollar"></i>
                     <h3>Market Research</h3>
                     <p>In-depth analysis of sectors and companies</p>
@@ -859,39 +844,55 @@
             </div>
         </section>
 
-   <!-- Top Shares -->
-        <section id="top-shares" class="animate-fadeIn">
+        <!-- Service Details Modal -->
+        <div class="service-modal" id="serviceModal">
+            <div class="modal-content">
+                <button class="close-modal" onclick="closeServiceModal()">&times;</button>
+                <h2 class="modal-title" id="serviceModalTitle"></h2>
+                <p class="modal-subtitle" id="serviceModalDescription"></p>
+            </div>
+        </div>
+
+        <!-- Top Shares Section -->
+        <section id="top-shares">
             <h2>Top Share Recommendations</h2>
+            <p class="section-subtitle">Curated selection of high-potential stocks based on thorough research and analysis</p>
+            
             <div class="box">
                 <ul class="stock-list">
-                    <li>
+                    <li onclick="showStockDetails('Tata Steel', 'Strong fundamentals in steel sector, government infrastructure focus, export potential. Current price attractive for long-term investment.')">
                         <span>Tata Steel</span>
-           
                     </li>
-                    <li>
+                    <li onclick="showStockDetails('Reliance Industries', 'Diversified business model, strong growth in retail and digital services, robust financials. Good for both short and long term.')">
                         <span>Reliance Industries</span>
-             
                     </li>
-                    <li>
+                    <li onclick="showStockDetails('Infosys', 'IT sector growth, digital transformation demand, stable management, consistent dividend payer. Good for conservative investors.')">
                         <span>Infosys</span>
-                  
                     </li>
-                    <li>
+                    <li onclick="showStockDetails('HDFC Bank', 'Strong banking fundamentals, stable management, consistent growth. Safe bet for long-term portfolio.')">
                         <span>HDFC Bank</span>
-                      
                     </li>
-                    <li>
+                    <li onclick="showStockDetails('Adani Enterprises', 'Infrastructure focus, government projects alignment, growth potential in energy and logistics sectors.')">
                         <span>Adani Enterprises</span>
-                       
                     </li>
                 </ul>
-                <p>These shares are selected based on fundamentals, growth potential, and market trends.</p>
+                <p>These shares are selected based on fundamentals, growth potential, and market trends. Click on any share to see detailed analysis.</p>
             </div>
         </section>
+
+        <!-- Stock Details Modal -->
+        <div class="stock-modal" id="stockModal">
+            <div class="stock-modal-content">
+                <button class="close-modal" onclick="closeStockModal()">&times;</button>
+                <h2 class="modal-title" id="stockModalTitle"></h2>
+                <p class="modal-subtitle" id="stockModalDescription"></p>
+                <div class="price-tag">Recommended</div>
+            </div>
+        </div>
     </div>
 
     <footer class="site-footer">
-        <div class="footer-container">
+        <div class="container footer-container">
             <div class="footer-about">
                 <h3>Piyush Capital Ventures</h3>
                 <p>🐂 Smart Investments | 📊 Share Market Insights</p>
@@ -920,6 +921,7 @@
     </footer>
 
     <script>
+        // Language switch function
         function changeLanguage(){
             let lang = document.getElementById("langSelect").value;
             if(lang === "hi"){
@@ -934,6 +936,38 @@
                 <br><b>Disclaimer:</b> I am not SEBI registered but provide detailed insights and guidance to empower your financial journey.</p>`;
             }
         }
+
+        // Service Details Modal
+        function showServiceDetails(title, description) {
+            document.getElementById('serviceModalTitle').textContent = title;
+            document.getElementById('serviceModalDescription').textContent = description;
+            document.getElementById('serviceModal').style.display = 'flex';
+        }
+
+        function closeServiceModal() {
+            document.getElementById('serviceModal').style.display = 'none';
+        }
+
+        // Stock Details Modal
+        function showStockDetails(title, description) {
+            document.getElementById('stockModalTitle').textContent = title;
+            document.getElementById('stockModalDescription').textContent = description;
+            document.getElementById('stockModal').style.display = 'flex';
+        }
+
+        function closeStockModal() {
+            document.getElementById('stockModal').style.display = 'none';
+        }
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === document.getElementById('serviceModal')) {
+                closeServiceModal();
+            }
+            if (e.target === document.getElementById('stockModal')) {
+                closeStockModal();
+            }
+        });
 
         // Simple animation on scroll
         document.addEventListener('DOMContentLoaded', function() {
