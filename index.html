@@ -323,85 +323,300 @@
         }
         
         /* About Section */
-        <!-- Founder Section - About के बाद Add करें -->
-        <div class="investor-gallery">
-        <div class="investor-card">
-            <img src="https://i.postimg.cc/JzP00CkL/Whats-App-Image-2025-08-22-at-12-10-23-PM.jpg" alt="Piyush Dubey" class="investor-image" onclick="openLightbox(this.src, this.alt)">
-            <div class="investor-info">
-                <h3 class="investor-name">Piyush Dubey</h3>
-                <p class="investor-bio">An emerging investor known for his strategic approach to equity investments.</p>
-            </div>
-        </div>
-        
-        <div class="investor-card">
-            <img src="https://i.postimg.cc/y6bDXHQY/Warren-buffet.jpg" alt="Warren Buffett" class="investor-image" onclick="openLightbox(this.src, this.alt)">
-            <div class="investor-info">
-                <h3 class="investor-name">Warren Buffett</h3>
-                <p class="investor-bio">CEO of Berkshire Hathaway, known as the "Oracle of Omaha".</p>
-            </div>
-        </div>
-        
-        <div class="investor-card">
-            <img src="https://i.postimg.cc/MG6ZJPPF/Rakesh-Jhunjhunwala.png" alt="Rakesh Jhunjhunwala" class="investor-image" onclick="openLightbox(this.src, this.alt)">
-            <div class="investor-info">
-                <h3 class="investor-name">Rakesh Jhunjhunwala</h3>
-                <p class="investor-bio">Known as "India's Warren Buffett" for his successful investments.</p>
-            </div>
-        </div>
-        
-        <div class="investor-card">
-            <img src="https://i.postimg.cc/65ZprG4Y/outlook-20230607093543.jpg" alt="Radhakishan Damani" class="investor-image" onclick="openLightbox(this.src, this.alt)">
-            <div class="investor-info">
-                <h3 class="investor-name">Radhakishan Damani</h3>
-                <p class="investor-bio">Indian investor and founder of DMart, known for value investing.</p>
-            </div>
-        </div>
-        
-        <div class="investor-card">
-            <img src="https://i.postimg.cc/PqjppQ6W/Raamdeo-Agarwal-Success-Story-cover.jpg" alt="Ramdeo Agarwal" class="investor-image" onclick="openLightbox(this.src, this.alt)">
-            <div class="investor-info">
-                <h3 class="investor-name">Ramdeo Agarwal</h3>
-                <p class="investor-bio">Co-founder of Motilal Oswal Financial Services, equity research expert.</p>
-            </div>
-        </div>
-<section class="founder-section">
-    <div class="founder-container">
-        <div class="founder-image">
-            <img src="your-photo.jpg" alt="Piyush Dubey - Founder & CEO" class="founder-img">
-            <div class="founder-badge">Founder & CEO</div>
-        </div>
-        <div class="founder-content">
-            <h2>Meet <span>Piyush Dubey</span></h2>
-            <p class="founder-bio">
-                7+ years of expertise in stock markets. Passionate investor and trader with proven track record 
-                of delivering exceptional returns. My mission is to democratize stock market knowledge and help 
-                investors build sustainable wealth through research-backed strategies and personalized guidance.
-            </p>
-            
-            <div class="founder-stats">
-                <div class="founder-stat">
-                    <div class="founder-stat-number">7+</div>
-                    <div class="founder-stat-label">Years Experience</div>
-                </div>
-                <div class="founder-stat">
-                    <div class="founder-stat-number">1000+</div>
-                    <div class="founder-stat-label">Students Trained</div>
-                </div>
-                <div class="founder-stat">
-                    <div class="founder-stat-number">27%</div>
-                    <div class="founder-stat-label">Avg. Returns</div>
-                </div>
-                <div class="founder-stat">
-                    <div class="founder-stat-number">95%</div>
-                    <div class="founder-stat-label">Success Rate</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
         #about {
             margin-bottom: 70px;
             padding-top: 40px;
+        }
+        
+        /* Photo Upload Section */
+        .photo-upload-section {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            margin: 40px 0;
+            border: 1px solid var(--card-border);
+            text-align: center;
+        }
+        
+        .upload-title {
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .upload-instructions {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .upload-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .upload-item {
+            width: 200px;
+            text-align: center;
+        }
+        
+        .upload-preview {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--card-border);
+            margin-bottom: 10px;
+            background-color: var(--primary-dark);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .upload-preview:hover {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+        
+        .upload-label {
+            display: block;
+            margin-top: 10px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        .upload-btn {
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 10px;
+        }
+        
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+        
+        .hidden-input {
+            display: none;
+        }
+        
+        /* Success message */
+        .upload-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--green-up);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        /* Founder Section */
+        .founder-section {
+            padding: 60px 0;
+            background: var(--primary-dark);
+            margin: 40px 0;
+            border-radius: 16px;
+        }
+        
+        .founder-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .founder-image {
+            position: relative;
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .founder-img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+        }
+        
+        .founder-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gradient-accent);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .founder-content {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .founder-content h2 {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        
+        .founder-content h2 span {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .founder-bio {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .founder-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .founder-stat {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+            padding: 15px;
+            background: rgba(245, 158, 11, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+        
+        .founder-stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        .founder-stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Investor Gallery */
+        .investor-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        
+        .investor-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            width: 280px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            border: 1px solid var(--card-border);
+        }
+        
+        .investor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent);
+        }
+        
+        .investor-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        
+        .investor-info {
+            padding: 20px;
+        }
+        
+        .investor-name {
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .investor-bio {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .lightbox-caption {
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .close-lightbox {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-lightbox:hover {
+            color: var(--accent);
         }
         
         /* Offers Section */
@@ -761,6 +976,15 @@
                 flex-direction: column;
                 align-items: center;
             }
+            
+            .founder-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .founder-content h2 {
+                text-align: center;
+            }
         }
         
         @media (max-width: 768px) {
@@ -784,182 +1008,121 @@
                 top: 70px;
                 right: 15px;
             }
+            
+            .upload-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .upload-item {
+                width: 100%;
+                max-width: 250px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-<header class="header-premium">
-    <div class="header-container">
-        <a href="#" class="logo-premium">
-            <div class="logo-icon">📈</div>
-            <div class="logo-text">Piyush Capital Ventures</div>
-        </a>
-        
-        <nav class="nav-premium">
-            <a href="#about" class="nav-link">About</a>
-            <a href="#services" class="nav-link">Services</a>
-            <a href="#top-shares" class="nav-link">Top Shares</a>
-            <a href="#offers" class="nav-link">Offers</a>
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">📈</div>
+                <div class="logo-text">Piyush Capital Ventures</div>
+            </a>
             
-            <div class="language-selector-premium">
-                <select id="langSelect" onchange="changeLanguage()">
-                    <option value="en">English</option>
-                    <option value="hi">हिन्दी</option>
-                </select>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#top-shares">Top Shares</a>
+                <a href="#offers">Offers</a>
+            </nav>
+            
+            <div class="header-buttons">
+                <button class="connect-wallet">
+                    <i class="fas fa-wallet"></i> Connect Wallet
+                </button>
             </div>
-        </nav>
-    </div>
-</header>
-
-<section class="hero-premium">
-    <div class="hero-content">
-        <h1 class="hero-title">Premium <span>Stock Market</span> Advisory</h1>
-        <p class="hero-subtitle">Expert guidance for smart investments and wealth creation</p>
-        
-        <div class="hero-buttons">
-            <a href="#offers" class="btn-premium btn-primary-premium">
-                <i class="fas fa-chart-line"></i> Explore Services
-            </a>
-            <a href="tel:+918718930974" class="btn-premium btn-secondary-premium">
-                <i class="fas fa-phone-alt"></i> Contact Us
-            </a>
         </div>
+    </header>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <select id="langSelect" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+        </select>
     </div>
-</section>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Premium <span>Stock Market</span> Advisory</h1>
+            <p class="hero-subtitle">Expert guidance for smart investments and wealth creation</p>
+            
+            <div class="hero-buttons">
+                <a href="#offers" class="btn-primary">
+                    <i class="fas fa-chart-line"></i> Explore Services
+                </a>
+                <a href="tel:+918718930974" class="btn-secondary">
+                    <i class="fas fa-phone-alt"></i> Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
     <div class="container">
+        <!-- Photo Upload Section -->
+        <section class="photo-upload-section">
+            <h2 class="upload-title">Upload Investor Photos</h2>
+            <p class="upload-instructions">Click on each investor's image below to upload a photo directly from your device. After uploading all photos, click the "Save Photos" button.</p>
+            
+            <div class="upload-container">
+                <!-- Piyush Dubey -->
+                <div class="upload-item">
+                    <img id="preview-piyush" src="https://i.postimg.cc/JzP00CkL/Whats-App-Image-2025-08-22-at-12-10-23-PM.jpg" alt="Piyush Dubey" class="upload-preview" onclick="triggerUpload('piyush')">
+                    <span class="upload-label">Piyush Dubey</span>
+                    <input type="file" id="upload-piyush" class="hidden-input" accept="image/*" onchange="handleUpload(this, 'preview-piyush')">
+                </div>
+                
+                <!-- Warren Buffett -->
+                <div class="upload-item">
+                    <img id="preview-warren" src="https://i.postimg.cc/y6bDXHQY/Warren-buffet.jpg" alt="Warren Buffett" class="upload-preview" onclick="triggerUpload('warren')">
+                    <span class="upload-label">Warren Buffett</span>
+                    <input type="file" id="upload-warren" class="hidden-input" accept="image/*" onchange="handleUpload(this, 'preview-warren')">
+                </div>
+                
+                <!-- Rakesh Jhunjhunwala -->
+                <div class="upload-item">
+                    <img id="preview-rakesh" src="https://i.postimg.cc/MG6ZJPPF/Rakesh-Jhunjhunwala.png" alt="Rakesh Jhunjhunwala" class="upload-preview" onclick="triggerUpload('rakesh')">
+                    <span class="upload-label">Rakesh Jhunjhunwala</span>
+                    <input type="file" id="upload-rakesh" class="hidden-input" accept="image/*" onchange="handleUpload(this, 'preview-rakesh')">
+                </div>
+                
+                <!-- Radhakishan Damani -->
+                <div class="upload-item">
+                    <img id="preview-radhakishan" src="https://i.postimg.cc/65ZprG4Y/outlook-20230607093543.jpg" alt="Radhakishan Damani" class="upload-preview" onclick="triggerUpload('radhakishan')">
+                    <span class="upload-label">Radhakishan Damani</span>
+                    <input type="file" id="upload-radhakishan" class="hidden-input" accept="image/*" onchange="handleUpload(this, 'preview-radhakishan')">
+                </div>
+                
+                <!-- Ramdeo Agarwal -->
+                <div class="upload-item">
+                    <img id="preview-ramdeo" src="https://i.postimg.cc/PqjppQ6W/Raamdeo-Agarwal-Success-Story-cover.jpg" alt="Ramdeo Agarwal" class="upload-preview" onclick="triggerUpload('ramdeo')">
+                    <span class="upload-label">Ramdeo Agarwal</span>
+                    <input type="file" id="upload-ramdeo" class="hidden-input" accept="image/*" onchange="handleUpload(this, 'preview-ramdeo')">
+                </div>
+            </div>
+            
+            <button class="upload-btn" onclick="saveAllPhotos()">
+                <i class="fas fa-save"></i> Save All Photos
+            </button>
+            
+            <div class="upload-success" id="upload-success">
+                <i class="fas fa-check-circle"></i> Photos saved successfully! Refresh to see changes.
+            </div>
+        </section>
+
         <!-- About Section -->
-        <!-- Top Investors Section -->
-<section id="investors" class="section-premium">
-    <div class="container">
-        <h2>Wisdom from Investing Legends</h2>
-        <p class="section-subtitle">Learn from the greatest investors who transformed the world of stock markets</p>
-        
-        <div class="investors-grid">
-            <!-- Warren Buffett -->
-            <div class="investor-card">
-                <div class="investor-image">
-                    <img src="https://images.unsplash.com/photo-1621570366592-2a5c717269c0?w=400&h=400&fit=crop&crop=face" alt="Warren Buffett">
-                    <div class="investor-rank">1</div>
-                </div>
-                <div class="investor-content">
-                    <h3>Warren Buffett</h3>
-                    <p class="investor-title">The Oracle of Omaha</p>
-                    <div class="investor-quote">
-                        <i class="fas fa-quote-left"></i>
-                        <p>"Be fearful when others are greedy and greedy when others are fearful."</p>
-                    </div>
-                    <div class="investor-stats">
-                        <span class="stat">Net Worth: $100B+</span>
-                        <span class="stat">Annual Return: 20%</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Rakesh Jhunjhunwala -->
-            <div class="investor-card">
-                <div class="investor-image">
-                    <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=400&h=400&fit=crop&crop=face" alt="Rakesh Jhunjhunwala">
-                    <div class="investor-rank">2</div>
-                </div>
-                <div class="investor-content">
-                    <h3>Rakesh Jhunjhunwala</h3>
-                    <p class="investor-title">India's Warren Buffett</p>
-                    <div class="investor-quote">
-                        <i class="fas fa-quote-left"></i>
-                        <p>"If you believe in the India story, the only way you can play it is through stocks."</p>
-                    </div>
-                    <div class="investor-stats">
-                        <span class="stat">Net Worth: $5.8B</span>
-                        <span class="stat">Initial Investment: ₹5,000</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Radhakishan Damani -->
-            <div class="investor-card">
-                <div class="investor-image">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face" alt="Radhakishan Damani">
-                    <div class="investor-rank">3</div>
-                </div>
-                <div class="investor-content">
-                    <h3>Radhakishan Damani</h3>
-                    <p class="investor-title">Retail King of India</p>
-                    <div class="investor-quote">
-                        <i class="fas fa-quote-left"></i>
-                        <p>"Invest in businesses you understand, with management you trust."</p>
-                    </div>
-                    <div class="investor-stats">
-                        <span class="stat">Net Worth: $16.5B</span>
-                        <span class="stat">Founder: DMart</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Ramdeo Agarwal -->
-            <div class="investor-card">
-                <div class="investor-image">
-                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face" alt="Ramdeo Agarwal">
-                    <div class="investor-rank">4</div>
-                </div>
-                <div class="investor-content">
-                    <h3>Ramdeo Agarwal</h3>
-                    <p class="investor-title">Co-founder, Motilal Oswal</p>
-                    <div class="investor-quote">
-                        <i class="fas fa-quote-left"></i>
-                        <p>"Quality investing is about buying right and holding on for the long term."</p>
-                    </div>
-                    <div class="investor-stats">
-                        <span class="stat">Net Worth: $1.5B</span>
-                        <span class="stat">Philosophy: Quality Investing</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Vijay Kedia -->
-            <div class="investor-card">
-                <div class="investor-image">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face" alt="Vijay Kedia">
-                    <div class="investor-rank">5</div>
-                </div>
-                <div class="investor-content">
-                    <h3>Vijay Kedia</h3>
-                    <p class="investor-title">Multibagger Stock Picker</p>
-                    <div class="investor-quote">
-                        <i class="fas fa-quote-left"></i>
-                        <p>"Invest in companies with passion, patience, and perseverance."</p>
-                    </div>
-                    <div class="investor-stats">
-                        <span class="stat">Net Worth: $140M</span>
-                        <span class="stat">Famous For: Multibaggers</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="investors-wisdom">
-            <h3>Common Wisdom from All Legends</h3>
-            <div class="wisdom-points">
-                <div class="wisdom-point">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Long-term investing beats short-term trading</span>
-                </div>
-                <div class="wisdom-point">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Understand the business before investing</span>
-                </div>
-                <div class="wisdom-point">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Patience is the key to wealth creation</span>
-                </div>
-                <div class="wisdom-point">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Quality management is crucial for success</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
         <section id="about">
             <h2>About Piyush Capital Ventures</h2>
             <p class="section-subtitle">Your trusted partner in the stock market journey with expert guidance and research-backed recommendations</p>
@@ -970,6 +1133,98 @@
                 <p><b>Disclaimer:</b> I am not SEBI registered but provide detailed insights and guidance to empower your financial journey. All recommendations are for educational purposes only.</p>
             </div>
         </section>
+
+        <!-- Founder Section -->
+        <section class="founder-section">
+            <div class="founder-container">
+                <div class="founder-image">
+                    <img id="preview-piyush-founder" src="https://i.postimg.cc/JzP00CkL/Whats-App-Image-2025-08-22-at-12-10-23-PM.jpg" alt="Piyush Dubey - Founder & CEO" class="founder-img">
+                    <div class="founder-badge">Founder & CEO</div>
+                </div>
+                <div class="founder-content">
+                    <h2>Meet <span>Piyush Dubey</span></h2>
+                    <p class="founder-bio">
+                        7+ years of expertise in stock markets. Passionate investor and trader with proven track record 
+                        of delivering exceptional returns. My mission is to democratize stock market knowledge and help 
+                        investors build sustainable wealth through research-backed strategies and personalized guidance.
+                    </p>
+                    
+                    <div class="founder-stats">
+                        <div class="founder-stat">
+                            <div class="founder-stat-number">7+</div>
+                            <div class="founder-stat-label">Years Experience</div>
+                        </div>
+                        <div class="founder-stat">
+                            <div class="founder-stat-number">1000+</div>
+                            <div class="founder-stat-label">Students Trained</div>
+                        </div>
+                        <div class="founder-stat">
+                            <div class="founder-stat-number">27%</div>
+                            <div class="founder-stat-label">Avg. Returns</div>
+                        </div>
+                        <div class="founder-stat">
+                            <div class="founder-stat-number">95%</div>
+                            <div class="founder-stat-label">Success Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investor Gallery -->
+        <h2>Top Investors Gallery</h2>
+        <p class="section-subtitle">Learn from the greatest investors who transformed the world of stock markets</p>
+        
+        <div class="investor-gallery">
+            <div class="investor-card">
+                <img id="preview-piyush-gallery" src="https://i.postimg.cc/JzP00CkL/Whats-App-Image-2025-08-22-at-12-10-23-PM.jpg" alt="Piyush Dubey" class="investor-image" onclick="openLightbox(this.src, this.alt)">
+                <div class="investor-info">
+                    <h3 class="investor-name">Piyush Dubey</h3>
+                    <p class="investor-bio">An emerging investor known for his strategic approach to equity investments.</p>
+                </div>
+            </div>
+            
+            <div class="investor-card">
+                <img id="preview-warren-gallery" src="https://i.postimg.cc/y6bDXHQY/Warren-buffet.jpg" alt="Warren Buffett" class="investor-image" onclick="openLightbox(this.src, this.alt)">
+                <div class="investor-info">
+                    <h3 class="investor-name">Warren Buffett</h3>
+                    <p class="investor-bio">CEO of Berkshire Hathaway, known as the "Oracle of Omaha".</p>
+                </div>
+            </div>
+            
+            <div class="investor-card">
+                <img id="preview-rakesh-gallery" src="https://i.postimg.cc/MG6ZJPPF/Rakesh-Jhunjhunwala.png" alt="Rakesh Jhunjhunwala" class="investor-image" onclick="openLightbox(this.src, this.alt)">
+                <div class="investor-info">
+                    <h3 class="investor-name">Rakesh Jhunjhunwala</h3>
+                    <p class="investor-bio">Known as "India's Warren Buffett" for his successful investments.</p>
+                </div>
+            </div>
+            
+            <div class="investor-card">
+                <img id="preview-radhakishan-gallery" src="https://i.postimg.cc/65ZprG4Y/outlook-20230607093543.jpg" alt="Radhakishan Damani" class="investor-image" onclick="openLightbox(this.src, this.alt)">
+                <div class="investor-info">
+                    <h3 class="investor-name">Radhakishan Damani</h3>
+                    <p class="investor-bio">Indian investor and founder of DMart, known for value investing.</p>
+                </div>
+            </div>
+            
+            <div class="investor-card">
+                <img id="preview-ramdeo-gallery" src="https://i.postimg.cc/PqjppQ6W/Raamdeo-Agarwal-Success-Story-cover.jpg" alt="Ramdeo Agarwal" class="investor-image" onclick="openLightbox(this.src, this.alt)">
+                <div class="investor-info">
+                    <h3 class="investor-name">Ramdeo Agarwal</h3>
+                    <p class="investor-bio">Co-founder of Motilal Oswal Financial Services, equity research expert.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox-content">
+                <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+                <img class="lightbox-img" id="lightbox-img" src="" alt="">
+                <div class="lightbox-caption" id="lightbox-caption"></div>
+            </div>
+        </div>
 
         <!-- Offers Section -->
         <section id="offers">
@@ -1165,6 +1420,9 @@
             if (e.target === document.getElementById('stockModal')) {
                 closeStockModal();
             }
+            if (e.target === document.getElementById('lightbox')) {
+                closeLightbox();
+            }
         });
 
         // Simple animation on scroll
@@ -1184,6 +1442,99 @@
                 observer.observe(el);
             });
         });
+
+        // Photo Upload Functions
+        function triggerUpload(investor) {
+            document.getElementById(`upload-${investor}`).click();
+        }
+        
+        function handleUpload(input, previewId) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById(previewId).src = e.target.result;
+                    // Update all instances of this image
+                    if (previewId === 'preview-piyush') {
+                        document.getElementById('preview-piyush-founder').src = e.target.result;
+                        document.getElementById('preview-piyush-gallery').src = e.target.result;
+                    } else if (previewId === 'preview-warren') {
+                        document.getElementById('preview-warren-gallery').src = e.target.result;
+                    } else if (previewId === 'preview-rakesh') {
+                        document.getElementById('preview-rakesh-gallery').src = e.target.result;
+                    } else if (previewId === 'preview-radhakishan') {
+                        document.getElementById('preview-radhakishan-gallery').src = e.target.result;
+                    } else if (previewId === 'preview-ramdeo') {
+                        document.getElementById('preview-ramdeo-gallery').src = e.target.result;
+                    }
+                    // Store the image data in localStorage temporarily
+                    localStorage.setItem(previewId, e.target.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+        
+        function saveAllPhotos() {
+            // Get all preview images
+            const investors = ['piyush', 'warren', 'rakesh', 'radhakishan', 'ramdeo'];
+            
+            investors.forEach(investor => {
+                const previewId = `preview-${investor}`;
+                const imageSrc = document.getElementById(previewId).src;
+                
+                // Save to localStorage if it's a new upload (data URL)
+                if (imageSrc.startsWith('data:image')) {
+                    localStorage.setItem(previewId, imageSrc);
+                }
+            });
+            
+            // Show success message
+            const successMsg = document.getElementById('upload-success');
+            successMsg.style.display = 'block';
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Load saved images on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const investors = ['piyush', 'warren', 'rakesh', 'radhakishan', 'ramdeo'];
+            
+            investors.forEach(investor => {
+                const previewId = `preview-${investor}`;
+                const savedImage = localStorage.getItem(previewId);
+                
+                if (savedImage) {
+                    document.getElementById(previewId).src = savedImage;
+                    // Update all instances of this image
+                    if (previewId === 'preview-piyush') {
+                        document.getElementById('preview-piyush-founder').src = savedImage;
+                        document.getElementById('preview-piyush-gallery').src = savedImage;
+                    } else if (previewId === 'preview-warren') {
+                        document.getElementById('preview-warren-gallery').src = savedImage;
+                    } else if (previewId === 'preview-rakesh') {
+                        document.getElementById('preview-rakesh-gallery').src = savedImage;
+                    } else if (previewId === 'preview-radhakishan') {
+                        document.getElementById('preview-radhakishan-gallery').src = savedImage;
+                    } else if (previewId === 'preview-ramdeo') {
+                        document.getElementById('preview-ramdeo-gallery').src = savedImage;
+                    }
+                }
+            });
+        });
+
+        // Lightbox functionality
+        function openLightbox(src, alt) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-caption').textContent = alt;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
     </script>
 </body>
 </html>
