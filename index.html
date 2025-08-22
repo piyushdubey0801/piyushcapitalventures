@@ -735,12 +735,14 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="container header-container">
-            <div class="logo">
-                <div class="logo-icon">📈</div>
-                <div class="logo-text">Piyush Capital Ventures</div>
-            </div>
-            
+     <div class="container header-container">
+        <div class="logo">
+            <div class="logo-icon">📈</div>
+            <div class="logo-text">Piyush Capital Ventures</div>
+        </div>
+        
+        <!-- Navigation और Language Selector एक साथ -->
+        <div class="nav-with-language">
             <nav>
                 <a href="#about">About</a>
                 <a href="#services">Services</a>
@@ -748,15 +750,13 @@
                 <a href="#offers">Offers</a>
             </nav>
             
-    </header>
-
-    <!-- Language Selector -->
-    <div class="language-selector">
-        <select id="langSelect" onchange="changeLanguage()">
-            <option value="en">English</option>
-            <option value="hi">हिन्दी (Hindi)</option>
-        </select>
-    </div>
+            <div class="language-selector">
+                <select id="langSelect" onchange="changeLanguage()">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                </select>
+            </div>
+        </div>
 
     <!-- Hero Section -->
     <section class="hero">
