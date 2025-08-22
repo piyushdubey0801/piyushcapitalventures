@@ -713,32 +713,35 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <div class="logo-icon">📈</div>
-                <div class="logo-text">Piyush Capital Ventures</div>
-            </div>
-
-            <!-- Navigation और Language Selector एक साथ -->
-            <div class="nav-with-language">
-            <nav>
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#top-shares">Top Shares</a>
-                <a href="#offers">Offers</a>
-            </nav>
-            
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <div class="logo-icon">📈</div>
+            <div class="logo-text">Piyush Capital Ventures</div>
         </div>
-    </header>
-
-    <!-- Language Selector -->
-    <div class="language-selector">
-        <select id="langSelect" onchange="changeLanguage()">
-            <option value="en">English</option>
-            <option value="hi">हिन्दी (Hindi)</option>
-        </select>
+        
+        <nav>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#top-shares">Top Shares</a>
+            <a href="#offers">Offers</a>
+        </nav>
+        
+        <div class="header-buttons">
+            <button class="connect-wallet">
+                <i class="fas fa-wallet"></i> Connect Wallet
+            </button>
+        </div>
     </div>
+</header>
+
+<!-- Language Selector को header के बाहर रखें -->
+<div class="language-selector">
+    <select id="langSelect" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी (Hindi)</option>
+    </select>
+</div>
 
     <!-- Hero Section -->
     <section class="hero">
