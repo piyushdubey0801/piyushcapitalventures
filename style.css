@@ -730,3 +730,30 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--gold);
 }
+/* ... आपकी बाकी CSS स्टाइलिंग यहाँ है ... */
+
+/* यहाँ, इस @media ब्लॉक को पेस्ट करें */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .nav-premium {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #1e1e2f;
+    }
+
+    .nav-premium.active {
+        display: flex;
+    }
+}
