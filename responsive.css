@@ -1,58 +1,463 @@
-/* ===============================
-   Responsive Design for Website
-   =============================== */
+/* ===============================================
+   WORLD-CLASS RESPONSIVE CSS
+   Piyush Capital Ventures - Premium Stock Advisory
+   =============================================== */
 
-/* Default styles already in style.css rahenge */
+/* Global Responsive Variables */
+:root {
+    --mobile-breakpoint: 480px;
+    --tablet-breakpoint: 768px;
+    --laptop-breakpoint: 1024px;
+    --desktop-breakpoint: 1200px;
+    --large-breakpoint: 1400px;
+}
 
-/* Tablets (screen width 768px tak) */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
+/* 1. MOBILE FIRST APPROACH (Default Styles) */
+
+/* Base Mobile Styles */
+.container {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+/* 2. TABLET DEVICES (768px and above) */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        padding: 0 20px;
+    }
+    
+    /* Header Adjustments */
+    .header-premium {
+        padding: 12px 0;
+    }
+    
+    .header-container {
+        padding: 0 25px;
+    }
+    
+    .logo-text {
+        font-size: 2rem;
+    }
+    
+    .logo-icon {
+        font-size: 2.4rem;
+    }
+    
+    /* Navigation */
+    .nav-premium {
+        gap: 20px;
+    }
+    
+    .nav-link {
+        font-size: 1rem;
+        padding: 10px 16px;
+    }
+    
+    /* Hero Section */
+    .hero-premium {
+        padding: 160px 0 80px;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    /* Founder Section */
+    .founder-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .founder-content h2 {
         text-align: center;
+        font-size: 2.2rem;
     }
-
-    nav ul {
-        flex-direction: column;
-        padding: 0;
+    
+    /* Investors Grid */
+    .investors-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
     }
-
-    nav ul li {
-        margin: 10px 0;
+    
+    /* Cards */
+    .card-premium {
+        padding: 30px;
     }
-
-    .hero h1 {
-        font-size: 28px;
+    
+    /* Utilities */
+    .flex-tablet {
+        display: flex;
     }
-
-    .hero p {
-        font-size: 16px;
+    
+    .grid-tablet-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 }
 
-/* Mobile (screen width 480px tak) */
+/* 3. LAPTOP DEVICES (1024px and above) */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    /* Header */
+    .header-premium {
+        padding: 15px 0;
+    }
+    
+    .logo-text {
+        font-size: 2.2rem;
+    }
+    
+    .nav-premium {
+        gap: 30px;
+    }
+    
+    .nav-link {
+        font-size: 1.1rem;
+        padding: 12px 20px;
+    }
+    
+    /* Hero Section */
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    /* Founder Section */
+    .founder-container {
+        grid-template-columns: 1fr 2fr;
+        gap: 50px;
+    }
+    
+    .founder-content h2 {
+        text-align: left;
+        font-size: 2.5rem;
+    }
+    
+    /* Investors Grid */
+    .investors-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+    
+    /* Wisdom Points */
+    .wisdom-points {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Utilities */
+    .grid-laptop-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+    
+    .flex-laptop {
+        display: flex;
+    }
+}
+
+/* 4. DESKTOP DEVICES (1200px and above) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+    
+    /* Hero Section */
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    /* Investors Grid */
+    .investors-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /* Wisdom Points */
+    .wisdom-points {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Advanced Layouts */
+    .grid-desktop-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+    }
+}
+
+/* 5. LARGE DESKTOP DEVICES (1400px and above) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+    
+    /* Hero Section */
+    .hero-title {
+        font-size: 4.5rem;
+    }
+    
+    /* Extra Large Spacing */
+    .section-premium {
+        padding: 120px 0;
+    }
+}
+
+/* 6. MOBILE SPECIFIC STYLES (480px and below) */
 @media (max-width: 480px) {
-    header {
-        padding: 10px;
+    /* Ultra-Mobile Optimizations */
+    .header-container {
+        padding: 0 15px;
     }
-
-    .logo {
-        font-size: 18px;
+    
+    .logo-text {
+        font-size: 1.6rem;
     }
-
-    nav ul {
-        font-size: 14px;
+    
+    .logo-icon {
+        font-size: 2rem;
     }
-
-    .hero h1 {
-        font-size: 22px;
+    
+    .logo-badge {
+        font-size: 0.6rem;
+        padding: 2px 8px;
+        right: -35px;
     }
-
-    .hero p {
-        font-size: 14px;
+    
+    /* Hero Section */
+    .hero-premium {
+        padding: 130px 0 60px;
     }
+    
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.3;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+    
+    /* Buttons */
+    .btn-premium {
+        padding: 14px 25px;
+        font-size: 0.9rem;
+    }
+    
+    .hero-buttons {
+        gap: 15px;
+    }
+    
+    /* Founder Section */
+    .founder-img {
+        height: 350px;
+    }
+    
+    .founder-stat {
+        padding: 15px;
+    }
+    
+    .founder-stat-number {
+        font-size: 1.7rem;
+    }
+    
+    /* Cards */
+    .card-premium {
+        padding: 20px;
+        border-radius: 15px;
+    }
+    
+    /* Investors Section */
+    .investor-image {
+        height: 200px;
+    }
+    
+    .investor-content {
+        padding: 20px;
+    }
+    
+    /* Utilities */
+    .text-mobile-center {
+        text-align: center;
+    }
+    
+    .hide-mobile {
+        display: none;
+    }
+}
 
-    .btn {
-        padding: 10px 18px;
-        font-size: 14px;
+/* 7. TABLET LANDSCAPE MODE */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .hero-premium {
+        padding: 140px 0 70px;
+    }
+    
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .nav-premium {
+        gap: 15px;
+    }
+}
+
+/* 8. TOUCH DEVICE OPTIMIZATIONS */
+@media (hover: none) and (pointer: coarse) {
+    /* Better touch targets */
+    .nav-link {
+        padding: 16px 24px;
+    }
+    
+    .btn-premium {
+        min-height: 54px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Remove hover effects on touch devices */
+    .nav-link:hover {
+        transform: none;
+        background: transparent;
+    }
+    
+    .btn-premium:hover {
+        transform: none;
+    }
+}
+
+/* 9. HIGH DPI (RETINA) DISPLAYS */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo-icon {
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    }
+    
+    .nav-link {
+        font-weight: 600;
+    }
+}
+
+/* 10. DARK MODE SUPPORT */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #f8fafc;
+        --text-secondary: #cbd5e1;
+    }
+}
+
+/* 11. REDUCED MOTION FOR ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .logo-icon {
+        animation: none;
+    }
+}
+
+/* 12. PRINT STYLES */
+@media print {
+    .header-premium,
+    .btn-premium,
+    .hero-buttons {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+    
+    .section-premium {
+        padding: 20px 0 !important;
+    }
+}
+
+/* 13. CUSTOM UTILITY CLASSES FOR RESPONSIVE DESIGN */
+.responsive-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .responsive-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .responsive-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .responsive-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* 14. RESPONSIVE TYPOGRAPHY */
+.hero-title {
+    font-size: 2.2rem;
+}
+
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-title {
+        font-size: 3.5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+}
+
+/* 15. RESPONSIVE SPACING */
+.section-premium {
+    padding: 60px 0;
+}
+
+@media (min-width: 768px) {
+    .section-premium {
+        padding: 80px 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    .section-premium {
+        padding: 100px 0;
     }
 }
