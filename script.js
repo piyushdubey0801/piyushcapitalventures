@@ -404,3 +404,13 @@ if ('performance' in window) {
         console.log(`Page loaded in ${loadTime} milliseconds`);
     });
 }
+document.addEventListener("DOMContentLoaded", function() {
+    const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+    const navMenu = document.querySelector(".nav-premium");
+
+    if (mobileMenuBtn && navMenu) {
+        mobileMenuBtn.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+        });
+    }
+});
