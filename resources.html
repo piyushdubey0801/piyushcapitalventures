@@ -3,50 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Educational Resources - Piyush Capital Ventures</title>
+    <title>Stock Market Education - Piyush Capital Ventures</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsive.css">
     <style>
-        /* Additional CSS for resources page */
-        .educational-section {
-            padding: 100px 0 80px;
+        /* Educational Resources Specific Styles */
+        .educational-hero {
+            padding: 150px 0 80px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            text-align: center;
+        }
+        
+        .educational-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .educational-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+        }
+        
+        .courses-section {
+            padding: 80px 0;
             background: var(--primary-dark);
         }
         
-        .resources-grid {
+        .course-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
         
-        .resource-card {
+        .course-card {
             background: var(--card-bg);
-            padding: 30px;
             border-radius: 15px;
-            text-align: center;
+            overflow: hidden;
             border: 1px solid var(--card-border);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .resource-card:hover {
-            transform: translateY(-5px);
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
-        .resource-card i {
-            font-size: 3rem;
+        .course-header {
             background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            padding: 25px;
+            text-align: center;
+            color: #000;
+        }
+        
+        .course-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+        
+        .course-content {
+            padding: 30px;
+        }
+        
+        .benefits-list {
+            margin: 20px 0;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding: 10px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 8px;
+        }
+        
+        .benefit-item i {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+        
+        .module-section {
+            padding: 80px 0;
+            background: var(--gradient-bg);
+        }
+        
+        .modules-container {
+            margin-top: 50px;
+        }
+        
+        .module {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--gold);
+        }
+        
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
         }
         
-        /* Add more styles as needed */
+        .module-title {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+        }
+        
+        .module-duration {
+            background: rgba(255, 215, 0, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .topics-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .topic-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        
+        .topic-item i {
+            color: var(--gold);
+        }
+        
+        .cta-section {
+            padding: 80px 0;
+            background: var(--primary-dark);
+            text-align: center;
+        }
+        
+        .guarantee-badge {
+            background: var(--gradient-green);
+            color: #000;
+            padding: 15px 25px;
+            border-radius: 30px;
+            display: inline-block;
+            margin: 30px 0;
+            font-weight: 700;
+        }
+        
+        .bilingual-content {
+            border-left: 4px solid var(--gold);
+            padding: 15px 20px;
+            margin: 20px 0;
+            background: rgba(255, 215, 0, 0.1);
+        }
+        
+        .hindi {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        .english {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .educational-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .educational-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .course-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .module-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Existing Header -->
+    <!-- Header -->
     <header class="header-premium">
         <div class="header-container">
             <a href="index.html" class="logo-premium">
@@ -55,14 +210,13 @@
             </a>
             
             <nav class="nav-premium">
-    <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
-    <a href="index.html#about" class="nav-link">About</a>
-    <a href="index.html#services" class="nav-link">Services</a>
-    <a href="index.html#top-shares" class="nav-link">Top Shares</a>
-    <a href="index.html#offers" class="nav-link">Offers</a>
-    <a href="calculators.html" class="nav-link">Financial Calculators</a>
-    <a href="resources.html" class="nav-link active">Educational Resources</a>
-</nav>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#services" class="nav-link">Services</a>
+                <a href="index.html#top-shares" class="nav-link">Top Shares</a>
+                <a href="index.html#offers" class="nav-link">Offers</a>
+                <a href="calculators.html" class="nav-link">Calculators</a>
+                <a href="resources.html" class="nav-link active">Education</a>
+            </nav>
             
             <div class="language-selector-premium">
                 <select>
@@ -73,40 +227,279 @@
         </div>
     </header>
 
-    <!-- Educational Resources Section -->
-    <section class="educational-section">
+    <!-- Hero Section -->
+    <section class="educational-hero">
         <div class="container">
-            <h2 class="section-title">निवेश शिक्षा</h2>
-            <p class="section-subtitle">वित्तीय साक्षरता और निवेश ज्ञान को बढ़ाएं</p>
+            <h1>Stock Market Mastery</h1>
+            <p>Learn stock market investing in both Hindi & English with comprehensive courses and personal mentorship</p>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses-section">
+        <div class="container">
+            <h2 class="section-title">Our Premium Courses</h2>
+            <p class="section-subtitle">Comprehensive learning programs in Hindi and English</p>
             
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h3>शेयर बाजार की मूल बातें</h3>
-                    <p>शुरुआती लोगों के लिए सम्पूर्ण मार्गदर्शन</p>
-                    <a href="#" class="btn-premium">सीखें</a>
+            <div class="course-cards">
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>Beginner to Advanced</h3>
+                        <div class="course-price">₹99/-</div>
+                        <p>One-time payment</p>
+                    </div>
+                    <div class="course-content">
+                        <div class="bilingual-content">
+                            <p class="hindi">📈 बुनियादी से उन्नत ज्ञान तक</p>
+                            <p class="english">📈 From basic to advanced knowledge</p>
+                        </div>
+                        
+                        <div class="benefits-list">
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>20+ Comprehensive Modules</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Hindi & English Content</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Personal Mentorship</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Lifetime Access</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Certificate of Completion</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="btn-premium btn-primary-premium" style="width: 100%; text-align: center;">
+                            Enroll Now for ₹99
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="resource-card">
-                    <i class="fas fa-chart-pie"></i>
-                    <h3>पोर्टफोलियो प्रबंधन</h3>
-                    <p>विविधीकरण और जोखिम प्रबंधन रणनीतियाँ</p>
-                    <a href="#" class="btn-premium">सीखें</a>
-                </div>
-                
-                <div class="resource-card">
-                    <i class="fas fa-book"></i>
-                    <h3>टर्मिनोलॉजी शब्दकोश</h3>
-                    <p>शेयर बाजार की सभी महत्वपूर्ण शब्दावली</p>
-                    <a href="#" class="btn-premium">सीखें</a>
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>With Personal Guidance</h3>
+                        <div class="course-price">₹499/-</div>
+                        <p>Premium package</p>
+                    </div>
+                    <div class="course-content">
+                        <div class="bilingual-content">
+                            <p class="hindi">👨‍💼 व्यक्तिगत मार्गदर्शन के साथ</p>
+                            <p class="english">👨‍💼 With personal guidance</p>
+                        </div>
+                        
+                        <div class="benefits-list">
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Everything in Basic Course</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>1-on-1 Weekly Sessions</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Portfolio Review</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Trade Setup Analysis</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Priority Support</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="btn-premium btn-primary-premium" style="width: 100%; text-align: center;">
+                            Enroll Now for ₹499
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Existing Footer -->
+    <!-- Course Modules Section -->
+    <section class="module-section">
+        <div class="container">
+            <h2 class="section-title">What You'll Learn</h2>
+            <p class="section-subtitle">Comprehensive curriculum covering all aspects of stock market investing</p>
+            
+            <div class="modules-container">
+                <div class="module">
+                    <div class="module-header">
+                        <h3 class="module-title">Module 1: Stock Market Basics</h3>
+                        <span class="module-duration">2 Weeks</span>
+                    </div>
+                    <div class="bilingual-content">
+                        <p class="hindi">📊 शेयर बाजार की मूल बातें</p>
+                        <p class="english">📊 Stock Market Fundamentals</p>
+                    </div>
+                    <div class="topics-list">
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>What is Stock Market? (NSE, BSE)</span>
+                        </div>
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Types of Markets (Equity, Derivatives)</span>
+                        </div>
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Brokerage Accounts & Demat Accounts</span>
+                        </div>
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Trading vs Investing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module">
+                    <div class="module-header">
+                        <h3 class="module-title">Module 2: Fundamental Analysis</h3>
+                        <span class="module-duration">3 Weeks</span>
+                    </div>
+                    <div class="bilingual-content">
+                        <p class="hindi">📈 मौलिक विश्लेषण</p>
+                        <p class="english">📈 Fundamental Analysis</p>
+                    </div>
+                    <div class="topics-list">
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Financial Statements Analysis</span>
+                        </div>
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>PE Ratio, EPS, Book Value</span>
+                        </div>
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Debt-to-Equity Ratio</span>
+                        </div>
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>ROE and ROCE Analysis</span>
+                        </div>
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Industry Analysis</span>
+                        </div>
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Management Quality Assessment</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module">
+                    <div class="module-header">
+                        <h3 class="module-title">Module 3: Technical Analysis</h3>
+                        <span class="module-duration">3 Weeks</span>
+                    </div>
+                    <div class="bilingual-content">
+                        <p class="hindi">📊 तकनीकी विश्लेषण</p>
+                        <p class="english">📊 Technical Analysis</p>
+                    </div>
+                    <div class="topics-list">
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Chart Patterns (Candlestick, Bar)</span>
+                        </div>
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Support & Resistance Levels</span>
+                        </div>
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Trend Analysis</span>
+                        </div>
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Technical Indicators (RSI, MACD)</span>
+                        </div>
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Volume Analysis</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module">
+                    <div class="module-header">
+                        <h3 class="module-title">Module 4: Trading Strategies</h3>
+                        <span class="module-duration">2 Weeks</span>
+                    </div>
+                    <div class="bilingual-content">
+                        <p class="hindi">🎯 ट्रेडिंग रणनीतियाँ</p>
+                        <p class="english">🎯 Trading Strategies</p>
+                    </div>
+                    <div class="topics-list">
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Swing Trading Techniques</span>
+                        </div>
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Positional Trading</span>
+                        </div>
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Intraday Trading Strategies</span>
+                        </div>
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Risk Management</span>
+                        </div>
+                        <div class="topic-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Psychology of Trading</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="section-title">Start Your Investment Journey Today</h2>
+            <p class="section-subtitle">Join hundreds of successful students who transformed their financial future</p>
+            
+            <div class="guarantee-badge">
+                <i class="fas fa-shield-alt"></i> 100% Satisfaction Guarantee
+            </div>
+            
+            <div class="bilingual-content">
+                <p class="hindi">💡 जब तक आप सीख नहीं जाते, तब तक हमारा मार्गदर्शन जारी रहेगा</p>
+                <p class="english">💡 Our guidance continues until you learn completely</p>
+            </div>
+            
+            <div class="hero-buttons">
+                <a href="#" class="btn-premium btn-primary-premium">
+                    <i class="fas fa-lock"></i> Enroll Now - ₹99 Only
+                </a>
+                <a href="#" class="btn-premium btn-secondary-premium">
+                    <i class="fas fa-info-circle"></i> Course Details
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <!-- Your existing footer code -->
+        <div class="container">
+            <p>&copy; 2023 Piyush Capital Ventures. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
