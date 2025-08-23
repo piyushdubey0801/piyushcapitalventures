@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Resources - Piyush Capital Ventures</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        /* Additional CSS for resources page */
+        .educational-section {
+            padding: 100px 0 80px;
+            background: var(--primary-dark);
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .resource-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-card i {
+            font-size: 3rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        /* Add more styles as needed */
+    </style>
+</head>
+<body>
+    <!-- Existing Header -->
+    <header class="header-premium">
+        <div class="header-container">
+            <a href="index.html" class="logo-premium">
+                <i class="fas fa-chart-line logo-icon"></i>
+                <span class="logo-text">Piyush Capital Ventures</span>
+            </a>
+            
+            <nav class="nav-premium">
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#services" class="nav-link">Services</a>
+                <a href="index.html#top-shares" class="nav-link">Top Shares</a>
+                <a href="index.html#offers" class="nav-link">Offers</a>
+                <a href="calculators.html" class="nav-link">Financial Calculators</a>
+                <a href="resources.html" class="nav-link active">Educational Resources</a>
+            </nav>
+            
+            <div class="language-selector-premium">
+                <select>
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- Educational Resources Section -->
+    <section class="educational-section">
+        <div class="container">
+            <h2 class="section-title">निवेश शिक्षा</h2>
+            <p class="section-subtitle">वित्तीय साक्षरता और निवेश ज्ञान को बढ़ाएं</p>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>शेयर बाजार की मूल बातें</h3>
+                    <p>शुरुआती लोगों के लिए सम्पूर्ण मार्गदर्शन</p>
+                    <a href="#" class="btn-premium">सीखें</a>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>पोर्टफोलियो प्रबंधन</h3>
+                    <p>विविधीकरण और जोखिम प्रबंधन रणनीतियाँ</p>
+                    <a href="#" class="btn-premium">सीखें</a>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-book"></i>
+                    <h3>टर्मिनोलॉजी शब्दकोश</h3>
+                    <p>शेयर बाजार की सभी महत्वपूर्ण शब्दावली</p>
+                    <a href="#" class="btn-premium">सीखें</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Existing Footer -->
+    <footer>
+        <!-- Your existing footer code -->
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
