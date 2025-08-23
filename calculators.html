@@ -3,31 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Calculators - Piyush Capital Ventures</title>
+    <title>Advanced Financial Calculators - Piyush Capital Ventures</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #1a237e;
             --secondary: #ff6f00;
+            --accent: #00c853;
             --light: #f5f5f5;
             --dark: #212121;
             --success: #4caf50;
+            --warning: #ff9800;
+            --info: #2196f3;
+            --danger: #f44336;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Interrupt', sans-serif;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
         
         body {
-            background-color: #f8f9fa;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
             color: #333;
             line-height: 1.6;
+            min-height: 100vh;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -35,79 +41,142 @@
         header {
             background: linear-gradient(135deg, var(--primary) 0%, #283593 100%);
             color: white;
-            padding: 30px 0;
+            padding: 40px 0;
             text-align: center;
-            border-radius: 0 0 20px 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 25px 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
         }
         
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            font-weight: 800;
         }
         
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
-        .calculator-container {
+        .calculator-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+            padding: 0 20px;
+        }
+        
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+        
+        .tab-btn.active {
+            background: var(--secondary);
+            box-shadow: 0 4px 15px rgba(255, 111, 0, 0.3);
+        }
+        
+        .calculator-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
         }
         
-        .calculator {
+        .calculator-card {
             background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
-        .calculator:hover {
+        .calculator-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
         }
         
-        .calculator h2 {
+        .calculator-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .calculator-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .calculator-title {
+            font-size: 1.6rem;
             color: var(--primary);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--secondary);
-            font-size: 1.5rem;
+            font-weight: 700;
         }
         
         .input-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .input-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
+            margin-bottom: 10px;
+            font-weight: 600;
             color: #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .input-group input {
+        .input-hint {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: normal;
+        }
+        
+        .input-group input, .input-group select {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
             font-size: 16px;
-            transition: border-color 0.3s;
+            transition: all 0.3s ease;
         }
         
-        .input-group input:focus {
+        .input-group input:focus, .input-group select:focus {
             border-color: var(--primary);
             outline: none;
-            box-shadow: 0 0 0 2px rgba(26, 35, 126, 0.2);
+            box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
         }
         
         .slider-container {
-            margin-top: 5px;
+            margin-top: 10px;
         }
         
         .slider {
@@ -115,75 +184,101 @@
             width: 100%;
             height: 8px;
             border-radius: 5px;
-            background: #d7dcdf;
+            background: #e0e0e0;
             outline: none;
         }
         
         .slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             background: var(--primary);
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
         
         .slider::-webkit-slider-thumb:hover {
             background: var(--secondary);
+            transform: scale(1.1);
         }
         
         .calculate-btn {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 16px 25px;
             width: 100%;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 10px;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         
         .calculate-btn:hover {
-            opacity: 0.9;
+            opacity: 0.95;
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(26, 35, 126, 0.25);
         }
         
         .results {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f1f8e9;
-            border-radius: 10px;
+            margin-top: 25px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f1f8e9, #e8f5e8);
+            border-radius: 15px;
+            border-left: 5px solid var(--success);
             display: none;
         }
         
         .results h3 {
             color: var(--success);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
         }
         
         .result-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            padding-bottom: 8px;
-            border-bottom: 1px dashed #ccc;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
         }
         
-        .result-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
+        .result-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
         }
         
         .result-value {
-            font-weight: 600;
+            font-size: 1.3rem;
+            font-weight: 800;
             color: var(--primary);
+        }
+        
+        .result-value.positive {
+            color: var(--success);
+        }
+        
+        .result-value.negative {
+            color: var(--danger);
         }
         
         .chart-container {
@@ -192,17 +287,19 @@
             display: flex;
             align-items: flex-end;
             justify-content: space-around;
-            padding: 10px;
-            background: #f5f5f5;
-            border-radius: 8px;
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
         }
         
         .chart-bar {
-            width: 40px;
+            width: 45px;
             background: linear-gradient(to top, var(--primary), var(--secondary));
             margin: 0 5px;
-            border-radius: 4px 4px 0 0;
+            border-radius: 6px 6px 0 0;
             position: relative;
+            transition: height 0.5s ease;
         }
         
         .chart-label {
@@ -212,24 +309,68 @@
             transform: translateX(-50%);
             font-size: 12px;
             color: #666;
+            font-weight: 600;
+        }
+        
+        .calculator-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-top: 15px;
+            line-height: 1.5;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 3px solid var(--info);
         }
         
         footer {
             text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+            padding: 40px 20px;
+            margin-top: 60px;
             background: var(--dark);
             color: white;
-            border-radius: 20px 20px 0 0;
+            border-radius: 25px 25px 0 0;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .disclaimer {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-size: 0.9rem;
         }
         
         @media (max-width: 768px) {
-            .calculator-container {
+            .calculator-grid {
                 grid-template-columns: 1fr;
             }
             
             h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .calculator-tabs {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 10px;
+            }
+            
+            .tab-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .result-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -237,152 +378,343 @@
 <body>
     <header>
         <div class="container">
-            <h1>Financial Calculators</h1>
-            <p class="subtitle">Make informed investment decisions with our interactive financial tools</p>
+            <h1><i class="fas fa-calculator"></i> Advanced Financial Calculators</h1>
+            <p class="subtitle">Powerful tools to plan your financial future with precision</p>
+            
+            <div class="calculator-tabs">
+                <button class="tab-btn active" onclick="showTab('basic')">
+                    <i class="fas fa-chart-line"></i> Basic Calculators
+                </button>
+                <button class="tab-btn" onclick="showTab('advanced')">
+                    <i class="fas fa-rocket"></i> Advanced Calculators
+                </button>
+                <button class="tab-btn" onclick="showTab('retirement')">
+                    <i class="fas fa-university"></i> Retirement Planning
+                </button>
+                <button class="tab-btn" onclick="showTab('loan')">
+                    <i class="fas fa-credit-card"></i> Loan Calculators
+                </button>
+            </div>
         </div>
     </header>
 
     <div class="container">
-        <div class="calculator-container">
-            <!-- SIP Calculator -->
-            <div class="calculator">
-                <h2>SIP Calculator</h2>
-                <div class="input-group">
-                    <label for="sip-amount">Monthly Investment (₹)</label>
-                    <input type="number" id="sip-amount" min="500" step="500" value="5000">
-                    <div class="slider-container">
-                        <input type="range" min="500" max="100000" step="500" value="5000" class="slider" id="sip-amount-slider">
-                    </div>
-                </div>
-                <div class="input-group">
-                    <label for="sip-duration">Investment Period (Years)</label>
-                    <input type="number" id="sip-duration" min="1" max="30" value="10">
-                    <div class="slider-container">
-                        <input type="range" min="1" max="30" value="10" class="slider" id="sip-duration-slider">
-                    </div>
-                </div>
-                <div class="input-group">
-                    <label for="sip-return">Expected Annual Return (%)</label>
-                    <input type="number" id="sip-return" min="1" max="30" step="0.1" value="12">
-                    <div class="slider-container">
-                        <input type="range" min="1" max="30" step="0.1" value="12" class="slider" id="sip-return-slider">
-                    </div>
-                </div>
-                <button class="calculate-btn" onclick="calculateSIP()">Calculate</button>
-                
-                <div class="results" id="sip-results">
-                    <h3>SIP Results</h3>
-                    <div class="result-item">
-                        <span>Total Investment:</span>
-                        <span class="result-value" id="sip-total-investment">₹0</span>
-                    </div>
-                    <div class="result-item">
-                        <span>Estimated Returns:</span>
-                        <span class="result-value" id="sip-estimated-returns">₹0</span>
-                    </div>
-                    <div class="result-item">
-                        <span>Total Value:</span>
-                        <span class="result-value" id="sip-total-value">₹0</span>
+        <!-- Basic Calculators Tab -->
+        <div id="basic-tab" class="tab-content">
+            <div class="calculator-grid">
+                <!-- SIP Calculator -->
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-rupee-sign"></i>
+                        </div>
+                        <h2 class="calculator-title">SIP Calculator</h2>
                     </div>
                     
-                    <div class="chart-container" id="sip-chart">
-                        <div class="chart-bar" style="height: 40%">
-                            <span class="chart-label">Invested</span>
+                    <div class="input-group">
+                        <label for="sip-amount">
+                            Monthly Investment (₹)
+                            <span class="input-hint">₹500 - ₹1,00,000</span>
+                        </label>
+                        <input type="number" id="sip-amount" min="500" max="100000" step="500" value="5000">
+                        <div class="slider-container">
+                            <input type="range" min="500" max="100000" step="500" value="5000" class="slider" id="sip-amount-slider">
                         </div>
-                        <div class="chart-bar" style="height: 60%">
-                            <span class="chart-label">Returns</span>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="sip-duration">
+                            Investment Period (Years)
+                            <span class="input-hint">1 - 30 years</span>
+                        </label>
+                        <input type="number" id="sip-duration" min="1" max="30" value="10">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="30" value="10" class="slider" id="sip-duration-slider">
                         </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="sip-return">
+                            Expected Annual Return (%)
+                            <span class="input-hint">1% - 30%</span>
+                        </label>
+                        <input type="number" id="sip-return" min="1" max="30" step="0.1" value="12">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="30" step="0.1" value="12" class="slider" id="sip-return-slider">
+                        </div>
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculateSIP()">
+                        <i class="fas fa-calculator"></i> Calculate SIP
+                    </button>
+                    
+                    <div class="results" id="sip-results">
+                        <h3><i class="fas fa-chart-pie"></i> SIP Results</h3>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <div class="result-label">Total Investment</div>
+                                <div class="result-value" id="sip-total-investment">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Estimated Returns</div>
+                                <div class="result-value" id="sip-estimated-returns">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Total Value</div>
+                                <div class="result-value" id="sip-total-value">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Annualized Return</div>
+                                <div class="result-value" id="sip-annualized-return">0%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-container" id="sip-chart">
+                            <div class="chart-bar" style="height: 40%">
+                                <span class="chart-label">Invested</span>
+                            </div>
+                            <div class="chart-bar" style="height: 60%">
+                                <span class="chart-label">Returns</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-description">
+                        <strong>SIP (Systematic Investment Plan)</strong> allows you to invest a fixed amount regularly in mutual funds. 
+                        This calculator helps you estimate the potential returns from your SIP investments.
+                    </div>
+                </div>
+
+                <!-- ROI Calculator -->
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h2 class="calculator-title">ROI Calculator</h2>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="roi-investment">Initial Investment (₹)</label>
+                        <input type="number" id="roi-investment" min="1000" step="1000" value="100000">
+                        <div class="slider-container">
+                            <input type="range" min="1000" max="1000000" step="1000" value="100000" class="slider" id="roi-investment-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="roi-return">Final Value (₹)</label>
+                        <input type="number" id="roi-return" min="1000" step="1000" value="150000">
+                        <div class="slider-container">
+                            <input type="range" min="1000" max="5000000" step="1000" value="150000" class="slider" id="roi-return-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="roi-period">Investment Period (Years)</label>
+                        <input type="number" id="roi-period" min="1" max="30" value="5">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="30" value="5" class="slider" id="roi-period-slider">
+                        </div>
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculateROI()">
+                        <i class="fas fa-calculator"></i> Calculate ROI
+                    </button>
+                    
+                    <div class="results" id="roi-results">
+                        <h3><i class="fas fa-chart-bar"></i> ROI Results</h3>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <div class="result-label">Return on Investment</div>
+                                <div class="result-value" id="roi-percentage">0%</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Absolute Returns</div>
+                                <div class="result-value" id="roi-absolute">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Annualized ROI</div>
+                                <div class="result-value" id="roi-annualized">0%</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">CAGR</div>
+                                <div class="result-value" id="roi-cagr">0%</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-description">
+                        <strong>ROI (Return on Investment)</strong> measures the gain or loss generated on an investment relative to the amount of money invested. 
+                        It's expressed as a percentage and is useful for comparing different investments.
+                    </div>
+                </div>
+
+                <!-- Compound Interest Calculator -->
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h2 class="calculator-title">Compound Interest Calculator</h2>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="ci-principal">Principal Amount (₹)</label>
+                        <input type="number" id="ci-principal" min="1000" step="1000" value="100000">
+                        <div class="slider-container">
+                            <input type="range" min="1000" max="10000000" step="1000" value="100000" class="slider" id="ci-principal-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="ci-rate">Annual Interest Rate (%)</label>
+                        <input type="number" id="ci-rate" min="1" max="30" step="0.1" value="8">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="30" step="0.1" value="8" class="slider" id="ci-rate-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="ci-time">Time Period (Years)</label>
+                        <input type="number" id="ci-time" min="1" max="40" value="10">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="40" value="10" class="slider" id="ci-time-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="ci-compound">Compound Frequency</label>
+                        <select id="ci-compound">
+                            <option value="1">Yearly</option>
+                            <option value="2">Half-Yearly</option>
+                            <option value="4">Quarterly</option>
+                            <option value="12" selected>Monthly</option>
+                            <option value="365">Daily</option>
+                        </select>
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculateCompoundInterest()">
+                        <i class="fas fa-calculator"></i> Calculate Compound Interest
+                    </button>
+                    
+                    <div class="results" id="ci-results">
+                        <h3><i class="fas fa-coins"></i> Compound Interest Results</h3>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <div class="result-label">Total Amount</div>
+                                <div class="result-value" id="ci-total-amount">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Interest Earned</div>
+                                <div class="result-value" id="ci-interest-earned">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Principal Amount</div>
+                                <div class="result-value" id="ci-principal-amount">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Effective Annual Rate</div>
+                                <div class="result-value" id="ci-effective-rate">0%</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-description">
+                        <strong>Compound Interest</strong> is the interest calculated on the initial principal and also on the accumulated interest of previous periods. 
+                        It's often called "interest on interest" and can help savings grow at a faster rate.
+                    </div>
+                </div>
+
+                <!-- Lumpsum Calculator -->
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <h2 class="calculator-title">Lumpsum Calculator</h2>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="ls-investment">Investment Amount (₹)</label>
+                        <input type="number" id="ls-investment" min="1000" step="1000" value="100000">
+                        <div class="slider-container">
+                            <input type="range" min="1000" max="10000000" step="1000" value="100000" class="slider" id="ls-investment-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="ls-period">Investment Period (Years)</label>
+                        <input type="number" id="ls-period" min="1" max="30" value="5">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="30" value="5" class="slider" id="ls-period-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="ls-return">Expected Return (% p.a.)</label>
+                        <input type="number" id="ls-return" min="1" max="30" step="0.1" value="12">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="30" step="0.1" value="12" class="slider" id="ls-return-slider">
+                        </div>
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculateLumpsum()">
+                        <i class="fas fa-calculator"></i> Calculate Lumpsum
+                    </button>
+                    
+                    <div class="results" id="ls-results">
+                        <h3><i class="fas fa-chart-area"></i> Lumpsum Results</h3>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <div class="result-label">Investment Amount</div>
+                                <div class="result-value" id="ls-investment-amount">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Estimated Returns</div>
+                                <div class="result-value" id="ls-estimated-returns">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Total Value</div>
+                                <div class="result-value" id="ls-total-value">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Annualized Return</div>
+                                <div class="result-value" id="ls-annualized-return">0%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-container" id="ls-chart">
+                            <div class="chart-bar" style="height: 30%">
+                                <span class="chart-label">Principal</span>
+                            </div>
+                            <div class="chart-bar" style="height: 70%">
+                                <span class="chart-label">Returns</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-description">
+                        <strong>Lumpsum Investment</strong> involves investing a significant amount of money at one go instead of spreading it over a period. 
+                        This calculator helps you estimate the potential returns from a lumpsum investment.
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- ROI Calculator -->
-            <div class="calculator">
-                <h2>ROI Calculator</h2>
-                <div class="input-group">
-                    <label for="roi-investment">Initial Investment (₹)</label>
-                    <input type="number" id="roi-investment" min="1000" step="1000" value="100000">
-                    <div class="slider-container">
-                        <input type="range" min="1000" max="1000000" step="1000" value="100000" class="slider" id="roi-investment-slider">
+        <!-- Additional tabs for Advanced, Retirement, and Loan calculators would go here -->
+        <div id="advanced-tab" class="tab-content" style="display:none;">
+            <div class="calculator-grid">
+                <!-- Additional advanced calculators will be added here -->
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h2 class="calculator-title">More Advanced Calculators</h2>
                     </div>
-                </div>
-                <div class="input-group">
-                    <label for="roi-return">Final Value (₹)</label>
-                    <input type="number" id="roi-return" min="1000" step="1000" value="150000">
-                    <div class="slider-container">
-                        <input type="range" min="1000" max="5000000" step="1000" value="150000" class="slider" id="roi-return-slider">
-                    </div>
-                </div>
-                <div class="input-group">
-                    <label for="roi-period">Investment Period (Years)</label>
-                    <input type="number" id="roi-period" min="1" max="30" value="5">
-                    <div class="slider-container">
-                        <input type="range" min="1" max="30" value="5" class="slider" id="roi-period-slider">
-                    </div>
-                </div>
-                <button class="calculate-btn" onclick="calculateROI()">Calculate</button>
-                
-                <div class="results" id="roi-results">
-                    <h3>ROI Results</h3>
-                    <div class="result-item">
-                        <span>Return on Investment:</span>
-                        <span class="result-value" id="roi-percentage">0%</span>
-                    </div>
-                    <div class="result-item">
-                        <span>Absolute Returns:</span>
-                        <span class="result-value" id="roi-absolute">₹0</span>
-                    </div>
-                    <div class="result-item">
-                        <span>Annualized ROI:</span>
-                        <span class="result-value" id="roi-annualized">0%</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Compound Interest Calculator -->
-            <div class="calculator">
-                <h2>Compound Interest Calculator</h2>
-                <div class="input-group">
-                    <label for="ci-principal">Principal Amount (₹)</label>
-                    <input type="number" id="ci-principal" min="1000" step="1000" value="100000">
-                    <div class="slider-container">
-                        <input type="range" min="1000" max="10000000" step="1000" value="100000" class="slider" id="ci-principal-slider">
-                    </div>
-                </div>
-                <div class="input-group">
-                    <label for="ci-rate">Annual Interest Rate (%)</label>
-                    <input type="number" id="ci-rate" min="1" max="30" step="0.1" value="8">
-                    <div class="slider-container">
-                        <input type="range" min="1" max="30" step="0.1" value="8" class="slider" id="ci-rate-slider">
-                    </div>
-                </div>
-                <div class="input-group">
-                    <label for="ci-time">Time Period (Years)</label>
-                    <input type="number" id="ci-time" min="1" max="40" value="10">
-                    <div class="slider-container">
-                        <input type="range" min="1" max="40" value="10" class="slider" id="ci-time-slider">
-                    </div>
-                </div>
-                <div class="input-group">
-                    <label for="ci-compound">Compound Frequency</label>
-                    <select id="ci-compound" class="form-control">
-                        <option value="1">Yearly</option>
-                        <option value="2">Half-Yearly</option>
-                        <option value="4">Quarterly</option>
-                        <option value="12" selected>Monthly</option>
-                    </select>
-                </div>
-                <button class="calculate-btn" onclick="calculateCompoundInterest()">Calculate</button>
-                
-                <div class="results" id="ci-results">
-                    <h3>Compound Interest Results</h3>
-                    <div class="result-item">
-                        <span>Total Amount:</span>
-                        <span class="result-value" id="ci-total-amount">₹0</span>
-                    </div>
-                    <div class="result-item">
-                        <span>Interest Earned:</span>
-                        <span class="result-value" id="ci-interest-earned">₹0</span>
+                    <div class="calculator-description">
+                        Advanced calculators including SWP, goal-based planning, and tax-saving calculators will be added here.
                     </div>
                 </div>
             </div>
@@ -391,8 +723,13 @@
 
     <footer>
         <div class="container">
-            <p>© 2025 Piyush Capital Ventures. All rights reserved.</p>
-            <p>These calculators are for illustrative purposes only and should not be considered financial advice.</p>
+            <div class="footer-content">
+                <p>© 2025 Piyush Capital Ventures. All rights reserved.</p>
+                <div class="disclaimer">
+                    <strong>Disclaimer:</strong> These calculators are for illustrative purposes only and should not be considered financial advice. 
+                    Past performance is not indicative of future results. Please consult with a qualified financial advisor before making investment decisions.
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -404,12 +741,39 @@
             
             slider.addEventListener('input', () => {
                 input.value = slider.value;
+                // Recalculate when slider changes
+                if (slider.id.includes('sip')) calculateSIP();
+                if (slider.id.includes('roi')) calculateROI();
+                if (slider.id.includes('ci-')) calculateCompoundInterest();
+                if (slider.id.includes('ls-')) calculateLumpsum();
             });
             
             input.addEventListener('input', () => {
                 slider.value = input.value;
+                // Recalculate when input changes
+                if (input.id.includes('sip')) calculateSIP();
+                if (input.id.includes('roi')) calculateROI();
+                if (input.id.includes('ci-')) calculateCompoundInterest();
+                if (input.id.includes('ls-')) calculateLumpsum();
             });
         });
+
+        // Tab navigation
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab and activate button
+            document.getElementById(`${tabName}-tab`).style.display = 'block';
+            document.querySelector(`.tab-btn[onclick="showTab('${tabName}')"]`).classList.add('active');
+        }
 
         // SIP Calculation function
         function calculateSIP() {
@@ -423,10 +787,12 @@
             const investedAmount = monthlyInvestment * months;
             const totalValue = monthlyInvestment * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
             const estimatedReturns = totalValue - investedAmount;
+            const annualizedReturn = (Math.pow(totalValue / investedAmount, 1 / investmentPeriod) - 1) * 100;
             
             document.getElementById('sip-total-investment').textContent = '₹' + investedAmount.toLocaleString('en-IN');
             document.getElementById('sip-estimated-returns').textContent = '₹' + estimatedReturns.toLocaleString('en-IN');
             document.getElementById('sip-total-value').textContent = '₹' + totalValue.toLocaleString('en-IN');
+            document.getElementById('sip-annualized-return').textContent = annualizedReturn.toFixed(2) + '%';
             
             // Update chart
             const investedBar = document.querySelector('#sip-chart .chart-bar:first-child');
@@ -450,10 +816,12 @@
             const absoluteReturn = finalValue - initialInvestment;
             const roiPercentage = ((finalValue - initialInvestment) / initialInvestment) * 100;
             const annualizedROI = (Math.pow(finalValue / initialInvestment, 1 / period) - 1) * 100;
+            const cagr = annualizedROI; // For simplicity, using the same as annualized ROI
             
             document.getElementById('roi-percentage').textContent = roiPercentage.toFixed(2) + '%';
             document.getElementById('roi-absolute').textContent = '₹' + absoluteReturn.toLocaleString('en-IN');
             document.getElementById('roi-annualized').textContent = annualizedROI.toFixed(2) + '%';
+            document.getElementById('roi-cagr').textContent = cagr.toFixed(2) + '%';
             
             document.getElementById('roi-results').style.display = 'block';
         }
@@ -467,11 +835,42 @@
             
             const amount = principal * Math.pow(1 + (rate / 100) / compoundFrequency, compoundFrequency * time);
             const interestEarned = amount - principal;
+            const effectiveRate = (Math.pow(1 + (rate / 100) / compoundFrequency, compoundFrequency) - 1) * 100;
             
             document.getElementById('ci-total-amount').textContent = '₹' + amount.toLocaleString('en-IN', {maximumFractionDigits: 2});
             document.getElementById('ci-interest-earned').textContent = '₹' + interestEarned.toLocaleString('en-IN', {maximumFractionDigits: 2});
+            document.getElementById('ci-principal-amount').textContent = '₹' + principal.toLocaleString('en-IN');
+            document.getElementById('ci-effective-rate').textContent = effectiveRate.toFixed(2) + '%';
             
             document.getElementById('ci-results').style.display = 'block';
+        }
+        
+        // Lumpsum Calculation function
+        function calculateLumpsum() {
+            const investment = parseFloat(document.getElementById('ls-investment').value);
+            const period = parseFloat(document.getElementById('ls-period').value);
+            const expectedReturn = parseFloat(document.getElementById('ls-return').value);
+            
+            const totalValue = investment * Math.pow(1 + expectedReturn / 100, period);
+            const estimatedReturns = totalValue - investment;
+            const annualizedReturn = (Math.pow(totalValue / investment, 1 / period) - 1) * 100;
+            
+            document.getElementById('ls-investment-amount').textContent = '₹' + investment.toLocaleString('en-IN');
+            document.getElementById('ls-estimated-returns').textContent = '₹' + estimatedReturns.toLocaleString('en-IN');
+            document.getElementById('ls-total-value').textContent = '₹' + totalValue.toLocaleString('en-IN');
+            document.getElementById('ls-annualized-return').textContent = annualizedReturn.toFixed(2) + '%';
+            
+            // Update chart
+            const principalBar = document.querySelector('#ls-chart .chart-bar:first-child');
+            const returnsBar = document.querySelector('#ls-chart .chart-bar:last-child');
+            
+            const principalPercent = (investment / totalValue) * 100;
+            const returnsPercent = (estimatedReturns / totalValue) * 100;
+            
+            principalBar.style.height = `${principalPercent}%`;
+            returnsBar.style.height = `${returnsPercent}%`;
+            
+            document.getElementById('ls-results').style.display = 'block';
         }
         
         // Calculate on page load
@@ -479,6 +878,7 @@
             calculateSIP();
             calculateROI();
             calculateCompoundInterest();
+            calculateLumpsum();
         };
     </script>
 </body>
