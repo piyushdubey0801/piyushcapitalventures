@@ -1076,34 +1076,33 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <a href="#" class="logo">
-                <div class="logo-icon">📈</div>
-                <div class="logo-text">Piyush Capital Ventures</div>
-            </a>
-            
-     <nav>
-    <ul>
-        <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
-        <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
-        <li><a href="#top-shares"><i class="fas fa-chart-line"></i> Top Shares</a></li>
-        <li><a href="#offers"><i class="fas fa-gift"></i> Offers</a></li>
-        <li><a href="calculators.html"><i class="fas fa-calculator"></i> Financial Calculators</a></li>
-    </ul>
-</nav>
-            
+<header class="header-premium">
+    <div class="header-container">
+        <a href="index.html" class="logo-premium">
+            <i class="fas fa-chart-line logo-icon"></i>
+            <span class="logo-text">Piyush Capital Ventures</span>
+        </a>
+        
+        <nav class="nav-premium">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#top-shares" class="nav-link">Top Shares</a>
+            <a href="#offers" class="nav-link">Offers</a>
+            <a href="calculators.html" class="nav-link calculator">Financial Calculators</a>
+        </nav>
+        
+        <div class="language-selector-premium">
+            <select>
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+            </select>
         </div>
-    </header>
-
-    <!-- Language Selector -->
-    <div class="language-selector">
-        <select id="langSelect" onchange="changeLanguage()">
-            <option value="en">English</option>
-            <option value="hi">हिन्दी</option>
-        </select>
+        
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
-
+</header>
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
