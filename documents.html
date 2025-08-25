@@ -1,240 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documents & Certificates - Piyush Capital Ventures</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        body {
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-        
-        .nav {
-            background-color: #2a5298;
-            padding: 0.5rem 0;
-        }
-        
-        .nav-list {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-        }
-        
-        .nav-item {
-            margin: 0 1rem;
-        }
-        
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-link:hover {
-            color: #ffd700;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-        
-        .page-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #1e3c72;
-            font-size: 2.2rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        .page-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
-        }
-        
-        .documents-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .document-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .document-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        .document-img-container {
-            height: 250px;
-            overflow: hidden;
-        }
-        
-        .document-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .document-card:hover .document-img {
-            transform: scale(1.05);
-        }
-        
-        .document-info {
-            padding: 1.5rem;
-        }
-        
-        .document-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: #1e3c72;
-            font-weight: 600;
-        }
-        
-        .document-desc {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .footer {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
-        }
-        
-        .footer-text {
-            margin-bottom: 1rem;
-        }
-        
-        @media (max-width: 768px) {
-            .documents-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 1.5rem;
-            }
-            
-            .nav-list {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .nav-item {
-                margin: 0.5rem 0;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header class="header">
-        <div class="logo">Piyush Capital Ventures</div>
-        <nav class="nav">
-            <ul class="nav-list">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="documents.html" class="nav-link">Documents</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <div class="container">
-        <h1 class="page-title">Our Certificates & Documents</h1>
-        
-        <div class="documents-grid">
-            <div class="document-card">
-                <div class="document-img-container">
-                    <img src="NISM-Certificate.jpeg" alt="NISM Certificate" class="document-img">
-                </div>
-                <div class="document-info">
-                    <h3 class="document-title">NISM Certificate</h3>
-                    <p class="document-desc">Certification from the National Institute of Securities Markets demonstrating our expertise in financial markets.</p>
-                </div>
-            </div>
-            
-            <div class="document-card">
-                <div class="document-img-container">
-                    <img src="Waaree-Renewal-share.jpeg" alt="Waaree Renewal Share" class="document-img">
-                </div>
-                <div class="document-info">
-                    <h3 class="document-title">Waaree Renewal Share</h3>
-                    <p class="document-desc">Documentation showing our renewable energy share holdings with Waaree Renewables Technologies.</p>
-                </div>
-            </div>
-            
-            <div class="document-card">
-                <div class="document-img-container">
-                    <img src="Divident-Statement.jpeg" alt="Dividend Statement" class="document-img">
-                </div>
-                <div class="document-info">
-                    <h3 class="document-title">Dividend Statement</h3>
-                    <p class="document-desc">Detailed statement of dividend distributions to our valued investors and shareholders.</p>
-                </div>
-            </div>
-            
-            <div class="document-card">
-                <div class="document-img-container">
-                    <img src="Profit-&-Loss-Statement.jpeg" alt="Profit & Loss Statement" class="document-img">
-                </div>
-                <div class="document-info">
-                    <h3 class="document-title">Profit & Loss Statement</h3>
-                    <p class="document-desc">Comprehensive financial statement showing company performance and profitability.</p>
-                </div>
-            </div>
-            
-            <div class="document-card">
-                <div class="document-img-container">
-                    <img src="Profit-&-Loss-Statement-2.jpeg" alt="Profit & Loss Statement 2" class="document-img">
-                </div>
-                <div class="document-info">
-                    <h3 class="document-title">Profit & Loss Statement 2</h3>
-                    <p class="document-desc">Additional detailed financial performance report for complete transparency.</p>
-                </div>
-            </div>
+<div class="documents-grid">
+    <div class="document-card">
+        <div class="document-img-container">
+            <img src="NISM-Certificate.jpeg" alt="NISM Certificate" class="document-img">
+        </div>
+        <div class="document-info">
+            <h3 class="document-title">NISM Certificate</h3>
+            <p class="document-desc">Certification from the National Institute of Securities Markets demonstrating our expertise in financial markets.</p>
         </div>
     </div>
     
-    <footer class="footer">
-        <p class="footer-text">© 2025 Piyush Capital Ventures. All rights reserved.</p>
-        <p class="footer-text">Building Trust Through Transparency</p>
-    </footer>
-</body>
-</html>
+    <div class="document-card">
+        <div class="document-img-container">
+            <img src="Waaree-Renewal-share.jpeg" alt="Waaree Renewal Share" class="document-img">
+        </div>
+        <div class="document-info">
+            <h3 class="document-title">Waaree Renewal Share</h3>
+            <p class="document-desc">Documentation showing our renewable energy share holdings with Waaree Renewables Technologies.</p>
+        </div>
+    </div>
+    
+    <div class="document-card">
+        <div class="document-img-container">
+            <img src="Dividend-Statement.jpeg" alt="Dividend Statement" class="document-img">
+        </div>
+        <div class="document-info">
+            <h3 class="document-title">Dividend Statement</h3>
+            <p class="document-desc">Detailed statement of dividend distributions to our valued investors and shareholders.</p>
+        </div>
+    </div>
+    
+    <div class="document-card">
+        <div class="document-img-container">
+            <img src="Profit-and-Loss-Statement.jpeg" alt="Profit & Loss Statement" class="document-img">
+        </div>
+        <div class="document-info">
+            <h3 class="document-title">Profit & Loss Statement</h3>
+            <p class="document-desc">Comprehensive financial statement showing company performance and profitability.</p>
+        </div>
+    </div>
+    
+    <div class="document-card">
+        <div class="document-img-container">
+            <img src="Profit-and-Loss-Statement-2.jpeg" alt="Profit & Loss Statement 2" class="document-img">
+        </div>
+        <div class="document-info">
+            <h3 class="document-title">Profit & Loss Statement 2</h3>
+            <p class="document-desc">Additional detailed financial performance report for complete transparency.</p>
+        </div>
+    </div>
+</div>
