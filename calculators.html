@@ -345,6 +345,20 @@
             font-size: 0.9rem;
         }
         
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
         @media (max-width: 768px) {
             .calculator-grid {
                 grid-template-columns: 1fr;
@@ -382,16 +396,16 @@
             <p class="subtitle">Powerful tools to plan your financial future with precision</p>
             
             <div class="calculator-tabs">
-                <button class="tab-btn active" onclick="showTab('basic')">
+                <button class="tab-btn active" data-tab="basic">
                     <i class="fas fa-chart-line"></i> Basic Calculators
                 </button>
-                <button class="tab-btn" onclick="showTab('advanced')">
+                <button class="tab-btn" data-tab="advanced">
                     <i class="fas fa-rocket"></i> Advanced Calculators
                 </button>
-                <button class="tab-btn" onclick="showTab('retirement')">
+                <button class="tab-btn" data-tab="retirement">
                     <i class="fas fa-university"></i> Retirement Planning
                 </button>
-                <button class="tab-btn" onclick="showTab('loan')">
+                <button class="tab-btn" data-tab="loan">
                     <i class="fas fa-credit-card"></i> Loan Calculators
                 </button>
             </div>
@@ -400,7 +414,7 @@
 
     <div class="container">
         <!-- Basic Calculators Tab -->
-        <div id="basic-tab" class="tab-content">
+        <div id="basic-tab" class="tab-content active">
             <div class="calculator-grid">
                 <!-- SIP Calculator -->
                 <div class="calculator-card">
@@ -702,19 +716,476 @@
             </div>
         </div>
 
-        <!-- Additional tabs for Advanced, Retirement, and Loan calculators would go here -->
-        <div id="advanced-tab" class="tab-content" style="display:none;">
+        <!-- Advanced Calculators Tab -->
+        <div id="advanced-tab" class="tab-content">
             <div class="calculator-grid">
-                <!-- Additional advanced calculators will be added here -->
+                <!-- SWP Calculator -->
                 <div class="calculator-card">
                     <div class="calculator-header">
                         <div class="calculator-icon">
-                            <i class="fas fa-rocket"></i>
+                            <i class="fas fa-money-check"></i>
                         </div>
-                        <h2 class="calculator-title">More Advanced Calculators</h2>
+                        <h2 class="calculator-title">SWP Calculator</h2>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="swp-investment">Initial Investment (₹)</label>
+                        <input type="number" id="swp-investment" min="100000" step="10000" value="500000">
+                        <div class="slider-container">
+                            <input type="range" min="100000" max="10000000" step="10000" value="500000" class="slider" id="swp-investment-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="swp-withdrawal">Monthly Withdrawal (₹)</label>
+                        <input type="number" id="swp-withdrawal" min="1000" step="1000" value="10000">
+                        <div class="slider-container">
+                            <input type="range" min="1000" max="200000" step="1000" value="10000" class="slider" id="swp-withdrawal-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="swp-period">Withdrawal Period (Years)</label>
+                        <input type="number" id="swp-period" min="1" max="30" value="5">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="30" value="5" class="slider" id="swp-period-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="swp-return">Expected Annual Return (%)</label>
+                        <input type="number" id="swp-return" min="1" max="30" step="0.1" value="12">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="30" step="0.1" value="12" class="slider" id="swp-return-slider">
+                        </div>
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculateSWP()">
+                        <i class="fas fa-calculator"></i> Calculate SWP
+                    </button>
+                    
+                    <div class="results" id="swp-results">
+                        <h3><i class="fas fa-chart-line"></i> SWP Results</h3>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <div class="result-label">Total Withdrawal</div>
+                                <div class="result-value" id="swp-total-withdrawal">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Final Corpus</div>
+                                <div class="result-value" id="swp-final-corpus">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Total Return</div>
+                                <div class="result-value" id="swp-total-return">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Annualized Return</div>
+                                <div class="result-value" id="swp-annualized-return">0%</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-description">
+                        <strong>SWP (Systematic Withdrawal Plan)</strong> allows you to withdraw a fixed amount from your mutual fund investments at regular intervals. 
+                        This calculator helps you estimate how long your investment will last with regular withdrawals.
+                    </div>
+                </div>
+
+                <!-- Goal Planning Calculator -->
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h2 class="calculator-title">Goal Planning Calculator</h2>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="goal-amount">Goal Amount (₹)</label>
+                        <input type="number" id="goal-amount" min="10000" step="10000" value="1000000">
+                        <div class="slider-container">
+                            <input type="range" min="10000" max="50000000" step="10000" value="1000000" class="slider" id="goal-amount-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="goal-period">Time to Goal (Years)</label>
+                        <input type="number" id="goal-period" min="1" max="40" value="10">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="40" value="10" class="slider" id="goal-period-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="goal-return">Expected Return (%)</label>
+                        <input type="number" id="goal-return" min="1" max="30" step="0.1" value="12">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="30" step="0.1" value="12" class="slider" id="goal-return-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="goal-inflation">Expected Inflation (%)</label>
+                        <input type="number" id="goal-inflation" min="1" max="15" step="0.1" value="6">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="15" step="0.1" value="6" class="slider" id="goal-inflation-slider">
+                        </div>
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculateGoal()">
+                        <i class="fas fa-calculator"></i> Calculate Investment
+                    </button>
+                    
+                    <div class="results" id="goal-results">
+                        <h3><i class="fas fa-bullseye"></i> Goal Planning Results</h3>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <div class="result-label">Monthly Investment Needed</div>
+                                <div class="result-value" id="goal-monthly-investment">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Future Value of Goal</div>
+                                <div class="result-value" id="goal-future-value">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Total Investment</div>
+                                <div class="result-value" id="goal-total-investment">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Wealth Gained</div>
+                                <div class="result-value" id="goal-wealth-gained">₹0</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-description">
+                        <strong>Goal Planning Calculator</strong> helps you determine how much you need to invest regularly to achieve your financial goals, 
+                        taking into account inflation and expected returns.
+                    </div>
+                </div>
+
+                <!-- Inflation Calculator -->
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h2 class="calculator-title">Inflation Calculator</h2>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="inflation-amount">Current Amount (₹)</label>
+                        <input type="number" id="inflation-amount" min="1000" step="1000" value="100000">
+                        <div class="slider-container">
+                            <input type="range" min="1000" max="10000000" step="1000" value="100000" class="slider" id="inflation-amount-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="inflation-rate">Expected Inflation Rate (%)</label>
+                        <input type="number" id="inflation-rate" min="1" max="20" step="0.1" value="6">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="20" step="0.1" value="6" class="slider" id="inflation-rate-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="inflation-years">Years</label>
+                        <input type="number" id="inflation-years" min="1" max="50" value="10">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="50" value="10" class="slider" id="inflation-years-slider">
+                        </div>
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculateInflation()">
+                        <i class="fas fa-calculator"></i> Calculate Future Value
+                    </button>
+                    
+                    <div class="results" id="inflation-results">
+                        <h3><i class="fas fa-money-bill-wave"></i> Inflation Impact</h3>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <div class="result-label">Future Value of Money</div>
+                                <div class="result-value" id="inflation-future-value">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Purchasing Power Loss</div>
+                                <div class="result-value" id="inflation-power-loss">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Annual Erosion</div>
+                                <div class="result-value" id="inflation-annual-erosion">₹0</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-description">
+                        <strong>Inflation Calculator</strong> shows you how inflation erodes the purchasing power of your money over time. 
+                        It helps you understand how much you need to invest to maintain your standard of living in the future.
+                    </div>
+                </div>
+
+                <!-- Tax Saving Calculator -->
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h2 class="calculator-title">Tax Saving Calculator</h2>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="tax-income">Annual Income (₹)</label>
+                        <input type="number" id="tax-income" min="300000" step="10000" value="800000">
+                        <div class="slider-container">
+                            <input type="range" min="300000" max="5000000" step="10000" value="800000" class="slider" id="tax-income-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="tax-deductions">Current Deductions (₹)</label>
+                        <input type="number" id="tax-deductions" min="0" step="10000" value="150000">
+                        <div class="slider-container">
+                            <input type="range" min="0" max="300000" step="10000" value="150000" class="slider" id="tax-deductions-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="tax-new-deductions">Additional Investment (₹)</label>
+                        <input type="number" id="tax-new-deductions" min="0" step="10000" value="0">
+                        <div class="slider-container">
+                            <input type="range" min="0" max="300000" step="10000" value="0" class="slider" id="tax-new-deductions-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="tax-regime">Tax Regime</label>
+                        <select id="tax-regime">
+                            <option value="old">Old Tax Regime</option>
+                            <option value="new">New Tax Regime</option>
+                        </select>
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculateTax()">
+                        <i class="fas fa-calculator"></i> Calculate Tax Savings
+                    </button>
+                    
+                    <div class="results" id="tax-results">
+                        <h3><i class="fas fa-file-invoice-dollar"></i> Tax Savings</h3>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <div class="result-label">Tax Without Investment</div>
+                                <div class="result-value" id="tax-without">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Tax With Investment</div>
+                                <div class="result-value" id="tax-with">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Tax Saved</div>
+                                <div class="result-value" id="tax-saved">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Effective Return</div>
+                                <div class="result-value" id="tax-effective-return">0%</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-description">
+                        <strong>Tax Saving Calculator</strong> helps you understand how investments in tax-saving instruments can reduce your tax liability 
+                        and increase your effective returns through tax benefits.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Retirement Planning Tab -->
+        <div id="retirement-tab" class="tab-content">
+            <div class="calculator-grid">
+                <!-- Retirement Calculator -->
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h2 class="calculator-title">Retirement Planner</h2>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="retirement-age">Current Age</label>
+                        <input type="number" id="retirement-age" min="18" max="65" value="30">
+                        <div class="slider-container">
+                            <input type="range" min="18" max="65" value="30" class="slider" id="retirement-age-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="retirement-retire-age">Retirement Age</label>
+                        <input type="number" id="retirement-retire-age" min="45" max="70" value="60">
+                        <div class="slider-container">
+                            <input type="range" min="45" max="70" value="60" class="slider" id="retirement-retire-age-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="retirement-income">Current Annual Income (₹)</label>
+                        <input type="number" id="retirement-income" min="100000" step="10000" value="800000">
+                        <div class="slider-container">
+                            <input type="range" min="100000" max="5000000" step="10000" value="800000" class="slider" id="retirement-income-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="retirement-expenses">Current Annual Expenses (₹)</label>
+                        <input type="number" id="retirement-expenses" min="50000" step="10000" value="500000">
+                        <div class="slider-container">
+                            <input type="range" min="50000" max="3000000" step="10000" value="500000" class="slider" id="retirement-expenses-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="retirement-inflation">Expected Inflation (%)</label>
+                        <input type="number" id="retirement-inflation" min="1" max="15" step="0.1" value="6">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="15" step="0.1" value="6" class="slider" id="retirement-inflation-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="retirement-return">Expected Return (%)</label>
+                        <input type="number" id="retirement-return" min="1" max="20" step="0.1" value="10">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="20" step="0.1" value="10" class="slider" id="retirement-return-slider">
+                        </div>
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculateRetirement()">
+                        <i class="fas fa-calculator"></i> Calculate Retirement Corpus
+                    </button>
+                    
+                    <div class="results" id="retirement-results">
+                        <h3><i class="fas fa-university"></i> Retirement Planning Results</h3>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <div class="result-label">Retirement Corpus Needed</div>
+                                <div class="result-value" id="retirement-corpus">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Monthly Investment Needed</div>
+                                <div class="result-value" id="retirement-monthly-investment">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Current Savings</div>
+                                <div class="result-value" id="retirement-current-savings">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Years to Retirement</div>
+                                <div class="result-value" id="retirement-years">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-description">
+                        <strong>Retirement Planner</strong> helps you estimate how much money you need to save for retirement, 
+                        taking into account inflation, your current expenses, and expected returns on your investments.
+                    </div>
+                </div>
+
+                <!-- Additional retirement calculators can be added here -->
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-piggy-bank"></i>
+                        </div>
+                        <h2 class="calculator-title">Pension Calculator</h2>
                     </div>
                     <div class="calculator-description">
-                        Advanced calculators including SWP, goal-based planning, and tax-saving calculators will be added here.
+                        Calculate your expected pension income based on your contributions, investment returns, and annuity rates.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loan Calculators Tab -->
+        <div id="loan-tab" class="tab-content">
+            <div class="calculator-grid">
+                <!-- EMI Calculator -->
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h2 class="calculator-title">EMI Calculator</h2>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="emi-amount">Loan Amount (₹)</label>
+                        <input type="number" id="emi-amount" min="10000" step="10000" value="5000000">
+                        <div class="slider-container">
+                            <input type="range" min="10000" max="50000000" step="10000" value="5000000" class="slider" id="emi-amount-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="emi-interest">Interest Rate (%)</label>
+                        <input type="number" id="emi-interest" min="1" max="20" step="0.1" value="8.5">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="20" step="0.1" value="8.5" class="slider" id="emi-interest-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="emi-tenure">Loan Tenure (Years)</label>
+                        <input type="number" id="emi-tenure" min="1" max="30" value="20">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="30" value="20" class="slider" id="emi-tenure-slider">
+                        </div>
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculateEMI()">
+                        <i class="fas fa-calculator"></i> Calculate EMI
+                    </button>
+                    
+                    <div class="results" id="emi-results">
+                        <h3><i class="fas fa-home"></i> EMI Calculation Results</h3>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <div class="result-label">Monthly EMI</div>
+                                <div class="result-value" id="emi-monthly">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Total Interest Payable</div>
+                                <div class="result-value" id="emi-total-interest">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Total Payment</div>
+                                <div class="result-value" id="emi-total-payment">₹0</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label">Interest to Principal Ratio</div>
+                                <div class="result-value" id="emi-ratio">0%</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-description">
+                        <strong>EMI Calculator</strong> helps you calculate your Equated Monthly Installment (EMI) for home loans, car loans, personal loans, 
+                        and other types of loans. It shows the breakdown of principal and interest components.
+                    </div>
+                </div>
+
+                <!-- Additional loan calculators can be added here -->
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h2 class="calculator-title">Car Loan Calculator</h2>
+                    </div>
+                    <div class="calculator-description">
+                        Calculate your car loan EMI, total interest payable, and compare different loan options.
                     </div>
                 </div>
             </div>
@@ -734,6 +1205,29 @@
     </footer>
 
     <script>
+        // Tab navigation
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const tab = button.getAttribute('data-tab');
+                
+                // Remove active class from all buttons
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show selected tab content
+                document.getElementById(`${tab}-tab`).classList.add('active');
+            });
+        });
+
         // Sync sliders with input fields
         document.querySelectorAll('input[type="range"]').forEach(slider => {
             const inputId = slider.id.replace('-slider', '');
@@ -746,6 +1240,12 @@
                 if (slider.id.includes('roi')) calculateROI();
                 if (slider.id.includes('ci-')) calculateCompoundInterest();
                 if (slider.id.includes('ls-')) calculateLumpsum();
+                if (slider.id.includes('swp-')) calculateSWP();
+                if (slider.id.includes('goal-')) calculateGoal();
+                if (slider.id.includes('inflation-')) calculateInflation();
+                if (slider.id.includes('tax-')) calculateTax();
+                if (slider.id.includes('retirement-')) calculateRetirement();
+                if (slider.id.includes('emi-')) calculateEMI();
             });
             
             input.addEventListener('input', () => {
@@ -755,25 +1255,14 @@
                 if (input.id.includes('roi')) calculateROI();
                 if (input.id.includes('ci-')) calculateCompoundInterest();
                 if (input.id.includes('ls-')) calculateLumpsum();
+                if (input.id.includes('swp-')) calculateSWP();
+                if (input.id.includes('goal-')) calculateGoal();
+                if (input.id.includes('inflation-')) calculateInflation();
+                if (input.id.includes('tax-')) calculateTax();
+                if (input.id.includes('retirement-')) calculateRetirement();
+                if (input.id.includes('emi-')) calculateEMI();
             });
         });
-
-        // Tab navigation
-        function showTab(tabName) {
-            // Hide all tabs
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.style.display = 'none';
-            });
-            
-            // Remove active class from all buttons
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show selected tab and activate button
-            document.getElementById(`${tabName}-tab`).style.display = 'block';
-            document.querySelector(`.tab-btn[onclick="showTab('${tabName}')"]`).classList.add('active');
-        }
 
         // SIP Calculation function
         function calculateSIP() {
@@ -871,6 +1360,170 @@
             returnsBar.style.height = `${returnsPercent}%`;
             
             document.getElementById('ls-results').style.display = 'block';
+        }
+        
+        // SWP Calculation function
+        function calculateSWP() {
+            const investment = parseFloat(document.getElementById('swp-investment').value);
+            const withdrawal = parseFloat(document.getElementById('swp-withdrawal').value);
+            const period = parseFloat(document.getElementById('swp-period').value);
+            const expectedReturn = parseFloat(document.getElementById('swp-return').value);
+            
+            // Simplified calculation for demonstration
+            const monthlyRate = expectedReturn / 100 / 12;
+            const months = period * 12;
+            
+            let remainingAmount = investment;
+            for (let i = 0; i < months; i++) {
+                remainingAmount = remainingAmount * (1 + monthlyRate) - withdrawal;
+                if (remainingAmount < 0) break;
+            }
+            
+            const totalWithdrawal = withdrawal * months;
+            const finalCorpus = Math.max(0, remainingAmount);
+            const totalReturn = finalCorpus + totalWithdrawal - investment;
+            const annualizedReturn = (Math.pow((finalCorpus + totalWithdrawal) / investment, 1 / period) - 1) * 100;
+            
+            document.getElementById('swp-total-withdrawal').textContent = '₹' + totalWithdrawal.toLocaleString('en-IN');
+            document.getElementById('swp-final-corpus').textContent = '₹' + finalCorpus.toLocaleString('en-IN');
+            document.getElementById('swp-total-return').textContent = '₹' + totalReturn.toLocaleString('en-IN');
+            document.getElementById('swp-annualized-return').textContent = annualizedReturn.toFixed(2) + '%';
+            
+            document.getElementById('swp-results').style.display = 'block';
+        }
+        
+        // Goal Planning Calculation function
+        function calculateGoal() {
+            const goalAmount = parseFloat(document.getElementById('goal-amount').value);
+            const period = parseFloat(document.getElementById('goal-period').value);
+            const expectedReturn = parseFloat(document.getElementById('goal-return').value);
+            const inflation = parseFloat(document.getElementById('goal-inflation').value);
+            
+            const futureValue = goalAmount * Math.pow(1 + inflation / 100, period);
+            const monthlyRate = expectedReturn / 100 / 12;
+            const months = period * 12;
+            
+            const monthlyInvestment = futureValue * monthlyRate / (Math.pow(1 + monthlyRate, months) - 1);
+            const totalInvestment = monthlyInvestment * months;
+            const wealthGained = futureValue - totalInvestment;
+            
+            document.getElementById('goal-monthly-investment').textContent = '₹' + monthlyInvestment.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('goal-future-value').textContent = '₹' + futureValue.toLocaleString('en-IN');
+            document.getElementById('goal-total-investment').textContent = '₹' + totalInvestment.toLocaleString('en-IN');
+            document.getElementById('goal-wealth-gained').textContent = '₹' + wealthGained.toLocaleString('en-IN');
+            
+            document.getElementById('goal-results').style.display = 'block';
+        }
+        
+        // Inflation Calculation function
+        function calculateInflation() {
+            const amount = parseFloat(document.getElementById('inflation-amount').value);
+            const inflation = parseFloat(document.getElementById('inflation-rate').value);
+            const years = parseFloat(document.getElementById('inflation-years').value);
+            
+            const futureValue = amount / Math.pow(1 + inflation / 100, years);
+            const powerLoss = amount - futureValue;
+            const annualErosion = powerLoss / years;
+            
+            document.getElementById('inflation-future-value').textContent = '₹' + futureValue.toLocaleString('en-IN', {maximumFractionDigits: 2});
+            document.getElementById('inflation-power-loss').textContent = '₹' + powerLoss.toLocaleString('en-IN', {maximumFractionDigits: 2});
+            document.getElementById('inflation-annual-erosion').textContent = '₹' + annualErosion.toLocaleString('en-IN', {maximumFractionDigits: 2});
+            
+            document.getElementById('inflation-results').style.display = 'block';
+        }
+        
+        // Tax Calculation function
+        function calculateTax() {
+            const income = parseFloat(document.getElementById('tax-income').value);
+            const deductions = parseFloat(document.getElementById('tax-deductions').value);
+            const newDeductions = parseFloat(document.getElementById('tax-new-deductions').value);
+            const regime = document.getElementById('tax-regime').value;
+            
+            // Simplified tax calculation for demonstration
+            const taxableIncome = Math.max(0, income - deductions - newDeductions - 50000); // Standard deduction
+            let tax = 0;
+            
+            if (regime === 'old') {
+                if (taxableIncome > 1000000) {
+                    tax = 112500 + (taxableIncome - 1000000) * 0.3;
+                } else if (taxableIncome > 500000) {
+                    tax = 12500 + (taxableIncome - 500000) * 0.2;
+                } else if (taxableIncome > 250000) {
+                    tax = (taxableIncome - 250000) * 0.05;
+                }
+            } else {
+                // New regime calculation
+                if (taxableIncome > 1500000) {
+                    tax = 187500 + (taxableIncome - 1500000) * 0.3;
+                } else if (taxableIncome > 1200000) {
+                    tax = 112500 + (taxableIncome - 1200000) * 0.2;
+                } else if (taxableIncome > 900000) {
+                    tax = 67500 + (taxableIncome - 900000) * 0.15;
+                } else if (taxableIncome > 600000) {
+                    tax = 22500 + (taxableIncome - 600000) * 0.1;
+                } else if (taxableIncome > 300000) {
+                    tax = (taxableIncome - 300000) * 0.05;
+                }
+            }
+            
+            const taxWithout = tax + (newDeductions > 0 ? 0 : 0); // Simplified
+            const taxWith = Math.max(0, tax);
+            const taxSaved = taxWithout - taxWith;
+            const effectiveReturn = (taxSaved / newDeductions) * 100 || 0;
+            
+            document.getElementById('tax-without').textContent = '₹' + taxWithout.toLocaleString('en-IN');
+            document.getElementById('tax-with').textContent = '₹' + taxWith.toLocaleString('en-IN');
+            document.getElementById('tax-saved').textContent = '₹' + taxSaved.toLocaleString('en-IN');
+            document.getElementById('tax-effective-return').textContent = effectiveReturn.toFixed(2) + '%';
+            
+            document.getElementById('tax-results').style.display = 'block';
+        }
+        
+        // Retirement Calculation function
+        function calculateRetirement() {
+            const currentAge = parseFloat(document.getElementById('retirement-age').value);
+            const retireAge = parseFloat(document.getElementById('retirement-retire-age').value);
+            const income = parseFloat(document.getElementById('retirement-income').value);
+            const expenses = parseFloat(document.getElementById('retirement-expenses').value);
+            const inflation = parseFloat(document.getElementById('retirement-inflation').value);
+            const expectedReturn = parseFloat(document.getElementById('retirement-return').value);
+            
+            const yearsToRetire = retireAge - currentAge;
+            const retirementYears = 90 - retireAge; // Assuming lifespan of 90 years
+            
+            const futureExpenses = expenses * Math.pow(1 + inflation / 100, yearsToRetire);
+            const corpus = futureExpenses * retirementYears * 12;
+            
+            const monthlyInvestment = corpus * (expectedReturn / 100 / 12) / (Math.pow(1 + expectedReturn / 100 / 12, yearsToRetire * 12) - 1);
+            
+            document.getElementById('retirement-corpus').textContent = '₹' + corpus.toLocaleString('en-IN');
+            document.getElementById('retirement-monthly-investment').textContent = '₹' + monthlyInvestment.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('retirement-current-savings').textContent = '₹0'; // Placeholder
+            document.getElementById('retirement-years').textContent = yearsToRetire;
+            
+            document.getElementById('retirement-results').style.display = 'block';
+        }
+        
+        // EMI Calculation function
+        function calculateEMI() {
+            const amount = parseFloat(document.getElementById('emi-amount').value);
+            const interest = parseFloat(document.getElementById('emi-interest').value);
+            const tenure = parseFloat(document.getElementById('emi-tenure').value);
+            
+            const monthlyRate = interest / 100 / 12;
+            const months = tenure * 12;
+            
+            const emi = amount * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+            const totalPayment = emi * months;
+            const totalInterest = totalPayment - amount;
+            const ratio = (totalInterest / amount) * 100;
+            
+            document.getElementById('emi-monthly').textContent = '₹' + emi.toLocaleString('en-IN', {maximumFractionDigits: 0});
+            document.getElementById('emi-total-interest').textContent = '₹' + totalInterest.toLocaleString('en-IN');
+            document.getElementById('emi-total-payment').textContent = '₹' + totalPayment.toLocaleString('en-IN');
+            document.getElementById('emi-ratio').textContent = ratio.toFixed(2) + '%';
+            
+            document.getElementById('emi-results').style.display = 'block';
         }
         
         // Calculate on page load
