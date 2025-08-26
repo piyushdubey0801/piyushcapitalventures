@@ -400,52 +400,7 @@
                 closeModal();
             }
         }
-        
-        // Function to fetch Indian stock data
-        async function fetchIndianStockData() {
-            const stockDataElement = document.getElementById('stockData');
-            stockDataElement.innerHTML = '<div class="loading">Loading Indian market data...</div>';
-            
-            try {
-                // Using mock data for Indian stocks since free APIs are limited
-                // In a real implementation, you would use a paid API or web scraping
-                
-                // Mock API response for Indian stocks
-                const mockData = [
-                    { symbol: 'RELIANCE', price: '2,856.15', change: '+1.5%' },
-                    { symbol: 'TATASTEEL', price: '132.45', change: '-0.8%' },
-                    { symbol: 'HDFCBANK', price: '1,645.70', change: '+0.7%' },
-                    { symbol: 'INFY', price: '1,852.30', change: '+2.1%' },
-                    { symbol: 'SBIN', price: '595.85', change: '-0.3%' }
-                ];
-                
-                // Simulate API delay
-                setTimeout(() => {
-                    displayStockData(mockData);
-                }, 1000);
-                
-                /* 
-                // For a real implementation with a free Indian API, you could use:
-                // 1. BSE India: https://www.bseindia.com/ (requires web scraping)
-                // 2. NSE India: https://www.nseindia.com/ (requires web scraping)
-                // 3. Alpha Vantage: https://www.alphavantage.co/ (free tier available)
-                
-                // Example with Alpha Vantage (you would need to get an API key):
-                const apiKey = 'YOUR_ALPHA_VANTAGE_API_KEY';
-                const symbol = 'RELIANCE.BSE'; // BSE listed symbol
-                
-                const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${apiKey}`);
-                const data = await response.json();
-                
-                // Process the data and update the UI accordingly
-                */
-                
-            } catch (error) {
-                stockDataElement.innerHTML = '<div>Unable to load market data at this time. Please try again later.</div>';
-                console.error('Error fetching stock data:', error);
-            }
-        }
-        
+    
         // Function to display stock data
         function displayStockData(data) {
             const stockDataElement = document.getElementById('stockData');
