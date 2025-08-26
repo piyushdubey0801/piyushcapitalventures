@@ -395,6 +395,41 @@ window.PCV = {
     showStockAnalysis,
     showNotification
 };
+<script>
+    // Testimonial carousel functionality
+    let currentTestimonial = 0;
+    const testimonials = document.querySelectorAll('.testimonial-card');
+    
+    function showTestimonial(index) {
+        testimonials.forEach(testimonial => {
+            testimonial.style.display = 'none';
+        });
+        
+        testimonials[index].style.display = 'block';
+    }
+    
+    // Auto-rotate testimonials
+    setInterval(() => {
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        showTestimonial(currentTestimonial);
+    }, 5000);
+    
+    // Initialize
+    showTestimonial(0);
+    
+    // Service card hover effects
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    serviceCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+        });
+    });
+</script>
 
 // Performance monitoring
 if ('performance' in window) {
