@@ -11,6 +11,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piyush Capital Ventures - Premium Stock Market Advisory</title>
     <style>
+         /* Additional Styles for Logo */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            height: 60px;
+            width: auto;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .logo-img:hover {
+            transform: scale(1.05);
+            border-color: var(--gold);
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+        
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 50px;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-img {
+                height: 40px;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .logo-container {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
         :root {
             --primary-dark: #0f172a;
             --primary: #1e293b;
@@ -1078,6 +1134,8 @@
     <!-- Header -->
 <header class="header-premium">
     <div class="header-container">
+          <img src="https://i.postimg.cc/ZY2JcBpq/Whats-App-Image-2025-08-26-at-12-38-30-PM-1.jpg" 
+                     alt="Piyush Capital Ventures" class="logo-img">
         <a href="index.html" class="logo-premium">
             <i class="fas fa-chart-line logo-icon"></i>
             <span class="logo-text">Piyush Capital Ventures</span>
